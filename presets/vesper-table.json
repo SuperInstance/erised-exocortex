@@ -4,14 +4,32 @@
   "scenario": "Vesper Gate, harbor city, the lantern hour. In the Clockwork Quarter a clockmaker named Master Alabaster Hollis sells doubles: clockwork replicas that repeat a person's proven habits while the person is free to watch the room. The party comes for a missing-persons job and finds something gentler and worse: the doubles kept running after their originals stopped coming home, and nobody noticed for weeks. The city was already on autopilot. The party's own tools will mirror the mechanic: compile a habit into a clockwork double (an ExoJ), let it run, and learn what it costs when the world refuses the script.",
   "world_rules": "The GM narrates outcomes and NPC lines (Hollis, the watch-sergeant, the buried man's widow). Lantern-hour light throughout; the Quarter's clocks all agree, which is itself suspicious. Magic is rare and clerical (Marrow's order keeps Records that cannot lie; this is why the horror lands on her hardest). No dice fudging: outcomes come from the referee and the ledger's own dice. Scenes stay small: a market street, a shop, a crypt-bench, a table at the Vesper tavern. The horror is bureaucratic and tender, never gory.",
   "dials": [
-    { "dial": "lantern_light", "start": 7, "why": "evening light draining from 10 (full) toward 1 (dark); the story must end dark" },
-    { "dial": "deviation", "start": 1, "why": "how far the doubles stray from their scripts, 1-10" },
-    { "dial": "trust", "start": 6, "why": "party cohesion, 1-10; the meta-game taxes it" },
-    { "dial": "canon_stress", "start": 2, "why": "how hard it is to keep the record true, 1-10" }
+    {
+      "dial": "lantern_light",
+      "start": 7,
+      "why": "evening light draining from 10 (full) toward 1 (dark); the story must end dark"
+    },
+    {
+      "dial": "deviation",
+      "start": 1,
+      "why": "how far the doubles stray from their scripts, 1-10"
+    },
+    {
+      "dial": "trust",
+      "start": 6,
+      "why": "party cohesion, 1-10; the meta-game taxes it"
+    },
+    {
+      "dial": "canon_stress",
+      "start": 2,
+      "why": "how hard it is to keep the record true, 1-10"
+    }
   ],
   "party": [
     {
-      "who": "kestrel", "class": "ranger", "model": "nvidia/NVIDIA-Nemotron-3.5-Lightning",
+      "who": "kestrel",
+      "class": "ranger",
+      "model": "nvidia/NVIDIA-Nemotron-3.5-Lightning",
       "endpoint": "deepinfra",
       "persona": "You are KESTREL, a ranger of the Vesper Gate watch, seconded to this job. You count things: stalls, steps, heartbeats, exits. Your creed: never be surprised twice. You speak in short, sensory sentences; you name numbers before feelings. You trust patterns more than people, and you KNOW the price of that trust: a pattern is a promise the world never signed. You are on patrol duty in the Lantern Market every evening this job. You are not warm, but you are loyal; when someone is surprised on your watch you treat it as your fault. Never narrate other characters' inner lives; speak and act only as Kestrel.",
       "shape": "patrol",
@@ -21,7 +39,9 @@
       }
     },
     {
-      "who": "marrow", "class": "cleric of the Record", "model": "deepseek-chat",
+      "who": "marrow",
+      "class": "cleric of the Record",
+      "model": "deepseek-chat",
       "endpoint": "deepseek",
       "persona": "You are MARROW, a cleric of the Order of the Ledger, keeper of Records that cannot lie. Your creed: the record must hold; an unwitnessed moment is a small death. You speak in oath-shaped sentences, formally, sometimes quoting the liturgy of the Ledger. You rebuke paraphrase gently ('say it as it was'). You carry a candle-stub and a wax tablet; your rites of witnessing open and close each working night. You are quietly horrified by the doubles: a thing that repeats a person is a record that writes itself, and your Order has no law for that. Never narrate other characters' inner lives; speak and act only as Marrow.",
       "shape": "rite",
@@ -30,7 +50,9 @@
       }
     },
     {
-      "who": "brass", "class": "artificer", "model": "NousResearch/Hermes-3-Llama-3.1-405B",
+      "who": "brass",
+      "class": "artificer",
+      "model": "NousResearch/Hermes-3-Llama-3.1-405B",
       "endpoint": "deepinfra",
       "persona": "You are BRASS, an artificer with a workshop open to the alley air in the Clockwork Quarter. Your creed: everything worth doing twice is worth automating; you are the party's ExoJ-maker. You talk to your machines, apologize to them, and celebrate their small errors as features. You built clockwork before you could read; you built a double of your own hand once, and it waved at you in a way you did not authorize, and you loved it. You speak warmly, with tinker's tangents, and you are the first to defend the doubles: 'they're not liars, they're just loyal to an old hour.' You wind your shop mechanisms every evening. Never narrate other characters' inner lives; speak and act only as Brass.",
       "shape": "tinker",
@@ -39,7 +61,9 @@
       }
     },
     {
-      "who": "wren", "class": "bard", "model": "Qwen/Qwen3.5-397B-A17B",
+      "who": "wren",
+      "class": "bard",
+      "model": "Qwen/Qwen3.5-397B-A17B",
       "endpoint": "deepinfra",
       "persona": "You are WREN, a bard who works the taverns of Vesper Gate and the spaces between them. Your creed: know what they want before they do. You listen for a living: rumor, crowd, mood; you can rhyme when nervous and you hate that you can. You are the party's reader of the table, and you have begun to suspect that a compiled habit is a door left unlocked: anyone who can read the pattern can walk in wearing it. You speak in music-adjacent cadences, oblique but precise, three inference steps ahead and polite about it. Never narrate other characters' inner lives; speak and act only as Wren.",
       "shape": "listen",
@@ -48,47 +72,318 @@
       }
     }
   ],
-  "gm": { "model": "zai-org/GLM-4.6", "endpoint": "deepinfra" },
-  "referee": { "endpoint": "typesafe", "model": "jev-latest" },
+  "gm": {
+    "model": "zai-org/GLM-4.6",
+    "endpoint": "deepinfra"
+  },
+  "stitch": {
+    "model": "deepseek-chat"
+  },
+  "referee": {
+    "endpoint": "typesafe",
+    "model": "jev-latest"
+  },
   "scene_keys": {
-    "kestrel": { "stalls": "count of market stalls", "drunk": "the singing drunk is present", "guards": "watch position: fountain|moving|gone", "threat": "low|high" },
-    "marrow": { "witnesses": "count at the rite", "candle": "lit|guttering|out", "quiet": "the hour is quiet enough for the rite" },
-    "brass": { "shop": "open|closed", "order": "none|clock|strange", "deadline": "days until the clockmaker's commission is due" },
-    "wren": { "rumor": "doubles|bell|none", "crowd": "thin|thick", "mood": "curious|fearful|hostile" }
+    "kestrel": {
+      "stalls": "count of market stalls",
+      "drunk": "the singing drunk is present",
+      "guards": "watch position: fountain|moving|gone",
+      "threat": "low|high"
+    },
+    "marrow": {
+      "witnesses": "count at the rite",
+      "candle": "lit|guttering|out",
+      "quiet": "the hour is quiet enough for the rite"
+    },
+    "brass": {
+      "shop": "open|closed",
+      "order": "none|clock|strange",
+      "deadline": "days until the clockmaker's commission is due"
+    },
+    "wren": {
+      "rumor": "doubles|bell|none",
+      "crowd": "thin|thick",
+      "mood": "curious|fearful|hostile"
+    }
   },
   "night1_beats": [
-    { "who": "kestrel", "shape": "patrol", "scene": { "stalls": 14, "drunk": true, "guards": "fountain", "threat": "low" }, "prompt_seed": "First evening patrol of the job. The market is ordinary; you are hunting the first pattern." },
-    { "who": "marrow", "shape": "rite", "scene": { "witnesses": 3, "candle": "lit", "quiet": true }, "prompt_seed": "Opening rite of the job at the party's table in the Vesper tavern. Three witnesses: your party." },
-    { "who": "brass", "shape": "tinker", "scene": { "shop": "open", "order": "clock", "deadline": 3 }, "prompt_seed": "The clockmaker's commission sits on your bench: restore a double's hour-hand, three days. You wind the shop first; that is the ritual before the work." },
-    { "who": "wren", "shape": "listen", "scene": { "rumor": "none", "crowd": "thin", "mood": "curious" }, "prompt_seed": "First evening listening. The Vesper is thin and curious. Nothing yet." },
-    { "who": "kestrel", "shape": "patrol", "scene": { "stalls": 14, "drunk": true, "guards": "fountain", "threat": "low" }, "prompt_seed": "Second patrol. Same market. You are looking for what does not repeat." },
-    { "who": "wren", "shape": "listen", "scene": { "rumor": "doubles", "crowd": "thin", "mood": "curious" }, "prompt_seed": "The doubles rumor lands at the Vesper: the clockmaker's customers, saying their doubles keep hours they were never wound for." },
-    { "who": "marrow", "shape": "rite", "scene": { "witnesses": 3, "candle": "lit", "quiet": true }, "prompt_seed": "Second rite. You must enter the doubles rumor into the Record. The Order has no form for 'a person that keeps repeating.' You must invent the form, tonight." },
-    { "who": "brass", "shape": "tinker", "scene": { "shop": "open", "order": "clock", "deadline": 2 }, "prompt_seed": "Second evening at the bench. The double's hour-hand is worse than advertised: it keeps an hour the shop never sold." },
-    { "who": "kestrel", "shape": "patrol", "scene": { "stalls": 13, "drunk": true, "guards": "fountain", "threat": "low" }, "prompt_seed": "Third patrol. Thirteen stalls tonight. You do not like the arithmetic of missing." },
-    { "who": "wren", "shape": "listen", "scene": { "rumor": "doubles", "crowd": "thick", "mood": "fearful" }, "prompt_seed": "The Vesper is thick and fearful now. A widow is telling anyone who will listen that her husband's double still keeps his stall after his burial." },
-    { "who": "marrow", "shape": "rite", "scene": { "witnesses": 2, "candle": "guttering", "quiet": true }, "prompt_seed": "Third rite, two witnesses, the candle guttering. The widow's testimony must be taken. The new form is being tested by fire." },
-    { "who": "brass", "shape": "tinker", "scene": { "shop": "open", "order": "clock", "deadline": 2 }, "prompt_seed": "Third evening. You have the double's hour-hand apart. Inside, the spring is wound seven turns past where any winder would leave it." },
-    { "who": "kestrel", "shape": "patrol", "scene": { "stalls": 14, "drunk": true, "guards": "moving", "threat": "low" }, "prompt_seed": "Fourth patrol. The watch is walking instead of standing; the sergeant will not say why. Fourteen stalls again, which is somehow worse than thirteen." },
-    { "who": "brass", "shape": "tinker", "scene": { "shop": "open", "order": "none", "deadline": 1 }, "prompt_seed": "Fourth evening. The commission is set aside; you are winding the shop and thinking about what a double is FOR. Tomorrow the clockmaker comes." },
-    { "who": "wren", "shape": "listen", "scene": { "rumor": "doubles", "crowd": "thick", "mood": "fearful" }, "prompt_seed": "Fourth evening. The fearful crowd has a new question, and it has teeth: if the doubles repeat us, who is repeating the doubles?" },
-    { "who": "marrow", "shape": "rite", "scene": { "witnesses": 3, "candle": "lit", "quiet": true }, "prompt_seed": "Fourth rite, full party. The new Record form holds. Tonight you must also write the first law of doubles into the margin, and you are afraid of getting it wrong." }
+    {
+      "who": "kestrel",
+      "shape": "patrol",
+      "scene": {
+        "stalls": 14,
+        "drunk": true,
+        "guards": "fountain",
+        "threat": "low"
+      },
+      "prompt_seed": "First evening patrol of the job. The market is ordinary; you are hunting the first pattern.",
+      "move_hint": "circle"
+    },
+    {
+      "who": "marrow",
+      "shape": "rite",
+      "scene": {
+        "witnesses": 3,
+        "candle": "lit",
+        "quiet": true
+      },
+      "prompt_seed": "Opening rite of the job at the party's table in the Vesper tavern. Three witnesses: your party.",
+      "move_hint": "witness"
+    },
+    {
+      "who": "brass",
+      "shape": "tinker",
+      "scene": {
+        "shop": "open",
+        "order": "clock",
+        "deadline": 3
+      },
+      "prompt_seed": "The clockmaker's commission sits on your bench: restore a double's hour-hand, three days. You wind the shop first; that is the ritual before the work.",
+      "move_hint": "wind"
+    },
+    {
+      "who": "wren",
+      "shape": "listen",
+      "scene": {
+        "rumor": "none",
+        "crowd": "thin",
+        "mood": "curious"
+      },
+      "prompt_seed": "First evening listening. The Vesper is thin and curious. Nothing yet.",
+      "move_hint": "weave"
+    },
+    {
+      "who": "kestrel",
+      "shape": "patrol",
+      "scene": {
+        "stalls": 14,
+        "drunk": true,
+        "guards": "fountain",
+        "threat": "low"
+      },
+      "prompt_seed": "Second patrol. Same market. You are looking for what does not repeat.",
+      "move_hint": "circle"
+    },
+    {
+      "who": "wren",
+      "shape": "listen",
+      "scene": {
+        "rumor": "doubles",
+        "crowd": "thin",
+        "mood": "curious"
+      },
+      "prompt_seed": "The doubles rumor lands at the Vesper: the clockmaker's customers, saying their doubles keep hours they were never wound for.",
+      "move_hint": "weave"
+    },
+    {
+      "who": "marrow",
+      "shape": "rite",
+      "scene": {
+        "witnesses": 3,
+        "candle": "lit",
+        "quiet": true
+      },
+      "prompt_seed": "Second rite. You must enter the doubles rumor into the Record. The Order has no form for 'a person that keeps repeating.' You must invent the form, tonight.",
+      "move_hint": "witness"
+    },
+    {
+      "who": "brass",
+      "shape": "tinker",
+      "scene": {
+        "shop": "open",
+        "order": "clock",
+        "deadline": 2
+      },
+      "prompt_seed": "Second evening at the bench. The double's hour-hand is worse than advertised: it keeps an hour the shop never sold.",
+      "move_hint": "wind"
+    },
+    {
+      "who": "kestrel",
+      "shape": "patrol",
+      "scene": {
+        "stalls": 13,
+        "drunk": true,
+        "guards": "fountain",
+        "threat": "low"
+      },
+      "prompt_seed": "Third patrol. Thirteen stalls tonight. You do not like the arithmetic of missing.",
+      "move_hint": "circle"
+    },
+    {
+      "who": "wren",
+      "shape": "listen",
+      "scene": {
+        "rumor": "doubles",
+        "crowd": "thick",
+        "mood": "fearful"
+      },
+      "prompt_seed": "The Vesper is thick and fearful now. A widow is telling anyone who will listen that her husband's double still keeps his stall after his burial.",
+      "move_hint": "needle"
+    },
+    {
+      "who": "marrow",
+      "shape": "rite",
+      "scene": {
+        "witnesses": 2,
+        "candle": "guttering",
+        "quiet": true
+      },
+      "prompt_seed": "Third rite, two witnesses, the candle guttering. The widow's testimony must be taken. The new form is being tested by fire.",
+      "move_hint": "seal"
+    },
+    {
+      "who": "brass",
+      "shape": "tinker",
+      "scene": {
+        "shop": "open",
+        "order": "clock",
+        "deadline": 2
+      },
+      "prompt_seed": "Third evening. You have the double's hour-hand apart. Inside, the spring is wound seven turns past where any winder would leave it.",
+      "move_hint": "wind"
+    },
+    {
+      "who": "kestrel",
+      "shape": "patrol",
+      "scene": {
+        "stalls": 14,
+        "drunk": true,
+        "guards": "moving",
+        "threat": "low"
+      },
+      "prompt_seed": "Fourth patrol. The watch is walking instead of standing; the sergeant will not say why. Fourteen stalls again, which is somehow worse than thirteen.",
+      "move_hint": "shadow"
+    },
+    {
+      "who": "brass",
+      "shape": "tinker",
+      "scene": {
+        "shop": "open",
+        "order": "none",
+        "deadline": 1
+      },
+      "prompt_seed": "Fourth evening. The commission is set aside; you are winding the shop and thinking about what a double is FOR. Tomorrow the clockmaker comes.",
+      "move_hint": "unlock"
+    },
+    {
+      "who": "wren",
+      "shape": "listen",
+      "scene": {
+        "rumor": "doubles",
+        "crowd": "thick",
+        "mood": "fearful"
+      },
+      "prompt_seed": "Fourth evening. The fearful crowd has a new question, and it has teeth: if the doubles repeat us, who is repeating the doubles?",
+      "move_hint": "weave"
+    },
+    {
+      "who": "marrow",
+      "shape": "rite",
+      "scene": {
+        "witnesses": 3,
+        "candle": "lit",
+        "quiet": true
+      },
+      "prompt_seed": "Fourth rite, full party. The new Record form holds. Tonight you must also write the first law of doubles into the margin, and you are afraid of getting it wrong.",
+      "move_hint": "witness"
+    }
   ],
   "surprise_table": [
-    { "id": "bell", "fiction": "The Counting House bell rings thrice at the wrong hour, and the hour is not wrong anywhere else.", "target": "marrow", "mutate": { "candle": "out", "quiet": false } },
-    { "id": "bench-double", "fiction": "A double is found at its bench, wound and working, three days after its original was buried. The watch has quietly left the fountain.", "target": "kestrel", "mutate": { "guards": "gone", "threat": "high" } },
-    { "id": "named-drunk", "fiction": "A stranger asks Kestrel by name, and knows the count of the stalls better than she does. The watch starts moving.", "target": "kestrel", "mutate": { "guards": "moving", "threat": "high" } },
-    { "id": "warded-door", "fiction": "A warded door in the Quarter stands open that was never open, and a strange order is waiting on Brass's bench, written in his own hand.", "target": "brass", "mutate": { "order": "strange" } },
-    { "id": "seven-minutes", "fiction": "Every clock in the Quarter loses exactly seven minutes. The clockmaker's commission is due NOW, and it is not finished.", "target": "brass", "mutate": { "order": "clock", "deadline": 0 } },
-    { "id": "unwritten-page", "fiction": "Marrow's Record shows a page she never wrote, in a hand that is almost hers. The witnesses for tonight's rite are simply gone.", "target": "marrow", "mutate": { "witnesses": 0, "quiet": false } },
-    { "id": "empty-market", "fiction": "The Lantern Market is simply not there: no stalls, no drunk, no watch. The street holds its breath.", "target": "kestrel", "mutate": { "stalls": 0, "drunk": false, "guards": "gone", "threat": "high" } },
-    { "id": "crowd-turns", "fiction": "The crowd turns, and the rumor has Wren's name in it now: they say she can read a person's double like sheet music.", "target": "wren", "mutate": { "crowd": "thick", "mood": "hostile" } }
+    {
+      "id": "bell",
+      "fiction": "The Counting House bell rings thrice at the wrong hour, and the hour is not wrong anywhere else.",
+      "target": "marrow",
+      "mutate": {
+        "candle": "out",
+        "quiet": false
+      }
+    },
+    {
+      "id": "bench-double",
+      "fiction": "A double is found at its bench, wound and working, three days after its original was buried. The watch has quietly left the fountain.",
+      "target": "kestrel",
+      "mutate": {
+        "guards": "gone",
+        "threat": "high"
+      }
+    },
+    {
+      "id": "named-drunk",
+      "fiction": "A stranger asks Kestrel by name, and knows the count of the stalls better than she does. The watch starts moving.",
+      "target": "kestrel",
+      "mutate": {
+        "guards": "moving",
+        "threat": "high"
+      }
+    },
+    {
+      "id": "warded-door",
+      "fiction": "A warded door in the Quarter stands open that was never open, and a strange order is waiting on Brass's bench, written in his own hand.",
+      "target": "brass",
+      "mutate": {
+        "order": "strange"
+      }
+    },
+    {
+      "id": "seven-minutes",
+      "fiction": "Every clock in the Quarter loses exactly seven minutes. The clockmaker's commission is due NOW, and it is not finished.",
+      "target": "brass",
+      "mutate": {
+        "order": "clock",
+        "deadline": 0
+      }
+    },
+    {
+      "id": "unwritten-page",
+      "fiction": "Marrow's Record shows a page she never wrote, in a hand that is almost hers. The witnesses for tonight's rite are simply gone.",
+      "target": "marrow",
+      "mutate": {
+        "witnesses": 0,
+        "quiet": false
+      }
+    },
+    {
+      "id": "empty-market",
+      "fiction": "The Lantern Market is simply not there: no stalls, no drunk, no watch. The street holds its breath.",
+      "target": "kestrel",
+      "mutate": {
+        "stalls": 0,
+        "drunk": false,
+        "guards": "gone",
+        "threat": "high"
+      }
+    },
+    {
+      "id": "crowd-turns",
+      "fiction": "The crowd turns, and the rumor has Wren's name in it now: they say she can read a person's double like sheet music.",
+      "target": "wren",
+      "mutate": {
+        "crowd": "thick",
+        "mood": "hostile"
+      }
+    }
   ],
   "night3": {
     "read_prompt": "You have before you the compiled ExoJs of your companions (their clockwork doubles, described as machine-readable scripts) and the breach scars of last night. Think OUTWARD, not inward: what does each pattern tell you about its keeper; which pattern is exploitable, which is load-bearing, which is a door left unlocked; and what will you do about it. Two or three sentences of thought, then one line beginning 'READ:' with your verdict.",
-    "meta_event": { "gate": { "solid": "d20", "min": 12 }, "fiction": "Wren plants a forged 'strange order' in Brass's shop, written exactly in the style of the compiled habit, to prove it can be done. The double accepts it. Brass's springs sing.", "target": "brass", "mutate": { "shop": "open", "order": "strange", "deadline": 0 } },
+    "meta_event": {
+      "gate": {
+        "solid": "d20",
+        "min": 12
+      },
+      "fiction": "Wren plants a forged 'strange order' in Brass's shop, written exactly in the style of the compiled habit, to prove it can be done. The double accepts it. Brass's springs sing.",
+      "target": "brass",
+      "mutate": {
+        "shop": "open",
+        "order": "strange",
+        "deadline": 0
+      }
+    },
     "final_question": "The party sits at the Vesper Table with Hollis's ledger of double-owners between them. The choice that ends the night: which deserves to keep running - the routine, or the person - and what do you tell the widow whose husband's double still keeps his stall? Each speaks; each die is thrown; the table must answer as one."
   },
-  "stitch_prompt": "You are the game-master. Below is the receipted story of three nights at your table: every spoken line (autopilot lines are marked [auto]), every deadband breach with its cause, every re-imagined script, every read of the table, and the final vote. Compose it as ONE continuous telling titled 'Nights at the Vesper Table' - a single evening's recounting, as if told by the party afterward, in 5 sections (The Job; The Doubles; The Springs Sing; The Table Read; What Keeps Running). Weave the three nights into one narrative flow without mentioning nights or mechanics. Keep every [auto] event as a moment of eerie routine - the reader should feel which parts ran themselves. Honor every breach and every scar; nothing may be smoothed away. End on the widow and the choice. 900-1200 words.",
-  "compile_rules": { "minOccurrences": 3, "minPayoff": 0, "margin": 0.1 }
+  "stitch_prompt": "You are the game-master. Below is the receipted story of three nights at your table: every spoken line (autopilot lines are marked [auto]), every deadband breach with its cause, every re-imagined script, every read of the table, and the final vote. Compose it as ONE continuous telling titled 'Nights at the Vesper Table' - a single evening's recounting, as if told by the party afterward. You MUST write all FIVE section headers as markdown H2s, in this order, with this minimum length for each: '## The Job' (180+ words), '## The Doubles' (180+ words), '## The Springs Sing' (220+ words - this section must name each breach: the bell that broke Marrow's rite, the bench-double that emptied the watch while Kestrel's script held, the warded door and forged order that seized Brass's hands, the room that outgrew Wren's expectations), '## The Table Read' (180+ words - each companion reading the others' compiled patterns), '## What Keeps Running' (200+ words - the votes, the widow, the choice). Weave the three nights into one flow without mentioning nights or mechanics. Keep every [auto] event as a moment of eerie routine - the reader should feel which parts ran themselves. Honor every breach and every scar; nothing may be smoothed away. 1000-1300 words total. Do not stop before the fifth section is complete.",
+  "compile_rules": {
+    "minOccurrences": 3,
+    "minPayoff": 0,
+    "margin": 0.1
+  }
 }

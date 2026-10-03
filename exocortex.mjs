@@ -172,7 +172,11 @@ export function tokenEconomics(seq) {
 // ------------------------------------------------------- ledger-backed wrapper
 // Ops land on the vendored sequencer so rewinds keep scars and dice re-derive.
 export class ExocortexTable {
-  constructor(name) { this.seq = new Sequencer(); this.seq.append("init", { name }); }
+  constructor(name, ops = null) {
+    this.seq = new Sequencer();
+    if (ops) { this.seq.ops = ops; }
+    else this.seq.append("init", { name });
+  }
   _p(op, payload, opts) { return this.seq.append(op, payload, opts); }
 
   strategy(who, shape, move, payoff, scene, night) {
