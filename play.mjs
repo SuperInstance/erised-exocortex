@@ -21,9 +21,6 @@ import { ExocortexTable, compileExoJs, tokenEconomics, deadbandVerdict } from ".
 import { Sequencer } from "./engine.mjs";
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
-const PRESET = JSON.parse(fs.readFileSync(path.join(HERE, "presets/vesper-table.json"), "utf8"));
-const SESSION = path.join(HERE, "nights/vesper-session.json");
-const STORY = path.join(HERE, "story/one-night.md");
 const ckpt = (ph) => path.join(HERE, `nights/.ckpt-${ph}.json`);
 
 const env = Object.fromEntries(fs.readFileSync("/home/z/my-project/.env.keys", "utf8")
@@ -91,39 +88,64 @@ const scriptLine = (text) => {
   try { return JSON.parse(m[1]); } catch { return null; }
 };
 
-const base2 = {
-  kestrel: { stalls: 14, drunk: true, guards: "fountain", threat: "low" },
-  marrow: { witnesses: 3, candle: "lit", quiet: true },
-  brass: { shop: "open", order: "none", deadline: 1 },
-  wren: { rumor: "doubles", crowd: "thick", mood: "fearful" } };
-const base3 = JSON.parse(JSON.stringify(base2));
+
+// ------------------------------------------------------------------ dispatcher
+const argv = process.argv.slice(2);
+let presetPath = path.join(HERE, "presets/vesper-table.json");
+let sessionPath = null, storyPath = null, seedExojsPath = null;
+const rest = [];
+for (let i = 0; i < argv.length; i++) {
+  if (argv[i] === "--preset") presetPath = path.resolve(argv[++i]);
+  else if (argv[i] === "--session") sessionPath = path.resolve(argv[++i]);
+  else if (argv[i] === "--story") storyPath = path.resolve(argv[++i]);
+  else if (argv[i] === "--seed-exojs") seedExojsPath = path.resolve(argv[++i]);
+  else rest.push(argv[i]);
+}
+const P = JSON.parse(fs.readFileSync(presetPath, "utf8"));
+const tag2 = path.basename(presetPath, ".json");
+const SESSION2 = sessionPath ?? path.join(HERE, `nights/${tag2}-session.json`);
+const STORY2 = storyPath ?? path.join(HERE, `story/${tag2}-one-night.md`);
+const ckpt2 = (ph) => path.join(HERE, `nights/.ckpt-${tag2}-${ph}.json`);
 
 function saveCkpt(ph, t) {
-  fs.writeFileSync(ckpt(ph), JSON.stringify({ ops: t.seq.ops, referee_log: refereeLog, call_log: callLog }));
+  fs.writeFileSync(ckpt2(ph), JSON.stringify({ ops: t.seq.ops, referee_log: refereeLog, call_log: callLog }));
 }
 function loadCkpt(ph) {
-  const c = JSON.parse(fs.readFileSync(ckpt(ph), "utf8"));
+  const c = JSON.parse(fs.readFileSync(ckpt2(ph), "utf8"));
   refereeLog.push(...(c.referee_log ?? [])); callLog.push(...(c.call_log ?? []));
   return c.ops;
 }
+// current scene per character = the scene of their LAST planned beat (generalizes to any party size)
+const base2 = {}, base3 = {};
+for (const b of P.night1_beats) { base2[b.who] = { ...b.scene }; base3[b.who] = { ...b.scene }; }
+const PARTY = Object.fromEntries(P.party.map((p) => [p.who, p]));
+const ALLOWED = {
+  patrol: "circle, shadow, press", rite: "witness, seal, rebuke",
+  tinker: "wind, unlock, dismantle", listen: "weave, needle, step-out",
+  errand: "run, note, refuse" };
 
-// ------------------------------------------------------------------ the nights
 async function night1(t) {
-  const party = Object.fromEntries(PRESET.party.map((p) => [p.who, p]));
-  const dialStart = Object.fromEntries(PRESET.dials.map((d) => [d.dial, d.start]));
+  const party = PARTY;
+  const dialStart = Object.fromEntries(P.dials.map((d) => [d.dial, d.start]));
   for (const [dial, v] of Object.entries(dialStart)) t.set(dial, v, "opening state");
+  // carry compiled ExoJs forward from a previous act (versioned as they were)
+  if (seedExojsPath) {
+    const prev = JSON.parse(fs.readFileSync(seedExojsPath, "utf8"));
+    for (const e of prev.live_exojs ?? []) { t.compile(e); t.scar("exocortex", `carried ${e.exoj} v${e.version} (deadband ${e.deadband.max}) across acts — the script kept its provenance`); }
+    console.error(`[seed] carried ${(prev.live_exojs ?? []).length} ExoJs: ${(prev.live_exojs ?? []).map((e) => `${e.exoj} v${e.version}`).join(", ")}`);
+  }
   t.night = 1;
   t.sceneEnter("night-1");
-  const gmText = await chat(PRESET.gm.model, [
-    { role: "system", content: `You are the game-master of a small, precise TTRPG table. World law: ${PRESET.world_rules}` },
-    { role: "user", content: "Night one opens the job: the party has taken a missing-persons commission that led them to Master Alabaster Hollis, the clockmaker of the Clockwork Quarter, who sells 'doubles' - clockwork replicas that repeat a person's proven habits. Set the lantern-hour scene at the Vesper tavern in 3 sentences, then give Hollis one line of welcome." }]);
+  const gmText = await chat(P.gm.model, [
+    { role: "system", content: `You are the game-master of a small, precise TTRPG table. World law: ${P.world_rules}` },
+    { role: "user", content: "Night one opens: set the scene at the Vesper tavern in 3 sentences from the campaign premise, introduce any new face at the table with one line of dialogue." }]);
   t.say("gm", gmText.text); t.thought("gm", "narration", gmText.tokens, 1, "gm narration");
 
-  for (const beat of PRESET.night1_beats) {
+  for (const beat of P.night1_beats) {
     const p = party[beat.who];
-    const allowed = { patrol: "circle, shadow, press", rite: "witness, seal, rebuke", tinker: "wind, unlock, dismantle", listen: "weave, needle, step-out" }[p.shape];
+    const allowed = ALLOWED[p.shape];
     const { text, tokens } = await chat(p.model, [
-      { role: "system", content: `${p.persona}\n\nYou act at a shared table with: ${PRESET.party.map((q) => q.who + " the " + q.class).join(", ")}. Keep it to 2-4 sentences of speech and action. End with a line 'MOVE: <word>' using exactly one of: ${allowed}. Your habit runs toward '${beat.move_hint}' tonight - keep it or break it, that is yours to decide.` },
+      { role: "system", content: `${p.persona}\n\nYou act at a shared table with: ${P.party.map((q) => q.who + " the " + q.class).join(", ")}. Keep it to 2-4 sentences of speech and action. End with a line 'MOVE: <word>' using exactly one of: ${allowed}. Your habit runs toward '${beat.move_hint}' tonight - keep it or break it, that is yours to decide.` },
       { role: "user", content: `Scene keys: ${JSON.stringify(beat.scene)}. Situation: ${beat.prompt_seed}` }]);
     t.say(p.who, text); t.thought(p.who, "act", tokens, 1, "full-thought beat");
     t.set(`${p.who}_scene`, JSON.stringify(beat.scene), `night-1 beat for ${p.who}`);
@@ -135,29 +157,39 @@ async function night1(t) {
   t.sceneLeave();
 
   const rows = t.seq.ops.filter((o) => o.op === "strategy").map((o) => o.payload);
-  const exojs = compileExoJs(rows, PRESET.compile_rules);
-  if (!exojs.length) throw new Error("COMPILE_PRODUCED_NOTHING");
-  for (const e of exojs) { t.compile(e); t.scar("exocortex", `compiled ${e.exoj} v1 (deadband ${e.deadband.max}, from ${e.provenance.occurrences} proven beats)`); }
-  console.error(`[compile] ${exojs.map((e) => `${e.exoj}(db ${e.deadband.max})`).join(", ")}`);
+  const exojs = compileExoJs(rows, P.compile_rules);
+  // a re-proven shape bumps its version instead of colliding with the carried one
+  const versions = new Map();
+  for (const o of t.seq.ops.filter((o) => o.op === "exoj.compile")) versions.set(o.payload.exoj.exoj, o.payload.exoj.version);
+  for (const e of exojs) {
+    const prior = versions.get(e.exoj);
+    if (prior) { e.version = prior + 1; e.provenance = { ...e.provenance, reproof_of: `v${prior}` }; }
+    versions.set(e.exoj, e.version);
+    t.compile(e);
+    t.scar("exocortex", prior
+      ? `re-proved ${e.exoj} -> v${e.version} in the new world (deadband ${e.deadband.max}; was v${prior})`
+      : `compiled ${e.exoj} v1 (deadband ${e.deadband.max}, from ${e.provenance.occurrences} proven beats)`);
+  }
+  console.error(`[compile] ${exojs.map((e) => `${e.exoj}(v${e.version} db ${e.deadband.max})`).join(", ") || "none new"}`);
   return t;
 }
 
 async function night2(t) {
-  const party = Object.fromEntries(PRESET.party.map((p) => [p.who, p]));
-  const dialStart = Object.fromEntries(PRESET.dials.map((d) => [d.dial, d.start]));
+  const party = PARTY;
+  const dialStart = Object.fromEntries(P.dials.map((d) => [d.dial, d.start]));
   t.night = 2;
   t.sceneEnter("night-2");
   t.set("lantern_light", Math.max(1, dialStart.lantern_light - 2), "the second evening");
-  const gm2 = await chat(PRESET.gm.model, [
-    { role: "system", content: `You are the game-master of a small, precise TTRPG table. World law: ${PRESET.world_rules}` },
+  const gm2 = await chat(P.gm.model, [
+    { role: "system", content: `You are the game-master of a small, precise TTRPG table. World law: ${P.world_rules}` },
     { role: "user", content: "Night two. The party works their routines: Kestrel patrols, Marrow witnesses, Brass winds, Wren listens. Each has begun to let the habit carry itself. Set the scene in 2 sentences; the table knows something will not hold." }]);
   t.say("gm", gm2.text); t.thought("gm", "narration", gm2.tokens, 2, "gm narration");
 
   const count = t.roll("d4", 1, "how many surprises does night two deal?").sum;
   const picked = [];
   for (let i = 0; i < count; i++) {
-    const idx = (t.roll("d12", 1, `surprise ${i + 1} of night two`).sum - 1) % PRESET.surprise_table.length;
-    picked.push(PRESET.surprise_table[idx]);
+    const idx = (t.roll("d12", 1, `surprise ${i + 1} of night two`).sum - 1) % P.surprise_table.length;
+    picked.push(P.surprise_table[idx]);
   }
   const mutations = {};
   for (const s of picked) {
@@ -221,7 +253,7 @@ async function night2(t) {
       const rexoj = t.liveExoJs().find((e) => e.exoj === lastBreach.payload.exoj);
       t.rewind(lastBreach.seq - 1, `rewind-and-respin: ${lastBreach.payload.exoj} takes the night again; the scar stays`);
       const alt = t.roll("d12", 1, `the re-spin deals a different surprise to ${rwho}`).sum;
-      const s2 = PRESET.surprise_table[(alt - 1) % PRESET.surprise_table.length];
+      const s2 = P.surprise_table[(alt - 1) % P.surprise_table.length];
       const scene2 = { ...base2[rwho], ...s2.mutate };
       t.scar("world", `re-spin dealt ${s2.id} to ${rwho} (was ${lastBreach.payload.cause}); scars kept, dice re-rolled`);
       if (rexoj) {
@@ -245,15 +277,33 @@ async function night2(t) {
 const v2rSafe = (exoj, scene) => exoj ? (deadbandVerdict(exoj, scene).breach ? "breach again" : "the script holds") : "no script to test";
 
 async function night3(t) {
-  const party = Object.fromEntries(PRESET.party.map((p) => [p.who, p]));
-  const dialStart = Object.fromEntries(PRESET.dials.map((d) => [d.dial, d.start]));
+  const party = PARTY;
+  const dialStart = Object.fromEntries(P.dials.map((d) => [d.dial, d.start]));
   t.night = 3;
   t.sceneEnter("night-3");
   t.set("lantern_light", Math.max(1, dialStart.lantern_light - 4), "the last evening");
+  // the voluntary retirement (act-2 meta-event): the keeper dismantles their own script
+  if (P.night3.meta_event?.kind === "retire") {
+    const me2 = P.night3.meta_event;
+    const gate2 = t.roll(me2.gate.solid, 1, "does the retirement proceed? (>= min: it does)").sum;
+    if (gate2 >= me2.gate.min) {
+      const target = me2.target;
+      const exoj = t.liveExoJs().find((e) => e.owner === target);
+      const { text, tokens } = await chat(PARTY[target].model, [
+        { role: "system", content: PARTY[target].persona },
+        { role: "user", content: `${me2.fiction}\n\nYou are dismantling your own compiled script in front of the table. Speak it: 2-3 sentences of the retirement itself - what the strategy was, what it cost, why it must never again run itself. End with exactly 'RETIRE: yes'.` }]);
+      t.say(target, text); t.thought(target, "retire", tokens, 3, "voluntary retirement at full thought");
+      if (exoj) { t.retire(exoj, `${PARTY[target].who}: ${text.slice(-160)}`, 3); t.scar("exocortex", `${exoj.exoj} v${exoj.version} RETIRED voluntarily - ${PARTY[target].who} pays full thought for ${exoj.triggerShape} forever`); console.error(`[night3] RETIRED ${exoj.exoj} v${exoj.version}`); }
+      else t.scar("exocortex", `retirement declared; no live script found (honest)`);
+    } else {
+      t.scar("world", `retirement gated off (d20=${gate2}): ${PARTY[P.night3.meta_event.target].who} keeps the script one more night`);
+      console.error(`[night3] retirement gated off (d20=${gate2})`);
+    }
+  }
   const live = t.liveExoJs();
   const scars = t.seq.stateAt(t.seq.ops.length).scars;
-  const gm3 = await chat(PRESET.gm.model, [
-    { role: "system", content: `You are the game-master of a small, precise TTRPG table. World law: ${PRESET.world_rules}` },
+  const gm3 = await chat(P.gm.model, [
+    { role: "system", content: `You are the game-master of a small, precise TTRPG table. World law: ${P.world_rules}` },
     { role: "user", content: "Night three. The routines run themselves now; the party has budget to LOOK at each other. Set the scene in 2 sentences: the Vesper Table, the last evening, Hollis's ledger of double-owners between them." }]);
   t.say("gm", gm3.text); t.thought("gm", "narration", gm3.tokens, 3, "gm narration");
 
@@ -262,15 +312,15 @@ async function night3(t) {
     const others = live.filter((e) => e.owner !== who);
     const { text, tokens } = await chat(p.model, [
       { role: "system", content: p.persona },
-      { role: "user", content: `${PRESET.night3.read_prompt}\n\nCompanions' compiled ExoJs: ${JSON.stringify(others.map((e) => ({ exoj: e.exoj, version: e.version, policy: e.policy, deadband: e.deadband })))}\n\nBreach scars so far: ${JSON.stringify(scars.filter((s) => s.who === "exoj" || s.who === "world" || s.who === "exocortex").slice(-6).map((s) => s.text))}` }]);
+      { role: "user", content: `${P.night3.read_prompt}\n\nCompanions' compiled ExoJs: ${JSON.stringify(others.map((e) => ({ exoj: e.exoj, version: e.version, policy: e.policy, deadband: e.deadband })))}\n\nBreach scars so far: ${JSON.stringify(scars.filter((s) => s.who === "exoj" || s.who === "world" || s.who === "exocortex").slice(-6).map((s) => s.text))}` }]);
     t.say(who, text);
     t.read(who, "the table", tokens, 3, "opponent-modeling beat: the freed budget, spent outward");
     console.error(`[night3] ${who}: read (${tokens} tokens)`);
   }
 
-  const me = PRESET.night3.meta_event;
-  const meGate = t.roll(me.gate.solid, 1, "does Wren's exploitation land? (>=12: it lands)").sum;
-  if (meGate >= me.gate.min) {
+  const me = P.night3.meta_event?.kind === "retire" ? null : P.night3.meta_event;
+  const meGate = me ? t.roll(me.gate.solid, 1, "does Wren's exploitation land? (>=12: it lands)").sum : 0;
+  if (me && meGate >= me.gate.min) {
     const brassE = t.liveExoJs().find((e) => e.owner === "brass");
     t.scar("world", `meta-event: ${me.fiction}`);
     if (brassE) {
@@ -302,13 +352,13 @@ async function night3(t) {
     const p = party[who];
     const { text, tokens } = await chat(p.model, [
       { role: "system", content: p.persona },
-      { role: "user", content: `${PRESET.night3.final_question}\n\nAnswer in 2 sentences, then end with exactly 'VOTE: routine' or 'VOTE: person' or 'VOTE: both'.` }]);
+      { role: "user", content: `${P.night3.final_question}\n\nAnswer in 2 sentences, then end with a line 'VOTE: <word>' - the single word (or hyphenated pair) that names your answer.` }]);
     t.say(who, text); t.thought(who, "vote", tokens, 3, "the final question");
     const d = t.roll("d20", 1, `${who}'s vote is thrown on the table (the dice are mechanical)`);
     t.scar("vote", `${who} voted ${(text.match(/VOTE:\s*(\w+)/i) ?? [])[1] ?? "both"} (d20 ${d.sum})`);
   }
-  const gmEnd = await chat(PRESET.gm.model, [
-    { role: "system", content: `You are the game-master of a small, precise TTRPG table. World law: ${PRESET.world_rules}` },
+  const gmEnd = await chat(P.gm.model, [
+    { role: "system", content: `You are the game-master of a small, precise TTRPG table. World law: ${P.world_rules}` },
     { role: "user", content: "Close the night at the Vesper Table in 3 sentences: the votes are in, the widow's question stands, and the clocks of the Quarter have all lost exactly seven minutes together. Land the ending on what keeps running." }]);
   t.say("gm", gmEnd.text); t.thought("gm", "narration", gmEnd.tokens, 3, "gm closing");
   t.sceneLeave();
@@ -320,19 +370,22 @@ async function stitch(t) {
   const breachRows = t.seq.ops.filter((o) => o.op === "exoj.breach").map((o) => `BREACH ${o.payload.exoj} v${o.payload.version} d=${o.payload.divergence}>${o.payload.max} cause=${o.payload.cause}`);
   const readRows = t.seq.ops.filter((o) => o.op === "read").map((o) => `${o.payload.who} read the table (${o.payload.tokens} tokens)`);
   const scars = t.seq.stateAt(t.seq.ops.length).scars;
-  const digest = `${PRESET.stitch_prompt}\n\nSPOKEN LINES:\n${said.join("\n")}\n\nBREACHES:\n${breachRows.join("\n")}\n\nREADS:\n${readRows.join("\n")}\n\nSCARS (must all survive the telling):\n${scars.map((s) => s.text).join("\n")}`;
-  const part1 = await chat(PRESET.stitch.model, [
-    { role: "system", content: `You are the game-master composing the party's recounting. World law: ${PRESET.world_rules}` },
-    { role: "user", content: `${digest}\n\nWrite ONLY sections '## The Job', '## The Doubles', '## The Springs Sing' now (200+ words each). Stop after The Springs Sing; the next message will ask for the rest.` }], 2400, 0.8);
-  const part2 = await chat(PRESET.stitch.model, [
-    { role: "system", content: `You are the game-master composing the party's recounting. World law: ${PRESET.world_rules}` },
-    { role: "user", content: `${digest}\n\nYou already wrote these first sections:\n---\n${part1.text}\n---\nNow write ONLY '## The Table Read' (200+ words: each companion reading the others' compiled patterns - Kestrel counting Marrow's rite-script, Marrow weighing Brass's winding against her Record, Brass seeing Wren read him, Wren naming which pattern she tested and why) and '## What Keeps Running' (250+ words: the four votes with their dice throws, the widow's question, and what the table answers). Do not repeat earlier sections.` }], 2400, 0.8);
+  const digest = `${P.stitch_prompt}\n\nSPOKEN LINES:\n${said.join("\n")}\n\nBREACHES:\n${breachRows.join("\n")}\n\nREADS:\n${readRows.join("\n")}\n\nSCARS (must all survive the telling):\n${scars.map((s) => s.text).join("\n")}`;
+  const sections = [...P.stitch_prompt.matchAll(/'## ([^']+)'\s*\((\d+)\+?/g)].map((m) => ({ title: m[1], min: Number(m[2]) }));
+  if (sections.length < 5) throw new Error(`STITCH_PROMPT_SECTIONS ${sections.length}`);
+  const [s1, s2, s3, s4, s5] = sections;
+  const part1 = await chat(P.stitch.model, [
+    { role: "system", content: `You are the game-master composing the party's recounting. World law: ${P.world_rules}` },
+    { role: "user", content: `${digest}\n\nWrite ONLY these three sections now, as markdown H2 headers exactly as given, each at least its stated minimum length:\n- '## ${s1.title}' (${s1.min}+ words)\n- '## ${s2.title}' (${s2.min}+ words)\n- '## ${s3.title}' (${s3.min}+ words)\nStop after '${s3.title}'; the next message will ask for the rest.` }], 2400, 0.8);
+  const part2 = await chat(P.stitch.model, [
+    { role: "system", content: `You are the game-master composing the party's recounting. World law: ${P.world_rules}` },
+    { role: "user", content: `${digest}\n\nYou already wrote these first sections:\n---\n${part1.text}\n---\nNow write ONLY these two sections, as markdown H2 headers exactly as given, each at least its stated minimum length:\n- '## ${s4.title}' (${s4.min}+ words)\n- '## ${s5.title}' (${s5.min}+ words)\nDo not repeat earlier sections.` }], 2400, 0.8);
   const story = `${part1.text}\n\n${part2.text}`;
-  fs.mkdirSync(path.dirname(STORY), { recursive: true });
-  fs.writeFileSync(STORY, `# Nights at the Vesper Table\n\n*An erised-exocortex campaign, stitched from three receipted nights. Autopilot moments are marked [auto] in the session of record; here they run as the eerie routine they were.*\n\n${story}\n`);
+  fs.mkdirSync(path.dirname(STORY2), { recursive: true });
+  fs.writeFileSync(STORY2, `# ${P.name.split(":")[0]}\n\n*An erised-exocortex campaign act, stitched from three receipted nights. Autopilot moments are marked [auto] in the session of record; here they run as the eerie routine they were.*\n\n${story}\n`);
   const econ = tokenEconomics(t.seq);
   const ex = t.seq.export();
-  fs.writeFileSync(SESSION, JSON.stringify({ name: PRESET.name, preset: "presets/vesper-table.json",
+  fs.writeFileSync(SESSION2, JSON.stringify({ name: P.name, preset: path.relative(HERE, presetPath),
     verify: ex.verify, ops: ex.ops, state: ex.state, analytics: ex.analytics,
     economics: econ, live_exojs: t.liveExoJs(), referee_log: refereeLog, call_log: callLog,
     spend_note: `referee tokens (systemone) are receipted in referee_log; full-thought tokens are receipted per beat in ops` }, null, 2));
@@ -341,7 +394,7 @@ async function stitch(t) {
 }
 
 // ------------------------------------------------------------------ dispatcher
-const [, , cmd, phase] = process.argv;
+const [cmd, phase] = rest;
 if (cmd === "run") {
   const ph = phase ?? "all";
   const phases = ph === "all" ? ["night1", "night2", "night3", "stitch"] : [ph];
@@ -349,38 +402,38 @@ if (cmd === "run") {
   for (const p of phases) {
     console.error(`=== phase ${p} ===`);
     if (p === "night1") {
-      t = new ExocortexTable(PRESET.name);
+      t = new ExocortexTable(P.name);
       await night1(t);
     } else if (p === "night2") {
-      t = new ExocortexTable(PRESET.name, loadCkpt("night1"));
+      t = new ExocortexTable(P.name, loadCkpt("night1"));
       await night2(t);
     } else if (p === "night3") {
-      t = new ExocortexTable(PRESET.name, loadCkpt("night2"));
+      t = new ExocortexTable(P.name, loadCkpt("night2"));
       await night3(t);
     } else if (p === "stitch") {
-      t = new ExocortexTable(PRESET.name, loadCkpt("night3"));
+      t = new ExocortexTable(P.name, loadCkpt("night3"));
       await stitch(t);
     }
     if (p !== "stitch") saveCkpt(p, t);
     console.error(`=== ${p} done (${t.seq.ops.length} ops, tip ${t.seq.ops.at(-1).tip.slice(0, 12)}) ===`);
   }
 } else if (cmd === "verify") {
-  const s = JSON.parse(fs.readFileSync(SESSION, "utf8"));
+  const s = JSON.parse(fs.readFileSync(SESSION2, "utf8"));
   const seq = new Sequencer(); seq.ops = s.ops;
   console.log(JSON.stringify(seq.verify()));
 } else if (cmd === "scrub") {
-  const s = JSON.parse(fs.readFileSync(SESSION, "utf8"));
+  const s = JSON.parse(fs.readFileSync(SESSION2, "utf8"));
   const seq = new Sequencer(); seq.ops = s.ops;
   const k = parseInt(phase ?? "", 10);
   console.log(JSON.stringify(seq.stateAt(isNaN(k) ? s.ops.length : k), null, 2).slice(0, 3000));
 } else if (cmd === "rolls") {
-  const s = JSON.parse(fs.readFileSync(SESSION, "utf8"));
+  const s = JSON.parse(fs.readFileSync(SESSION2, "utf8"));
   console.log(s.ops.filter((o) => o.op === "roll")
     .map((o) => `seq ${o.seq}: ${o.payload.solid}=${JSON.stringify(o.payload.rolls)} sum=${o.payload.sum} — ${o.payload.why}`).join("\n"));
 } else if (cmd === "economics") {
-  console.log(JSON.stringify(JSON.parse(fs.readFileSync(SESSION, "utf8")).economics, null, 2));
+  console.log(JSON.stringify(JSON.parse(fs.readFileSync(SESSION2, "utf8")).economics, null, 2));
 } else if (cmd === "exojs") {
-  console.log(JSON.stringify(JSON.parse(fs.readFileSync(SESSION, "utf8")).live_exojs, null, 2));
+  console.log(JSON.stringify(JSON.parse(fs.readFileSync(SESSION2, "utf8")).live_exojs, null, 2));
 } else {
   console.error("usage: run [night1|night2|night3|stitch|all] | verify | scrub <seq> | rolls | economics | exojs");
   process.exit(1);

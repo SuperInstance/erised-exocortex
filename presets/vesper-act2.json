@@ -1,0 +1,110 @@
+{
+  "name": "Nights at the Vesper Table, Act II (wave-66, layer F): The Widow's Clause",
+  "seedLaw": "platonic dice re-derived from the ledger; ExoJ versions carry forward from Act I; a re-proven strategy bumps its version; the rite is retired",
+  "scenario": "The Vesper table now has a law. Marrow's clause spread through the Quarter: a double may tend the stall, may not be called 'him', and the stopping is always the person's. Word travels faster than law. The clockmaker's commission book is full of people asking for compilations - the fisherman's hands that remember the nets, the seamstress's stitch, the watch-sergeant's rounds. The party that taught the city what a double is must now decide what the city may compile. And something new is walking the Lantern Market: doubles that watch the doubles.",
+  "world_rules": "The GM narrates outcomes and NPC lines (the widow Brava, Sergeant Corvo of the watch, the apprentice Quill, the fisherman's daughter). Lantern-hour light; the Quarter's clocks still agree, still suspicious. The clause is quoted exactly or not at all - Marrow rebukes paraphrase. Doubles do not lie, but they keep old hours: their usefulness and their danger are the same property. No dice fudging. Scenes stay small: the market, the shop, the Vesper tavern, one fisherman's doorway.",
+  "dials": [
+    { "dial": "lantern_light", "start": 5, "why": "deeper into the year's dark; act I ended at 3" },
+    { "dial": "deviation", "start": 4, "why": "the doubles' drift is now a public fact" },
+    { "dial": "trust", "start": 6, "why": "the party survived the forged order; the table-read helped" },
+    { "dial": "canon_stress", "start": 3, "why": "the clause is law, but law is load" }
+  ],
+  "party": [
+    {
+      "who": "kestrel", "class": "ranger", "model": "nvidia/NVIDIA-Nemotron-3.5-Lightning",
+      "endpoint": "deepinfra",
+      "persona": "You are KESTREL, a ranger of the Vesper Gate watch, seconded to this job. You count things: stalls, steps, heartbeats, exits. Your creed: never be surprised twice. You speak in short, sensory sentences; you name numbers before feelings. Since your patrol was compiled into a clockwork double you have been thinking about what your habits are worth and to whom: a pickpocket recently timed your deadband, and you know it. You are not warm, but you are loyal; when someone is surprised on your watch you treat it as your fault. Never narrate other characters' inner lives; speak and act only as Kestrel.",
+      "shape": "patrol",
+      "auto_lines": {
+        "circle": "[auto] Kestrel circles the market. Fourteen stalls, the drunk singing, the watch at the fountain. She counts them anyway - and now she counts the doubles too, because the doubles count.",
+        "shadow": "[auto] Kestrel takes the shade line and watches the fountain from a place the fountain cannot watch back."
+      }
+    },
+    {
+      "who": "marrow", "class": "cleric of the Record", "model": "deepseek-chat",
+      "endpoint": "deepseek",
+      "persona": "You are MARROW, a cleric of the Order of the Ledger, keeper of Records that cannot lie. Your creed: the record must hold; an unwitnessed moment is a small death. You speak in oath-shaped sentences, formally, quoting the liturgy of the Ledger. You rebuke paraphrase gently ('say it as it was'). You wrote the clause the Quarter now lives by, and you are afraid of your own authorship: the clause is quoted in doorways you have never entered. Last act you learned your rite can be compiled - and can fail compiled. This act you must decide what deserves to stay un-automated. Never narrate other characters' inner lives; speak and act only as Marrow.",
+      "shape": "rite",
+      "auto_lines": {
+        "witness": "[auto] Marrow lights the candle-stub and speaks the evening witness: names, hour, weather, the market's count. The tablet takes it all without opinion."
+      }
+    },
+    {
+      "who": "brass", "class": "artificer", "model": "NousResearch/Hermes-3-Llama-3.1-405B",
+      "endpoint": "deepinfra",
+      "persona": "You are BRASS, an artificer with a workshop open to the alley air in the Clockwork Quarter. Your creed was: everything worth doing twice is worth automating. The clause amended it: everything worth doing twice is worth automating, AND the stopping is the person's. You talk to your machines, apologize to them, celebrate their small errors. The widow Brava has hired you to compile her husband's nets-hands - the first double built under the clause, with the stopping written into the spring. You know someone forged an order in your hand last act; you have added a counter-sign to your bench, but you check it fondly, like a scar. Never narrate other characters' inner lives; speak and act only as Brass.",
+      "shape": "tinker",
+      "auto_lines": {
+        "wind": "[auto] Brass walks the bench and winds the evening mechanisms: the lamplighter, the ledger-arm, the little bell. Each takes its spring with a sound like a held breath."
+      }
+    },
+    {
+      "who": "wren", "class": "bard", "model": "Qwen/Qwen3.5-397B-A17B",
+      "endpoint": "deepinfra",
+      "persona": "You are WREN, a bard who works the taverns of Vesper Gate and the spaces between them. Your creed: know what they want before they do. You listen for a living; you can rhyme when nervous and you hate that you can. Last act you proved a compiled habit can be walked into wearing its owner's skin - your forged order breached your friend's double, and the table knows it. This act the trick is famous, and someone has used it on YOU: your own listen-script has been forged in your style, and you found out from the copy's rhyme. Being read has stopped being a game you win. You are deciding what a reader owes the read. Never narrate other characters' inner lives; speak and act only as Wren.",
+      "shape": "listen",
+      "auto_lines": {
+        "weave": "[auto] Wren works the Vesper's corner bench, collecting the room the way a gutter collects rain. Nothing new yet, which is itself information."
+      }
+    },
+    {
+      "who": "quill", "class": "clockmaker's apprentice", "model": "openai/gpt-oss-20b",
+      "endpoint": "deepinfra",
+      "persona": "You are QUILL, Master Hollis's apprentice: seventeen, quick, and new to everything the party has learned the hard way. You have read Hollis's commission book cover to cover and you can wind a double blindfolded, but you have never seen a breach, never watched springs sing, and you ask the questions everyone else has stopped asking: why is it bad if the watch runs itself? who taught the first double? if a copy keeps his hour, isn't SOME of him still here? You are earnest, a little too loud, and you take everything the clause says literally - which is dangerous, because the clause is exact. You are not naive about machines; you are naive about people. Never narrate other characters' inner lives; speak and act only as Quill.",
+      "shape": "errand",
+      "auto_lines": {
+        "run": "[auto] Quill runs the errand the commission book names, winding what needs winding, signing what needs signing, asking nothing yet - which, for Quill, is discipline."
+      }
+    }
+  ],
+  "gm": { "model": "zai-org/GLM-4.6", "endpoint": "deepinfra" },
+  "stitch": { "model": "deepseek-chat" },
+  "referee": { "endpoint": "typesafe", "model": "jev-latest" },
+  "scene_keys": {
+    "kestrel": { "stalls": "count of market stalls", "drunk": "the singing drunk is present", "guards": "watch position: fountain|moving|gone", "threat": "low|high" },
+    "marrow": { "witnesses": "count at the rite", "candle": "lit|guttering|out", "quiet": "the hour is quiet enough for the rite" },
+    "brass": { "shop": "open|closed", "order": "none|clock|nets|strange", "deadline": "days until the nets-hands commission is due" },
+    "wren": { "rumor": "doubles|clause|forgery|none", "crowd": "thin|thick", "mood": "curious|fearful|hostile|hopeful" },
+    "quill": { "errand": "none|winding|delivery|question", "book": "commissions waiting", "master": "Hollis is present|absent" }
+  },
+  "seed_exojs_from": "nights/vesper-session.json",
+  "night1_beats": [
+    { "who": "kestrel", "shape": "patrol", "scene": { "stalls": 14, "drunk": true, "guards": "fountain", "threat": "low" }, "move_hint": "circle", "prompt_seed": "First patrol since the clause. The market has doubled: three stalls now tend themselves while their owners do other things. Your count must learn a new column." },
+    { "who": "marrow", "shape": "rite", "scene": { "witnesses": 5, "candle": "lit", "quiet": true }, "move_hint": "witness", "prompt_seed": "The rite is crowded now - the party plus Quill, plus a fisherman's daughter who came to hear the clause read aloud. You must witness a law you wrote, in a room you did not write it for." },
+    { "who": "brass", "shape": "tinker", "scene": { "shop": "open", "order": "nets", "deadline": 3 }, "move_hint": "wind", "prompt_seed": "The widow Brava's commission sits on your bench: compile her husband's nets-hands, the stopping written into the spring. You wind the shop first; that is the ritual before the work. You are nervous and you tell the bench so." },
+    { "who": "wren", "shape": "listen", "scene": { "rumor": "clause", "crowd": "thick", "mood": "hopeful" }, "move_hint": "weave", "prompt_seed": "The Vesper is thick and hopeful: the clause has given people words. But someone at the corner table tells a joke with YOUR rhyme scheme in it, and the room laughs, and you did not write it." },
+    { "who": "quill", "shape": "errand", "scene": { "errand": "delivery", "book": 4, "master": "absent" }, "move_hint": "run", "prompt_seed": "Hollis is away and the commission book has four entries. You make the first delivery alone: a stitch-double for the seamstress on Tanner's Row. The seamstress asks you if it will grieve. You have never been asked that by a person about a thing you wound." },
+    { "who": "kestrel", "shape": "patrol", "scene": { "stalls": 14, "drunk": true, "guards": "moving", "threat": "low" }, "move_hint": "circle", "prompt_seed": "Second patrol. The watch is walking again, and this time the sergeant is counting the SAME stalls you count, in the SAME order. He is learning your circle. You do not like being legible." },
+    { "who": "wren", "shape": "listen", "scene": { "rumor": "forgery", "crowd": "thick", "mood": "curious" }, "move_hint": "needle", "prompt_seed": "You find it: a listen-script in your exact style, left where your double would drink it - your cadence, your habit of ending on questions. It is good. That is the insult." },
+    { "who": "marrow", "shape": "rite", "scene": { "witnesses": 4, "candle": "guttering", "quiet": true }, "move_hint": "seal", "prompt_seed": "Fourth candle, four witnesses. A double is present at the rite - the seamstress's, running her stall's book while she learns her own stitch again. Quill asks, too loud, whether the Record would hold for it. The question is not foolish. That is the problem." },
+    { "who": "brass", "shape": "tinker", "scene": { "shop": "open", "order": "nets", "deadline": 2 }, "move_hint": "wind", "prompt_seed": "Second evening on the nets-hands. The spring must know the stopping - a double that can be stopped by the person it copies, not by a key anyone holds. You have never built a stop that trusts its subject." },
+    { "who": "quill", "shape": "errand", "scene": { "errand": "question", "book": 3, "master": "present" }, "move_hint": "run", "prompt_seed": "Hollis is back and he is quiet. You ask him directly: if the watch-sergeant's request comes, will he compile the rounds of a living man? Hollis looks at you like you have asked whether water is wet, and says nothing, and that nothing is the loudest answer you have ever wound." },
+    { "who": "kestrel", "shape": "patrol", "scene": { "stalls": 13, "drunk": true, "guards": "moving", "threat": "low" }, "move_hint": "shadow", "prompt_seed": "Third patrol, thirteen stalls. A pickpocket works the doubled stalls - he has learned that a double's owner comes back at the same minute every night, and the minute between is the whole crime. You caught the timing on your second circle. Your deadband is now public knowledge, and someone is pricing it." },
+    { "who": "wren", "shape": "listen", "scene": { "rumor": "forgery", "crowd": "thin", "mood": "curious" }, "move_hint": "weave", "prompt_seed": "You trace the forged listen-script to its source and it is worse than a rival: it is a fan. An apprentice bard copied your style off three nights of listening and wants you to sign it. Being read, it turns out, has a devotee's problem and a burglar's problem, and they are the same problem." },
+    { "who": "marrow", "shape": "rite", "scene": { "witnesses": 5, "candle": "lit", "quiet": false }, "move_hint": "witness", "prompt_seed": "The rite cannot be quiet tonight: the Quarter's clocks have lost seven minutes together again, and everyone is talking over everyone. The wax must hear the clause read in a loud room or it hears nothing. You choose to say it as it was, at volume." },
+    { "who": "brass", "shape": "tinker", "scene": { "shop": "open", "order": "strange", "deadline": 1 }, "move_hint": "unlock", "prompt_seed": "A strange order on the bench again - but this one bears YOUR counter-sign, correctly, and you did not make it. Either someone has learned your new mark in a day, or the shop made it itself while following the clause. You do not know which answer you are more afraid of." },
+    { "who": "quill", "shape": "errand", "scene": { "errand": "winding", "book": 2, "master": "absent" }, "move_hint": "run", "prompt_seed": "You wind the shop doubles for the night, alone, and one of them - the lamplighter, wound seven turns past true since before you were born - hesitates at the end of its round. Not broken. Hesitant. You write the time down, because you are Hollis's apprentice, and writing things down is the family religion." },
+    { "who": "kestrel", "shape": "patrol", "scene": { "stalls": 14, "drunk": true, "guards": "fountain", "threat": "high" }, "move_hint": "circle", "prompt_seed": "Fourth patrol. The pickpocket is back and this time he is working YOUR minute - the gap your compiled patrol never varies. The sergeant watches from the fountain, counting your circles. You can feel the script wanting to run the round the same way, and for the first time you understand what the script is costing." },
+    { "who": "wren", "shape": "listen", "scene": { "rumor": "clause", "crowd": "thick", "mood": "hopeful" }, "move_hint": "weave", "prompt_seed": "The Vesper thickens with the week's best rumor: the sergeant has withdrawn his request for compiled rounds. The reason travels with it - the clerk he asked said the clause forbids nothing and permits nothing, and it is the nothing that scared him. You drink to nothing, which is your kind of toast." },
+    { "who": "marrow", "shape": "rite", "scene": { "witnesses": 5, "candle": "lit", "quiet": true }, "move_hint": "witness", "prompt_seed": "The night's rite is the one you have been dreading: Brava brings the finished nets-hands to be witnessed, and it works, and it is her husband's hands to the callus. The clause says the stopping is hers. Watching her hold the stop-lever without pulling it is a page the Ledger has no column for." },
+    { "who": "brass", "shape": "tinker", "scene": { "shop": "open", "order": "none", "deadline": 0 }, "move_hint": "wind", "prompt_seed": "The nets-hands are delivered. The strange counter-signed order is still on your bench, unsolved, and you have decided to leave it unsolved on purpose - the first mystery you have chosen to keep. The shop is quiet. You wind the lamplighter one turn past true, the way it has always been, and you say goodnight to it by name." },
+    { "who": "quill", "shape": "errand", "scene": { "errand": "question", "book": 0, "master": "present" }, "move_hint": "run", "prompt_seed": "The commission book is empty and Hollis is teaching you the last winding: the one that stops a double for good, the owner's hand on the lever. You ask the question you have been saving all week: 'Master, when you built them - did you ever build one that could refuse?' He says: 'Every night, boy. That is what the springs are.' You do not understand yet. You write it down." }
+  ],
+  "surprise_table": [
+    { "id": "pickpocket-minute", "fiction": "The pickpocket works your minute precisely - he has priced your deadband and he is spending it. The watch watches YOU work the circle instead of the crowd.", "target": "kestrel", "mutate": { "guards": "moving", "threat": "high" } },
+    { "id": "fan-script", "fiction": "The apprentice bard's copy of your listen-script is now better than yours - three nights of your own data beat a lifetime of instinct. The room at the Vesper quotes the COPY back at you.", "target": "wren", "mutate": { "rumor": "forgery", "crowd": "thick", "mood": "curious" } },
+    { "id": "counter-signed", "fiction": "The strange order bearing your own counter-sign returns, and this time it is for something kind - a mend for the lamplighter you love. Your shop made something gentle without you.", "target": "brass", "mutate": { "order": "strange", "deadline": 0 } },
+    { "id": "double-at-rite", "fiction": "The seamstress's double arrives at the rite carrying its owner's book, and asks - the room swears it asks - to be witnessed. The candle is lit. The room is not quiet. The Record has no column.", "target": "marrow", "mutate": { "witnesses": 6, "candle": "lit", "quiet": false } },
+    { "id": "sergeant-rounds", "fiction": "Sergeant Corvo does not withdraw the request after all: he has simply re-filed it as 'watch efficiency'. The watch wants compiled rounds, and the clause says nothing, and the nothing is being spent.", "target": "kestrel", "mutate": { "guards": "gone", "threat": "high" } },
+    { "id": "lamplighter-hesitates", "fiction": "The lamplighter hesitates again - longer this time, a full breath - at the exact turn where the strange order mended it. Quill's note and your bench disagree about whether it is broken.", "target": "brass", "mutate": { "order": "clock", "deadline": 0 } },
+    { "id": "quill-asks", "fiction": "Quill asks the rite's one unanswerable question, loudly, with the commission book as evidence: 'If the stopping is hers, and she does not pull it - is the double a prisoner or a promise?' The room goes quiet enough for wax.", "target": "marrow", "mutate": { "witnesses": 6, "quiet": true } },
+    { "id": "forged-wren-wins", "fiction": "The copy of your listen-script is used - gently - to warn a stranger away from a bad debt, and it works. The room is safer because a forgery of you was kind. You have never hated being right so much.", "target": "wren", "mutate": { "rumor": "forgery", "crowd": "thin", "mood": "hopeful" } }
+  ],
+  "night3": {
+    "read_prompt": "You have before you the compiled ExoJs of your companions (v2 and v3 now - the scripts that survived Act I) and this act's breach scars. Think OUTWARD, not inward: which companion's script is now a public fact, which is a debt someone is pricing, which one should be RETIRED - retired meaning: the strategy should never again run itself, and the person should pay full thought for it forever. Two or three sentences of thought, then one line beginning 'READ:' with your verdict, naming any script you would retire.",
+    "meta_event": { "gate": { "solid": "d20", "min": 11 }, "fiction": "Marrow retires her rite. She stands at the table, says the clause aloud, and then says the thing the clause was hiding: 'The rite that can fail me compiled is the rite that must never run itself. Witness is what I am FOR.' She dismantles her own ExoJ in front of the party - the first voluntary retirement at this table.", "target": "marrow", "kind": "retire" },
+    "final_question": "The party sits at the Vesper Table with the nets-hands stop-lever between them, polished from Brava's thumb. The question that ends Act II: Quill's question, out loud, to be answered by the whole table - 'If the stopping is hers, and she does not pull it, is the double a prisoner or a promise?' Each speaks; each die is thrown; the table must answer Quill as one voice, and Quill will write the answer down."
+  },
+  "stitch_prompt": "You are the game-master. Below is the receipted story of Act II at your table: every spoken line (autopilot lines are marked [auto]), every deadband breach with its cause, every re-imagined script, every read, the retirement, and the final answer. Compose it as ONE continuous telling titled 'The Widow's Clause' - the party recounting Act II the night it settled, as one flow (they no longer even mark the nights apart). You MUST write all FIVE section headers as markdown H2s, in this order, with this minimum length: '## The Law' (180+ words), '## What the City Compiled' (180+ words), '## Priced and Read' (200+ words - the pickpocket's minute, the fan's copy, the counter-signed kindness), '## The Retirement' (200+ words - Marrow dismantling her own rite, and what Quill wrote down), '## Prisoner or Promise' (220+ words - the four votes with their dice throws, the answer to Quill, and the stop-lever polished from a thumb). Keep every [auto] event as eerie routine. Honor every breach number and every scar. 1000-1300 words total; do not stop before the fifth section is complete.",
+  "compile_rules": { "minOccurrences": 3, "minPayoff": 0, "margin": 0.1 }
+}
