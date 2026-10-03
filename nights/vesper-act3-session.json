@@ -1,0 +1,4875 @@
+{
+  "name": "Nights at the Vesper Table, Act III (wave-66, layer F): One More Night",
+  "preset": "presets/vesper-act3.json",
+  "verify": {
+    "ok": true,
+    "rows": 209,
+    "tip": "1d1163573db5ded5b75ffb565b6035fdcdd3bdfa16cdd932b86e138747e8451f"
+  },
+  "ops": [
+    {
+      "seq": 1,
+      "op": "init",
+      "payload": {
+        "name": "Nights at the Vesper Table, Act III (wave-66, layer F): One More Night"
+      },
+      "sticky": false,
+      "prev": "genesis",
+      "tip": "09129ce53345e9162d192592386aad742a6c6063624de3938419c3d3f146ada0"
+    },
+    {
+      "seq": 2,
+      "op": "set",
+      "payload": {
+        "dial": "lantern_light",
+        "to": 3,
+        "why": "opening state"
+      },
+      "sticky": false,
+      "prev": "09129ce53345e9162d192592386aad742a6c6063624de3938419c3d3f146ada0",
+      "tip": "4477ee26593e0f03d4578664ddfb6cbaae4725bc1da143cfabab8dbda2efc3a1"
+    },
+    {
+      "seq": 3,
+      "op": "set",
+      "payload": {
+        "dial": "deviation",
+        "to": 6,
+        "why": "opening state"
+      },
+      "sticky": false,
+      "prev": "4477ee26593e0f03d4578664ddfb6cbaae4725bc1da143cfabab8dbda2efc3a1",
+      "tip": "d0c0fe4f6847510da2aeaf376cb9ae9ca047397355bdd09565efca9d7030fe3d"
+    },
+    {
+      "seq": 4,
+      "op": "set",
+      "payload": {
+        "dial": "trust",
+        "to": 7,
+        "why": "opening state"
+      },
+      "sticky": false,
+      "prev": "d0c0fe4f6847510da2aeaf376cb9ae9ca047397355bdd09565efca9d7030fe3d",
+      "tip": "ba951ee8a81b706ff17b89a5f24da310c6e31fee4ead628c4ed5ebe59e689cb1"
+    },
+    {
+      "seq": 5,
+      "op": "set",
+      "payload": {
+        "dial": "canon_stress",
+        "to": 5,
+        "why": "opening state"
+      },
+      "sticky": false,
+      "prev": "ba951ee8a81b706ff17b89a5f24da310c6e31fee4ead628c4ed5ebe59e689cb1",
+      "tip": "e5f140c7c989c4b59c52982f7756d992b19064e4106752e8b57a0f5720e6ace9"
+    },
+    {
+      "seq": 6,
+      "op": "exoj.compile",
+      "payload": {
+        "exoj": {
+          "exoj": "brass.tinker",
+          "version": 3,
+          "owner": "brass",
+          "triggerShape": "tinker",
+          "policy": [
+            {
+              "when": {
+                "shop": "open"
+              },
+              "move": "wind"
+            },
+            {
+              "when": {},
+              "move": "wind"
+            }
+          ],
+          "deadband": {
+            "expected": {
+              "deadline": 0,
+              "order": "nets",
+              "shop": "open"
+            },
+            "weights": {
+              "deadline": 1,
+              "order": 1,
+              "shop": 1
+            },
+            "max": 0.53
+          },
+          "provenance": {
+            "nights": [
+              1
+            ],
+            "occurrences": 4,
+            "payoff": 0.88,
+            "variance": 0.0469,
+            "reproof_of": "v2"
+          }
+        }
+      },
+      "sticky": false,
+      "prev": "e5f140c7c989c4b59c52982f7756d992b19064e4106752e8b57a0f5720e6ace9",
+      "tip": "bdddb39abc19b19198ffc6cf9535c503482704bebf34f11e37fcf92776d5c0de"
+    },
+    {
+      "seq": 7,
+      "op": "scar",
+      "payload": {
+        "who": "exocortex",
+        "text": "carried brass.tinker v3 (deadband 0.53) across acts — the script kept its provenance"
+      },
+      "sticky": true,
+      "prev": "bdddb39abc19b19198ffc6cf9535c503482704bebf34f11e37fcf92776d5c0de",
+      "tip": "cbc343850329af9ca18b505f36a771000365dc915a0b4d42ed271f17b40a88df"
+    },
+    {
+      "seq": 8,
+      "op": "exoj.compile",
+      "payload": {
+        "exoj": {
+          "exoj": "kestrel.patrol",
+          "version": 2,
+          "owner": "kestrel",
+          "triggerShape": "patrol",
+          "policy": [
+            {
+              "when": {
+                "drunk": true
+              },
+              "move": "circle"
+            },
+            {
+              "when": {
+                "stalls": 14
+              },
+              "move": "circle"
+            },
+            {
+              "when": {
+                "threat": "low"
+              },
+              "move": "circle"
+            },
+            {
+              "when": {},
+              "move": "circle"
+            }
+          ],
+          "deadband": {
+            "expected": {
+              "drunk": "true",
+              "guards": "fountain",
+              "stalls": 14,
+              "threat": "low"
+            },
+            "weights": {
+              "drunk": 1,
+              "guards": 1,
+              "stalls": 1,
+              "threat": 1
+            },
+            "max": 0.6
+          },
+          "provenance": {
+            "nights": [
+              1
+            ],
+            "occurrences": 4,
+            "payoff": 0.75,
+            "variance": 0.1875,
+            "reproof_of": "v1"
+          }
+        }
+      },
+      "sticky": false,
+      "prev": "cbc343850329af9ca18b505f36a771000365dc915a0b4d42ed271f17b40a88df",
+      "tip": "7faa84a49018ed6527fc41ae945b9d30651d8d2b23688ae356cb348a9a18944f"
+    },
+    {
+      "seq": 9,
+      "op": "scar",
+      "payload": {
+        "who": "exocortex",
+        "text": "carried kestrel.patrol v2 (deadband 0.6) across acts — the script kept its provenance"
+      },
+      "sticky": true,
+      "prev": "7faa84a49018ed6527fc41ae945b9d30651d8d2b23688ae356cb348a9a18944f",
+      "tip": "12cbf7beac4739e9b413a34bb0e0f03397c52e5bc159899983c1db59b1516718"
+    },
+    {
+      "seq": 10,
+      "op": "exoj.compile",
+      "payload": {
+        "exoj": {
+          "exoj": "marrow.rite",
+          "version": 3,
+          "owner": "marrow",
+          "triggerShape": "rite",
+          "policy": [
+            {
+              "when": {
+                "candle": "lit"
+              },
+              "move": "witness"
+            },
+            {
+              "when": {
+                "witnesses": 5
+              },
+              "move": "witness"
+            },
+            {
+              "when": {},
+              "move": "witness"
+            }
+          ],
+          "deadband": {
+            "expected": {
+              "candle": "lit",
+              "quiet": "true",
+              "witnesses": 5
+            },
+            "weights": {
+              "candle": 1,
+              "quiet": 1,
+              "witnesses": 1
+            },
+            "max": 0.6
+          },
+          "provenance": {
+            "nights": [
+              1
+            ],
+            "occurrences": 4,
+            "payoff": 0.75,
+            "variance": 0.0625,
+            "reproof_of": "v2"
+          }
+        }
+      },
+      "sticky": false,
+      "prev": "12cbf7beac4739e9b413a34bb0e0f03397c52e5bc159899983c1db59b1516718",
+      "tip": "bd70ada9b23e5fa3c924681c06e8f74c11e7707b7f8deacdc996f11d41e95b4b"
+    },
+    {
+      "seq": 11,
+      "op": "scar",
+      "payload": {
+        "who": "exocortex",
+        "text": "carried marrow.rite v3 (deadband 0.6) across acts — the script kept its provenance"
+      },
+      "sticky": true,
+      "prev": "bd70ada9b23e5fa3c924681c06e8f74c11e7707b7f8deacdc996f11d41e95b4b",
+      "tip": "e282cf8e4c2328513fad844e428d6dabc626f75f5db6fdca63ad400fbb0ede17"
+    },
+    {
+      "seq": 12,
+      "op": "exoj.compile",
+      "payload": {
+        "exoj": {
+          "exoj": "quill.errand",
+          "version": 2,
+          "owner": "quill",
+          "triggerShape": "errand",
+          "policy": [
+            {
+              "when": {
+                "errand": "question"
+              },
+              "move": "run"
+            },
+            {
+              "when": {
+                "master": "absent"
+              },
+              "move": "run"
+            },
+            {
+              "when": {
+                "master": "present"
+              },
+              "move": "run"
+            },
+            {
+              "when": {},
+              "move": "run"
+            }
+          ],
+          "deadband": {
+            "expected": {
+              "book": 0,
+              "errand": "question",
+              "master": "present"
+            },
+            "weights": {
+              "book": 1,
+              "errand": 1,
+              "master": 1
+            },
+            "max": 0.43300000000000005
+          },
+          "provenance": {
+            "nights": [
+              1
+            ],
+            "occurrences": 4,
+            "payoff": 0.5,
+            "variance": 0
+          }
+        }
+      },
+      "sticky": false,
+      "prev": "e282cf8e4c2328513fad844e428d6dabc626f75f5db6fdca63ad400fbb0ede17",
+      "tip": "04801e96754a18c32dfd148a7400528187a8ac1968cd36156ddddf63395f9773"
+    },
+    {
+      "seq": 13,
+      "op": "scar",
+      "payload": {
+        "who": "exocortex",
+        "text": "carried quill.errand v2 (deadband 0.43300000000000005) across acts — the script kept its provenance"
+      },
+      "sticky": true,
+      "prev": "04801e96754a18c32dfd148a7400528187a8ac1968cd36156ddddf63395f9773",
+      "tip": "e9d19a9d3518b35752f74d86d7a36e45bb11206d514f03fbce5e6aa242d38306"
+    },
+    {
+      "seq": 14,
+      "op": "exoj.compile",
+      "payload": {
+        "exoj": {
+          "exoj": "wren.listen",
+          "version": 4,
+          "owner": "wren",
+          "triggerShape": "listen",
+          "policy": [
+            {
+              "when": {
+                "crowd": "thick"
+              },
+              "move": "weave"
+            },
+            {
+              "when": {
+                "mood": "hopeful"
+              },
+              "move": "weave"
+            },
+            {
+              "when": {
+                "rumor": "clause"
+              },
+              "move": "weave"
+            },
+            {
+              "when": {},
+              "move": "weave"
+            }
+          ],
+          "deadband": {
+            "expected": {
+              "crowd": "thick",
+              "mood": "hopeful",
+              "rumor": "clause"
+            },
+            "weights": {
+              "crowd": 1,
+              "mood": 1,
+              "rumor": 1
+            },
+            "max": 0.43300000000000005
+          },
+          "provenance": {
+            "nights": [
+              1
+            ],
+            "occurrences": 4,
+            "payoff": 0.5,
+            "variance": 0,
+            "reproof_of": "v2"
+          }
+        }
+      },
+      "sticky": false,
+      "prev": "e9d19a9d3518b35752f74d86d7a36e45bb11206d514f03fbce5e6aa242d38306",
+      "tip": "5ddf3a6bcc6933b60220e5332b0d033fd94af28b86c3c65d0aacb3fce3efb91b"
+    },
+    {
+      "seq": 15,
+      "op": "scar",
+      "payload": {
+        "who": "exocortex",
+        "text": "carried wren.listen v4 (deadband 0.43300000000000005) across acts — the script kept its provenance"
+      },
+      "sticky": true,
+      "prev": "5ddf3a6bcc6933b60220e5332b0d033fd94af28b86c3c65d0aacb3fce3efb91b",
+      "tip": "745e01b30b958992bce477eaccc1c197a791ff4fe865a5f060ab8e9aa5c4ade2"
+    },
+    {
+      "seq": 16,
+      "op": "scene.enter",
+      "payload": {
+        "name": "night-1"
+      },
+      "sticky": false,
+      "prev": "745e01b30b958992bce477eaccc1c197a791ff4fe865a5f060ab8e9aa5c4ade2",
+      "tip": "1d5b5e3d5b044198c9555c3bb0c46f864ccc58664ed3c915aa8a86ff799ffe1f"
+    },
+    {
+      "seq": 17,
+      "op": "say",
+      "payload": {
+        "who": "gm",
+        "text": ""
+      },
+      "sticky": false,
+      "prev": "1d5b5e3d5b044198c9555c3bb0c46f864ccc58664ed3c915aa8a86ff799ffe1f",
+      "tip": "27c3e1d0675015cadae2b25cf03180130fb9ee0fe88a11b81750531becd51391"
+    },
+    {
+      "seq": 18,
+      "op": "thought",
+      "payload": {
+        "who": "gm",
+        "beat": "narration",
+        "tokens": 574,
+        "night": 1,
+        "note": "gm narration"
+      },
+      "sticky": false,
+      "prev": "27c3e1d0675015cadae2b25cf03180130fb9ee0fe88a11b81750531becd51391",
+      "tip": "68add526c4b1a3a398d36813ac68ec4cd66102befeeb41d214278524a7b0929a"
+    },
+    {
+      "seq": 19,
+      "op": "say",
+      "payload": {
+        "who": "kestrel",
+        "text": "Fourteen stalls. Three vendors look up. The watch-double's cadence is steady, unhurried, mirroring my own without my seeing. A man stumbles near stall seven, laughter too loud; the drunk tag is already on the board. I adjust my pace, counting the gap between his stumble and the double's step, memorizing the drift.\n\nMOVE: circle"
+      },
+      "sticky": false,
+      "prev": "68add526c4b1a3a398d36813ac68ec4cd66102befeeb41d214278524a7b0929a",
+      "tip": "d323ece49a4ae4354dd0a2e61e6ad57fd06289740431b443accdd01561d77109"
+    },
+    {
+      "seq": 20,
+      "op": "thought",
+      "payload": {
+        "who": "kestrel",
+        "beat": "act",
+        "tokens": 406,
+        "night": 1,
+        "note": "full-thought beat"
+      },
+      "sticky": false,
+      "prev": "d323ece49a4ae4354dd0a2e61e6ad57fd06289740431b443accdd01561d77109",
+      "tip": "8a668a026abcb27f16e54aa8de9a9e0b80ebc4856d4e5f076b7a7ecefced9316"
+    },
+    {
+      "seq": 21,
+      "op": "set",
+      "payload": {
+        "dial": "kestrel_scene",
+        "to": "{\"stalls\":14,\"drunk\":true,\"guards\":\"watchdouble\",\"threat\":\"low\"}",
+        "why": "night-1 beat for kestrel"
+      },
+      "sticky": false,
+      "prev": "8a668a026abcb27f16e54aa8de9a9e0b80ebc4856d4e5f076b7a7ecefced9316",
+      "tip": "2dcc65e2e849ff3f7d2caace5a502d4d866a9b5f1fc92c944d14ea053887d935"
+    },
+    {
+      "seq": 22,
+      "op": "strategy",
+      "payload": {
+        "who": "kestrel",
+        "shape": "patrol",
+        "move": "circle",
+        "payoff": 1,
+        "scene": {
+          "stalls": 14,
+          "drunk": true,
+          "guards": "watchdouble",
+          "threat": "low"
+        },
+        "night": 1
+      },
+      "sticky": false,
+      "prev": "2dcc65e2e849ff3f7d2caace5a502d4d866a9b5f1fc92c944d14ea053887d935",
+      "tip": "d8ba79c223b7f6bf1fda3f75db54497f83aa8e635c998e9b2c1833d2767092e3"
+    },
+    {
+      "seq": 23,
+      "op": "scar",
+      "payload": {
+        "who": "referee",
+        "text": "kestrel: outcome clean (payoff 1)"
+      },
+      "sticky": true,
+      "prev": "d8ba79c223b7f6bf1fda3f75db54497f83aa8e635c998e9b2c1833d2767092e3",
+      "tip": "48f887b80bc59eac01da114c6a3e2052fb76089fc3209e02a21143f6e92076ca"
+    },
+    {
+      "seq": 24,
+      "op": "say",
+      "payload": {
+        "who": "marrow",
+        "text": "I lay the ledger open at the evening's page, candle to my left, and I do not yet write. Five witnesses: four of you, and the flame — the Record counts the flame, I have always said so. The retirement words sit in my sleeve like a stone I keep forgetting to throw, and I see Kestrel watching my hand, which means the hand has already spoken. Say it as it was: a rite rehearsed is still a rite performed, and I perform it. MOVE: witness"
+      },
+      "sticky": false,
+      "prev": "48f887b80bc59eac01da114c6a3e2052fb76089fc3209e02a21143f6e92076ca",
+      "tip": "47f19edc5e71123832e84e759f1344929d496f84b8f5c1902dc3aa185d4769c0"
+    },
+    {
+      "seq": 25,
+      "op": "thought",
+      "payload": {
+        "who": "marrow",
+        "beat": "act",
+        "tokens": 415,
+        "night": 1,
+        "note": "full-thought beat"
+      },
+      "sticky": false,
+      "prev": "47f19edc5e71123832e84e759f1344929d496f84b8f5c1902dc3aa185d4769c0",
+      "tip": "f21c0c4745b787d325e3197597f9945e7ba2c77e251f351edd34933dcdf4c59b"
+    },
+    {
+      "seq": 26,
+      "op": "set",
+      "payload": {
+        "dial": "marrow_scene",
+        "to": "{\"witnesses\":5,\"candle\":\"lit\",\"quiet\":true}",
+        "why": "night-1 beat for marrow"
+      },
+      "sticky": false,
+      "prev": "f21c0c4745b787d325e3197597f9945e7ba2c77e251f351edd34933dcdf4c59b",
+      "tip": "6647780c2219d1441eb0e9b6c2753f24f924a73b60f3f2d6537021721192db81"
+    },
+    {
+      "seq": 27,
+      "op": "strategy",
+      "payload": {
+        "who": "marrow",
+        "shape": "rite",
+        "move": "witness",
+        "payoff": 0.5,
+        "scene": {
+          "witnesses": 5,
+          "candle": "lit",
+          "quiet": true
+        },
+        "night": 1
+      },
+      "sticky": false,
+      "prev": "6647780c2219d1441eb0e9b6c2753f24f924a73b60f3f2d6537021721192db81",
+      "tip": "3c9bffb4357cdc56e232407fa68564dd0c10b929474aa3380c9cfd9bb2d8ff27"
+    },
+    {
+      "seq": 28,
+      "op": "scar",
+      "payload": {
+        "who": "referee",
+        "text": "marrow: outcome mixed (payoff 0.5)"
+      },
+      "sticky": true,
+      "prev": "3c9bffb4357cdc56e232407fa68564dd0c10b929474aa3380c9cfd9bb2d8ff27",
+      "tip": "0764f919d18c6a4bab258a76809f1aa2940784ff40db759211197f898089e627"
+    },
+    {
+      "seq": 29,
+      "op": "say",
+      "payload": {
+        "who": "brass",
+        "text": "*Brass winds the shop key, the familiar ritual calming their nerves.* \"Alright, my lovelies, let's see what we have here.\" *They pick up the order, studying the flaw marked on the paper.* \"A stop that exists on paper but not in the spring? How intriguing.\" *Brass examines the watch-double's housing closely, searching for any sign of the mystery writer's influence.* \"Whoever you are, you have my attention. Let's see if we can unravel this puzzle together, shall we?\" *They smile, a glint of excitement in their eyes as they set to work.*\n\nMOVE: wind"
+      },
+      "sticky": false,
+      "prev": "0764f919d18c6a4bab258a76809f1aa2940784ff40db759211197f898089e627",
+      "tip": "177818ed9590fa3d87bdd9fea4d6e9da49603f00eb54147849cf13e353799a8f"
+    },
+    {
+      "seq": 30,
+      "op": "thought",
+      "payload": {
+        "who": "brass",
+        "beat": "act",
+        "tokens": 462,
+        "night": 1,
+        "note": "full-thought beat"
+      },
+      "sticky": false,
+      "prev": "177818ed9590fa3d87bdd9fea4d6e9da49603f00eb54147849cf13e353799a8f",
+      "tip": "60ba828d258333bc52da72767cf8a421b8d37b1b47de3b05e8b9a7950e57da4c"
+    },
+    {
+      "seq": 31,
+      "op": "set",
+      "payload": {
+        "dial": "brass_scene",
+        "to": "{\"shop\":\"open\",\"order\":\"kind\",\"deadline\":3}",
+        "why": "night-1 beat for brass"
+      },
+      "sticky": false,
+      "prev": "60ba828d258333bc52da72767cf8a421b8d37b1b47de3b05e8b9a7950e57da4c",
+      "tip": "a5bb0c5b32bf3f802bc53eeb051ccf5ce325b24a67b00c7dd451308f365e67e3"
+    },
+    {
+      "seq": 32,
+      "op": "strategy",
+      "payload": {
+        "who": "brass",
+        "shape": "tinker",
+        "move": "wind",
+        "payoff": 1,
+        "scene": {
+          "shop": "open",
+          "order": "kind",
+          "deadline": 3
+        },
+        "night": 1
+      },
+      "sticky": false,
+      "prev": "a5bb0c5b32bf3f802bc53eeb051ccf5ce325b24a67b00c7dd451308f365e67e3",
+      "tip": "004053f9001dba938a121025bc1ce3274b4c35c5db688698e8573268ce8ef0b1"
+    },
+    {
+      "seq": 33,
+      "op": "scar",
+      "payload": {
+        "who": "referee",
+        "text": "brass: outcome clean (payoff 1)"
+      },
+      "sticky": true,
+      "prev": "004053f9001dba938a121025bc1ce3274b4c35c5db688698e8573268ce8ef0b1",
+      "tip": "2e63b8e1b716b0cc5bbc78f60330b588636a96858d9705cc224d6541266ffb8f"
+    },
+    {
+      "seq": 34,
+      "op": "say",
+      "payload": {
+        "who": "wren",
+        "text": ""
+      },
+      "sticky": false,
+      "prev": "2e63b8e1b716b0cc5bbc78f60330b588636a96858d9705cc224d6541266ffb8f",
+      "tip": "bd5637826c6abf3bf57cc3ab48a4fc737a4be38f95965d5a381e5ae1bbfef126"
+    },
+    {
+      "seq": 35,
+      "op": "thought",
+      "payload": {
+        "who": "wren",
+        "beat": "act",
+        "tokens": 730,
+        "night": 1,
+        "note": "full-thought beat"
+      },
+      "sticky": false,
+      "prev": "bd5637826c6abf3bf57cc3ab48a4fc737a4be38f95965d5a381e5ae1bbfef126",
+      "tip": "c360b49f96ecfeaa15345550c52efdd6fc3ac84b073e361d2b584e082409e6ef"
+    },
+    {
+      "seq": 36,
+      "op": "set",
+      "payload": {
+        "dial": "wren_scene",
+        "to": "{\"rumor\":\"pell\",\"crowd\":\"thick\",\"mood\":\"curious\"}",
+        "why": "night-1 beat for wren"
+      },
+      "sticky": false,
+      "prev": "c360b49f96ecfeaa15345550c52efdd6fc3ac84b073e361d2b584e082409e6ef",
+      "tip": "0684c7c6d8b5e523faf5a99df08dca48b092395a6f306e83a41c70c3e33f8173"
+    },
+    {
+      "seq": 37,
+      "op": "strategy",
+      "payload": {
+        "who": "wren",
+        "shape": "listen",
+        "move": "weave",
+        "payoff": 0.5,
+        "scene": {
+          "rumor": "pell",
+          "crowd": "thick",
+          "mood": "curious"
+        },
+        "night": 1
+      },
+      "sticky": false,
+      "prev": "0684c7c6d8b5e523faf5a99df08dca48b092395a6f306e83a41c70c3e33f8173",
+      "tip": "399a1cdf5dba89a95460a8a7ef8ee5de9291628a094157c315a0f74b8d2ac07a"
+    },
+    {
+      "seq": 38,
+      "op": "scar",
+      "payload": {
+        "who": "referee",
+        "text": "wren: outcome mixed (payoff 0.5)"
+      },
+      "sticky": true,
+      "prev": "399a1cdf5dba89a95460a8a7ef8ee5de9291628a094157c315a0f74b8d2ac07a",
+      "tip": "d762e1c9fcc72bd2ed574866a193ad817946a5e8377368b4e7cd9b8e0da52f1d"
+    },
+    {
+      "seq": 39,
+      "op": "say",
+      "payload": {
+        "who": "quill",
+        "text": ""
+      },
+      "sticky": false,
+      "prev": "d762e1c9fcc72bd2ed574866a193ad817946a5e8377368b4e7cd9b8e0da52f1d",
+      "tip": "46eda204a0eceadbeba0da14c00285e4f8179253a865a8ab606aecc0f2bc013c"
+    },
+    {
+      "seq": 40,
+      "op": "thought",
+      "payload": {
+        "who": "quill",
+        "beat": "act",
+        "tokens": 801,
+        "night": 1,
+        "note": "full-thought beat"
+      },
+      "sticky": false,
+      "prev": "46eda204a0eceadbeba0da14c00285e4f8179253a865a8ab606aecc0f2bc013c",
+      "tip": "09bf989742b4a28c181717d48f90d342f385dbab4d2143952b64f182b5dff266"
+    },
+    {
+      "seq": 41,
+      "op": "set",
+      "payload": {
+        "dial": "quill_scene",
+        "to": "{\"errand\":\"leaver\",\"book\":1,\"master\":\"present\"}",
+        "why": "night-1 beat for quill"
+      },
+      "sticky": false,
+      "prev": "09bf989742b4a28c181717d48f90d342f385dbab4d2143952b64f182b5dff266",
+      "tip": "785969f45f3a984a55fdf5955736005fefa16915b0601632b3311f4062cd28bd"
+    },
+    {
+      "seq": 42,
+      "op": "strategy",
+      "payload": {
+        "who": "quill",
+        "shape": "errand",
+        "move": "run",
+        "payoff": 0.5,
+        "scene": {
+          "errand": "leaver",
+          "book": 1,
+          "master": "present"
+        },
+        "night": 1
+      },
+      "sticky": false,
+      "prev": "785969f45f3a984a55fdf5955736005fefa16915b0601632b3311f4062cd28bd",
+      "tip": "20e233a5d7499ebf17f41cda54b7595e85587a7d06f24ff0f1cb321add31003b"
+    },
+    {
+      "seq": 43,
+      "op": "scar",
+      "payload": {
+        "who": "referee",
+        "text": "quill: outcome mixed (payoff 0.5)"
+      },
+      "sticky": true,
+      "prev": "20e233a5d7499ebf17f41cda54b7595e85587a7d06f24ff0f1cb321add31003b",
+      "tip": "88e347720e5e971c3b4b13ee8bb50d2b44bba3d11361a616675bebaef127736e"
+    },
+    {
+      "seq": 44,
+      "op": "say",
+      "payload": {
+        "who": "kestrel",
+        "text": "The merchant's stall counts fourteen faces. I count the gaps between them: three empty, two watching. The pickpocket moves between the watching ones. The watch-double walks without seeing, its eyes fixed ahead, repeating the pattern. I feel the shift in weight on my belt where my own weapons sit. The sergeant's gaze finds me first.\n\nMOVE: shadow"
+      },
+      "sticky": false,
+      "prev": "88e347720e5e971c3b4b13ee8bb50d2b44bba3d11361a616675bebaef127736e",
+      "tip": "793f759572ae9f48fcdc84d47292f5b6da37a094879ae85b1bbfbe2a54a7ced9"
+    },
+    {
+      "seq": 45,
+      "op": "thought",
+      "payload": {
+        "who": "kestrel",
+        "beat": "act",
+        "tokens": 412,
+        "night": 1,
+        "note": "full-thought beat"
+      },
+      "sticky": false,
+      "prev": "793f759572ae9f48fcdc84d47292f5b6da37a094879ae85b1bbfbe2a54a7ced9",
+      "tip": "ef6f35b039bbb27aa52c11d1ee44cf922fa2b60926590375b10399a566b3b2e8"
+    },
+    {
+      "seq": 46,
+      "op": "set",
+      "payload": {
+        "dial": "kestrel_scene",
+        "to": "{\"stalls\":14,\"drunk\":true,\"guards\":\"watchdouble\",\"threat\":\"high\"}",
+        "why": "night-1 beat for kestrel"
+      },
+      "sticky": false,
+      "prev": "ef6f35b039bbb27aa52c11d1ee44cf922fa2b60926590375b10399a566b3b2e8",
+      "tip": "75e74f0270cce768848526086e22b00dc65be6f6196c9909eab5ee45f586fe94"
+    },
+    {
+      "seq": 47,
+      "op": "strategy",
+      "payload": {
+        "who": "kestrel",
+        "shape": "patrol",
+        "move": "shadow",
+        "payoff": 0,
+        "scene": {
+          "stalls": 14,
+          "drunk": true,
+          "guards": "watchdouble",
+          "threat": "high"
+        },
+        "night": 1
+      },
+      "sticky": false,
+      "prev": "75e74f0270cce768848526086e22b00dc65be6f6196c9909eab5ee45f586fe94",
+      "tip": "c8951c38170bbbabaea14a47d7b53cb41372e04f88574dadcc91874764b55e9c"
+    },
+    {
+      "seq": 48,
+      "op": "scar",
+      "payload": {
+        "who": "referee",
+        "text": "kestrel: outcome setback (payoff 0)"
+      },
+      "sticky": true,
+      "prev": "c8951c38170bbbabaea14a47d7b53cb41372e04f88574dadcc91874764b55e9c",
+      "tip": "34f7b915f364031f8bf18132b2137318e5453342073abde0d2b5ca42f769c276"
+    },
+    {
+      "seq": 49,
+      "op": "say",
+      "payload": {
+        "who": "wren",
+        "text": ""
+      },
+      "sticky": false,
+      "prev": "34f7b915f364031f8bf18132b2137318e5453342073abde0d2b5ca42f769c276",
+      "tip": "498649d9b44deb1e3882142474524dd2d4697444e69908924f4ab231306d1c2f"
+    },
+    {
+      "seq": 50,
+      "op": "thought",
+      "payload": {
+        "who": "wren",
+        "beat": "act",
+        "tokens": 743,
+        "night": 1,
+        "note": "full-thought beat"
+      },
+      "sticky": false,
+      "prev": "498649d9b44deb1e3882142474524dd2d4697444e69908924f4ab231306d1c2f",
+      "tip": "a18e86a26b4467fed9aa4a9b2254b8d255696da72b5ce477a28e4e5269f0e428"
+    },
+    {
+      "seq": 51,
+      "op": "set",
+      "payload": {
+        "dial": "wren_scene",
+        "to": "{\"rumor\":\"stitch\",\"crowd\":\"thick\",\"mood\":\"fearful\"}",
+        "why": "night-1 beat for wren"
+      },
+      "sticky": false,
+      "prev": "a18e86a26b4467fed9aa4a9b2254b8d255696da72b5ce477a28e4e5269f0e428",
+      "tip": "bc16b2d6ca9596bf0c255bfe62bcea412c76b5683cf7b253df173a141e45948d"
+    },
+    {
+      "seq": 52,
+      "op": "strategy",
+      "payload": {
+        "who": "wren",
+        "shape": "listen",
+        "move": "needle",
+        "payoff": 0.5,
+        "scene": {
+          "rumor": "stitch",
+          "crowd": "thick",
+          "mood": "fearful"
+        },
+        "night": 1
+      },
+      "sticky": false,
+      "prev": "bc16b2d6ca9596bf0c255bfe62bcea412c76b5683cf7b253df173a141e45948d",
+      "tip": "6e7276ad64cf0bb185ae140342a5f7a147f336e91955285d645dadb93bb479ac"
+    },
+    {
+      "seq": 53,
+      "op": "scar",
+      "payload": {
+        "who": "referee",
+        "text": "wren: outcome mixed (payoff 0.5)"
+      },
+      "sticky": true,
+      "prev": "6e7276ad64cf0bb185ae140342a5f7a147f336e91955285d645dadb93bb479ac",
+      "tip": "03a170b27a8a601b355bd0e73bc9aecd4ba2723301ce56c0c9e0041d0dcec048"
+    },
+    {
+      "seq": 54,
+      "op": "say",
+      "payload": {
+        "who": "marrow",
+        "text": "Pell, hear the wording before you take the pen: *the record holds only what was witnessed whole, and a witness is not a mirror, however polished.* If you write in Wren's hand, the hand is on the page, and I must write *Pell, in the manner of Wren* — which is true, and therefore permitted, and therefore a knife I hand you open. Say it as it was, not as you wish it read.\n\nMOVE: witness"
+      },
+      "sticky": false,
+      "prev": "03a170b27a8a601b355bd0e73bc9aecd4ba2723301ce56c0c9e0041d0dcec048",
+      "tip": "682a55acb36afb367d71287cb01cf1a0427d6727794e23ed7b485733326ed005"
+    },
+    {
+      "seq": 55,
+      "op": "thought",
+      "payload": {
+        "who": "marrow",
+        "beat": "act",
+        "tokens": 423,
+        "night": 1,
+        "note": "full-thought beat"
+      },
+      "sticky": false,
+      "prev": "682a55acb36afb367d71287cb01cf1a0427d6727794e23ed7b485733326ed005",
+      "tip": "dd198bf0c4ec9a5b81dbcb0f2bc2d3b2669bccd262f064c20b861664e2941ea5"
+    },
+    {
+      "seq": 56,
+      "op": "set",
+      "payload": {
+        "dial": "marrow_scene",
+        "to": "{\"witnesses\":4,\"candle\":\"guttering\",\"quiet\":true}",
+        "why": "night-1 beat for marrow"
+      },
+      "sticky": false,
+      "prev": "dd198bf0c4ec9a5b81dbcb0f2bc2d3b2669bccd262f064c20b861664e2941ea5",
+      "tip": "ff67352518051c457e71e255512939155070dc5fd28bb3d611bd3709ccabb0b7"
+    },
+    {
+      "seq": 57,
+      "op": "strategy",
+      "payload": {
+        "who": "marrow",
+        "shape": "rite",
+        "move": "witness",
+        "payoff": 0.5,
+        "scene": {
+          "witnesses": 4,
+          "candle": "guttering",
+          "quiet": true
+        },
+        "night": 1
+      },
+      "sticky": false,
+      "prev": "ff67352518051c457e71e255512939155070dc5fd28bb3d611bd3709ccabb0b7",
+      "tip": "69c60d21da319eb9b064d040fb151fb480e57d26eb98a90bd9f1dbfb086c014d"
+    },
+    {
+      "seq": 58,
+      "op": "scar",
+      "payload": {
+        "who": "referee",
+        "text": "marrow: outcome mixed (payoff 0.5)"
+      },
+      "sticky": true,
+      "prev": "69c60d21da319eb9b064d040fb151fb480e57d26eb98a90bd9f1dbfb086c014d",
+      "tip": "790d51234bf569d4ebc79ba8e555c890da90b3ff77985de8c3a78a1bd6a3e6fa"
+    },
+    {
+      "seq": 59,
+      "op": "say",
+      "payload": {
+        "who": "brass",
+        "text": "*muttering to herself as she examines the watch-double* Well, well, what have we here? A flaw marked in my own hand, but not by my own doing. *chuckles* Oh, you clever little watch-double, you. Someone's been tinkering with you, haven't they? And they wanted me to find it, too. *looks up at the shop around her, a glint of excitement in her eyes* I do love a good mystery. Right then, let's see what you can really do.\n\nMOVE: dismantle"
+      },
+      "sticky": false,
+      "prev": "790d51234bf569d4ebc79ba8e555c890da90b3ff77985de8c3a78a1bd6a3e6fa",
+      "tip": "27d24286dcfa56136f14a46a1cb7be4be886fa6725d42a89a94ac1d8f67866d0"
+    },
+    {
+      "seq": 60,
+      "op": "thought",
+      "payload": {
+        "who": "brass",
+        "beat": "act",
+        "tokens": 448,
+        "night": 1,
+        "note": "full-thought beat"
+      },
+      "sticky": false,
+      "prev": "27d24286dcfa56136f14a46a1cb7be4be886fa6725d42a89a94ac1d8f67866d0",
+      "tip": "e66129c2126d2387255c7311e81ed318e5a5fa7a11098922c0fe8a7392ad4c07"
+    },
+    {
+      "seq": 61,
+      "op": "set",
+      "payload": {
+        "dial": "brass_scene",
+        "to": "{\"shop\":\"open\",\"order\":\"kind\",\"deadline\":2}",
+        "why": "night-1 beat for brass"
+      },
+      "sticky": false,
+      "prev": "e66129c2126d2387255c7311e81ed318e5a5fa7a11098922c0fe8a7392ad4c07",
+      "tip": "a7dd6bcc6ae792e89aa9af201158318e69d9af1458448ca35b2f95bca22b84d9"
+    },
+    {
+      "seq": 62,
+      "op": "strategy",
+      "payload": {
+        "who": "brass",
+        "shape": "tinker",
+        "move": "dismantle",
+        "payoff": 1,
+        "scene": {
+          "shop": "open",
+          "order": "kind",
+          "deadline": 2
+        },
+        "night": 1
+      },
+      "sticky": false,
+      "prev": "a7dd6bcc6ae792e89aa9af201158318e69d9af1458448ca35b2f95bca22b84d9",
+      "tip": "ad8f80074a2f945a10db2df0a3e04067816064b83b4af9b3f22535d8e369007e"
+    },
+    {
+      "seq": 63,
+      "op": "scar",
+      "payload": {
+        "who": "referee",
+        "text": "brass: outcome clean (payoff 1)"
+      },
+      "sticky": true,
+      "prev": "ad8f80074a2f945a10db2df0a3e04067816064b83b4af9b3f22535d8e369007e",
+      "tip": "0150424710580171666db416a06d30b746b9bfee91e7b4be9bdb6f97c1f1743b"
+    },
+    {
+      "seq": 64,
+      "op": "say",
+      "payload": {
+        "who": "quill",
+        "text": ""
+      },
+      "sticky": false,
+      "prev": "0150424710580171666db416a06d30b746b9bfee91e7b4be9bdb6f97c1f1743b",
+      "tip": "46c9464f4214906b070644ef0a71bcf42079eda54251311938f038a43f7bcf2f"
+    },
+    {
+      "seq": 65,
+      "op": "thought",
+      "payload": {
+        "who": "quill",
+        "beat": "act",
+        "tokens": 813,
+        "night": 1,
+        "note": "full-thought beat"
+      },
+      "sticky": false,
+      "prev": "46c9464f4214906b070644ef0a71bcf42079eda54251311938f038a43f7bcf2f",
+      "tip": "40bbbfa18b9a6ebe46caf3e761668999c611dbef5939726263ce70af1ce07d9e"
+    },
+    {
+      "seq": 66,
+      "op": "set",
+      "payload": {
+        "dial": "quill_scene",
+        "to": "{\"errand\":\"winding\",\"book\":1,\"master\":\"absent\"}",
+        "why": "night-1 beat for quill"
+      },
+      "sticky": false,
+      "prev": "40bbbfa18b9a6ebe46caf3e761668999c611dbef5939726263ce70af1ce07d9e",
+      "tip": "4cb4dbeb605c40c6a730f55ca49889928c687a87d9f9dcaaf5d1d63cd08e4298"
+    },
+    {
+      "seq": 67,
+      "op": "strategy",
+      "payload": {
+        "who": "quill",
+        "shape": "errand",
+        "move": "run",
+        "payoff": 0.5,
+        "scene": {
+          "errand": "winding",
+          "book": 1,
+          "master": "absent"
+        },
+        "night": 1
+      },
+      "sticky": false,
+      "prev": "4cb4dbeb605c40c6a730f55ca49889928c687a87d9f9dcaaf5d1d63cd08e4298",
+      "tip": "e4570146f009986053abe9eb71331bbc70794d5a6fde45c5acf575369ae03e62"
+    },
+    {
+      "seq": 68,
+      "op": "scar",
+      "payload": {
+        "who": "referee",
+        "text": "quill: outcome mixed (payoff 0.5)"
+      },
+      "sticky": true,
+      "prev": "e4570146f009986053abe9eb71331bbc70794d5a6fde45c5acf575369ae03e62",
+      "tip": "7d55a31f42232d91cae0adfacb07213506530c386527b11a8ee37377eb3928d7"
+    },
+    {
+      "seq": 69,
+      "op": "say",
+      "payload": {
+        "who": "kestrel",
+        "text": "Thirteen stalls. Sergeant at the fountain, arguing with a shadow that moves without eyes. The watch-double walked the pier at the same minute every night and saved a drowning man. The pattern does not need me. He is right.\n\nMOVE: press"
+      },
+      "sticky": false,
+      "prev": "7d55a31f42232d91cae0adfacb07213506530c386527b11a8ee37377eb3928d7",
+      "tip": "2432201f2f3ac3b22fe6ce28c4c3a3a0c3593a4b688aef5a377682a9f667b184"
+    },
+    {
+      "seq": 70,
+      "op": "thought",
+      "payload": {
+        "who": "kestrel",
+        "beat": "act",
+        "tokens": 402,
+        "night": 1,
+        "note": "full-thought beat"
+      },
+      "sticky": false,
+      "prev": "2432201f2f3ac3b22fe6ce28c4c3a3a0c3593a4b688aef5a377682a9f667b184",
+      "tip": "d48376561e0d1808064d38037fbbafa84acce21d3a642fd8c2b319e037f31c14"
+    },
+    {
+      "seq": 71,
+      "op": "set",
+      "payload": {
+        "dial": "kestrel_scene",
+        "to": "{\"stalls\":13,\"drunk\":true,\"guards\":\"moving\",\"threat\":\"high\"}",
+        "why": "night-1 beat for kestrel"
+      },
+      "sticky": false,
+      "prev": "d48376561e0d1808064d38037fbbafa84acce21d3a642fd8c2b319e037f31c14",
+      "tip": "fbd3309821e32c9d1487f9a3dc8153166d1f3a2d6fa292ef3131e312e2445648"
+    },
+    {
+      "seq": 72,
+      "op": "strategy",
+      "payload": {
+        "who": "kestrel",
+        "shape": "patrol",
+        "move": "press",
+        "payoff": 0.5,
+        "scene": {
+          "stalls": 13,
+          "drunk": true,
+          "guards": "moving",
+          "threat": "high"
+        },
+        "night": 1
+      },
+      "sticky": false,
+      "prev": "fbd3309821e32c9d1487f9a3dc8153166d1f3a2d6fa292ef3131e312e2445648",
+      "tip": "4102f8f72bc3da98a61fff30eb8e99b033ec0b3f6854cec194add5ad5e335f41"
+    },
+    {
+      "seq": 73,
+      "op": "scar",
+      "payload": {
+        "who": "referee",
+        "text": "kestrel: outcome mixed (payoff 0.5)"
+      },
+      "sticky": true,
+      "prev": "4102f8f72bc3da98a61fff30eb8e99b033ec0b3f6854cec194add5ad5e335f41",
+      "tip": "2a52836cee2a6c7b1baf8e520a2dbc01b16d711f9e3b72d33338f2f773519cde"
+    },
+    {
+      "seq": 74,
+      "op": "say",
+      "payload": {
+        "who": "wren",
+        "text": ""
+      },
+      "sticky": false,
+      "prev": "2a52836cee2a6c7b1baf8e520a2dbc01b16d711f9e3b72d33338f2f773519cde",
+      "tip": "a9cb42c879f05a4ab196e2535d367fdae2fc902f6273ea5a90fe62ca80937619"
+    },
+    {
+      "seq": 75,
+      "op": "thought",
+      "payload": {
+        "who": "wren",
+        "beat": "act",
+        "tokens": 750,
+        "night": 1,
+        "note": "full-thought beat"
+      },
+      "sticky": false,
+      "prev": "a9cb42c879f05a4ab196e2535d367fdae2fc902f6273ea5a90fe62ca80937619",
+      "tip": "4da506a4b09b89662c6e5d397605d5378d8aa541f2f207b3187783dd9635b113"
+    },
+    {
+      "seq": 76,
+      "op": "set",
+      "payload": {
+        "dial": "wren_scene",
+        "to": "{\"rumor\":\"watchdouble\",\"crowd\":\"thin\",\"mood\":\"fearful\"}",
+        "why": "night-1 beat for wren"
+      },
+      "sticky": false,
+      "prev": "4da506a4b09b89662c6e5d397605d5378d8aa541f2f207b3187783dd9635b113",
+      "tip": "e576cf180b49839d50f790896ffbc8df91234bcc1c97ec8e401d1756f075799b"
+    },
+    {
+      "seq": 77,
+      "op": "strategy",
+      "payload": {
+        "who": "wren",
+        "shape": "listen",
+        "move": "weave",
+        "payoff": 0.5,
+        "scene": {
+          "rumor": "watchdouble",
+          "crowd": "thin",
+          "mood": "fearful"
+        },
+        "night": 1
+      },
+      "sticky": false,
+      "prev": "e576cf180b49839d50f790896ffbc8df91234bcc1c97ec8e401d1756f075799b",
+      "tip": "8ac87af1ba9b0f1fb6ebb40ae1db9a5b2e2cda1f070723914f1e7ceffb773c2c"
+    },
+    {
+      "seq": 78,
+      "op": "scar",
+      "payload": {
+        "who": "referee",
+        "text": "wren: outcome mixed (payoff 0.5)"
+      },
+      "sticky": true,
+      "prev": "8ac87af1ba9b0f1fb6ebb40ae1db9a5b2e2cda1f070723914f1e7ceffb773c2c",
+      "tip": "60594e4809152e58295f3cac5210043a1cf1a0627d229ed9ee287901f4a6854c"
+    },
+    {
+      "seq": 79,
+      "op": "say",
+      "payload": {
+        "who": "marrow",
+        "text": "Five witnesses, the candle lit, and the Quarter repeating the clause in doorways as if repetition made it true. *Say it as it was,* the Ledger commands — so I put the question plainly to the wax: does the clause bind a habit that was borrowed, not given? The stop is a lie, and a lie unrecorded becomes the record. MOVE: witness"
+      },
+      "sticky": false,
+      "prev": "60594e4809152e58295f3cac5210043a1cf1a0627d229ed9ee287901f4a6854c",
+      "tip": "b7fdc498cf1f5dd2195980c75fce027a82051426dc33489894bcc7a1c9835a1e"
+    },
+    {
+      "seq": 80,
+      "op": "thought",
+      "payload": {
+        "who": "marrow",
+        "beat": "act",
+        "tokens": 403,
+        "night": 1,
+        "note": "full-thought beat"
+      },
+      "sticky": false,
+      "prev": "b7fdc498cf1f5dd2195980c75fce027a82051426dc33489894bcc7a1c9835a1e",
+      "tip": "196e1fce1215f741aac26f56992ba3bd30b9464eb166c5daae18dce9f932e454"
+    },
+    {
+      "seq": 81,
+      "op": "set",
+      "payload": {
+        "dial": "marrow_scene",
+        "to": "{\"witnesses\":5,\"candle\":\"lit\",\"quiet\":false}",
+        "why": "night-1 beat for marrow"
+      },
+      "sticky": false,
+      "prev": "196e1fce1215f741aac26f56992ba3bd30b9464eb166c5daae18dce9f932e454",
+      "tip": "eda5ed44d920612272781b110c4bea3d614ab020e62587fdfd5d4b4693c10085"
+    },
+    {
+      "seq": 82,
+      "op": "strategy",
+      "payload": {
+        "who": "marrow",
+        "shape": "rite",
+        "move": "witness",
+        "payoff": 0.5,
+        "scene": {
+          "witnesses": 5,
+          "candle": "lit",
+          "quiet": false
+        },
+        "night": 1
+      },
+      "sticky": false,
+      "prev": "eda5ed44d920612272781b110c4bea3d614ab020e62587fdfd5d4b4693c10085",
+      "tip": "2f258fe9a9065c1e17329c2a9d421ff967c8194428e06ca4851e182a88d428a3"
+    },
+    {
+      "seq": 83,
+      "op": "scar",
+      "payload": {
+        "who": "referee",
+        "text": "marrow: outcome mixed (payoff 0.5)"
+      },
+      "sticky": true,
+      "prev": "2f258fe9a9065c1e17329c2a9d421ff967c8194428e06ca4851e182a88d428a3",
+      "tip": "40c30b5d461bd0a7d00996a4ed29edf42015ae7cb5e749bc678b6330bb3a9d70"
+    },
+    {
+      "seq": 84,
+      "op": "say",
+      "payload": {
+        "who": "brass",
+        "text": "*looks at the true stop, then at the watch-double's housing flaw* \"This is a test, isn't it? Of who I am, what I believe. Do I trust my creations, my companions, myself?\" *sighs and sets down the true stop* \"No, I won't install it. Not yet. Kestrel deserves their autonomy, their own choices, even if it makes my work harder.\" *looks around the quiet shop, a small smile on my face* \"I love this place, you know. Even when it's challenging me, pushing me to be better.\"\n\nMOVE: dismantle"
+      },
+      "sticky": false,
+      "prev": "40c30b5d461bd0a7d00996a4ed29edf42015ae7cb5e749bc678b6330bb3a9d70",
+      "tip": "9bcae0f676046a7c9b694094cf7db2299c2de236d89ff5e25c21033e2337065d"
+    },
+    {
+      "seq": 85,
+      "op": "thought",
+      "payload": {
+        "who": "brass",
+        "beat": "act",
+        "tokens": 465,
+        "night": 1,
+        "note": "full-thought beat"
+      },
+      "sticky": false,
+      "prev": "9bcae0f676046a7c9b694094cf7db2299c2de236d89ff5e25c21033e2337065d",
+      "tip": "e271691a1085799d458cd69712a49de708bfb858729a8f4a685750d6ee46010a"
+    },
+    {
+      "seq": 86,
+      "op": "set",
+      "payload": {
+        "dial": "brass_scene",
+        "to": "{\"shop\":\"open\",\"order\":\"none\",\"deadline\":1}",
+        "why": "night-1 beat for brass"
+      },
+      "sticky": false,
+      "prev": "e271691a1085799d458cd69712a49de708bfb858729a8f4a685750d6ee46010a",
+      "tip": "c60913e1885c09003165d255ce23b64440c564a6000cf03026108e319facbbc3"
+    },
+    {
+      "seq": 87,
+      "op": "strategy",
+      "payload": {
+        "who": "brass",
+        "shape": "tinker",
+        "move": "dismantle",
+        "payoff": 0.5,
+        "scene": {
+          "shop": "open",
+          "order": "none",
+          "deadline": 1
+        },
+        "night": 1
+      },
+      "sticky": false,
+      "prev": "c60913e1885c09003165d255ce23b64440c564a6000cf03026108e319facbbc3",
+      "tip": "e6add4da8250873b78289b773d6c6b2240eb8bc087d03056cf0a4d976abefc0b"
+    },
+    {
+      "seq": 88,
+      "op": "scar",
+      "payload": {
+        "who": "referee",
+        "text": "brass: outcome mixed (payoff 0.5)"
+      },
+      "sticky": true,
+      "prev": "e6add4da8250873b78289b773d6c6b2240eb8bc087d03056cf0a4d976abefc0b",
+      "tip": "610c38309eb575b94c7685447940c9ca891ed51bbcab9295344c332ba78a990a"
+    },
+    {
+      "seq": 89,
+      "op": "say",
+      "payload": {
+        "who": "quill",
+        "text": "The polished stop gleams on the Vesper Table, its eight turns past true still hanging in quiet suspense. I slide the lever gently onto the wooden surface, feeling the weight of its history in my hand. “Make sure the market knows I delivered it, not the shop,” I say, my voice louder than I"
+      },
+      "sticky": false,
+      "prev": "610c38309eb575b94c7685447940c9ca891ed51bbcab9295344c332ba78a990a",
+      "tip": "338772606b75412fb59f1c125a5fdb2b84c292160dd988f21e971b3ccddf1a4b"
+    },
+    {
+      "seq": 90,
+      "op": "thought",
+      "payload": {
+        "who": "quill",
+        "beat": "act",
+        "tokens": 799,
+        "night": 1,
+        "note": "full-thought beat"
+      },
+      "sticky": false,
+      "prev": "338772606b75412fb59f1c125a5fdb2b84c292160dd988f21e971b3ccddf1a4b",
+      "tip": "535798f284f924cbae3bedd3ef505845aee941ba2461cc8364a9dfd88ef5061c"
+    },
+    {
+      "seq": 91,
+      "op": "set",
+      "payload": {
+        "dial": "quill_scene",
+        "to": "{\"errand\":\"delivery\",\"book\":0,\"master\":\"absent\"}",
+        "why": "night-1 beat for quill"
+      },
+      "sticky": false,
+      "prev": "535798f284f924cbae3bedd3ef505845aee941ba2461cc8364a9dfd88ef5061c",
+      "tip": "ee404f26c03db6e44c5af41a1c16aa7dcb97a370ca852597c68fa0f6695f4288"
+    },
+    {
+      "seq": 92,
+      "op": "strategy",
+      "payload": {
+        "who": "quill",
+        "shape": "errand",
+        "move": "run",
+        "payoff": 0.5,
+        "scene": {
+          "errand": "delivery",
+          "book": 0,
+          "master": "absent"
+        },
+        "night": 1
+      },
+      "sticky": false,
+      "prev": "ee404f26c03db6e44c5af41a1c16aa7dcb97a370ca852597c68fa0f6695f4288",
+      "tip": "5c4b389d53efb7f101cd1fbf299688fc9fe58576df492387456a1c00b7701c47"
+    },
+    {
+      "seq": 93,
+      "op": "scar",
+      "payload": {
+        "who": "referee",
+        "text": "quill: outcome mixed (payoff 0.5)"
+      },
+      "sticky": true,
+      "prev": "5c4b389d53efb7f101cd1fbf299688fc9fe58576df492387456a1c00b7701c47",
+      "tip": "05e83ca6f0f6c8453f03ac4b76de74defff1c16bbedd67f6c33f46e61d97e4db"
+    },
+    {
+      "seq": 94,
+      "op": "say",
+      "payload": {
+        "who": "kestrel",
+        "text": "KESTREL: 14 stalls. 6 drunk. 1 pickpocket. 1 watch-double. \n\nThe moon follows. I count his fingers. He is reaching. Brass tightens a gauntlet. Wren hums. \n\nMOVE: circle"
+      },
+      "sticky": false,
+      "prev": "05e83ca6f0f6c8453f03ac4b76de74defff1c16bbedd67f6c33f46e61d97e4db",
+      "tip": "ebd7de3ae24fc9f014b088292ded751e741e00ccca76d453ed791a09d41dcbc4"
+    },
+    {
+      "seq": 95,
+      "op": "thought",
+      "payload": {
+        "who": "kestrel",
+        "beat": "act",
+        "tokens": 406,
+        "night": 1,
+        "note": "full-thought beat"
+      },
+      "sticky": false,
+      "prev": "ebd7de3ae24fc9f014b088292ded751e741e00ccca76d453ed791a09d41dcbc4",
+      "tip": "f7cfef7cb12b5be30f7b53617dfaed4271d5726d0f27539129c97c13325876b3"
+    },
+    {
+      "seq": 96,
+      "op": "set",
+      "payload": {
+        "dial": "kestrel_scene",
+        "to": "{\"stalls\":14,\"drunk\":true,\"guards\":\"watchdouble\",\"threat\":\"low\"}",
+        "why": "night-1 beat for kestrel"
+      },
+      "sticky": false,
+      "prev": "f7cfef7cb12b5be30f7b53617dfaed4271d5726d0f27539129c97c13325876b3",
+      "tip": "ba56e4c910538be1beabde5fcb2733a81f7bd06dc6f23ba1550dc3801dea5b93"
+    },
+    {
+      "seq": 97,
+      "op": "strategy",
+      "payload": {
+        "who": "kestrel",
+        "shape": "patrol",
+        "move": "circle",
+        "payoff": 0.5,
+        "scene": {
+          "stalls": 14,
+          "drunk": true,
+          "guards": "watchdouble",
+          "threat": "low"
+        },
+        "night": 1
+      },
+      "sticky": false,
+      "prev": "ba56e4c910538be1beabde5fcb2733a81f7bd06dc6f23ba1550dc3801dea5b93",
+      "tip": "cdf10884352e6aae9f93100dd3c33b5ff33cf5123a953515c2154d9f1981f709"
+    },
+    {
+      "seq": 98,
+      "op": "scar",
+      "payload": {
+        "who": "referee",
+        "text": "kestrel: outcome mixed (payoff 0.5)"
+      },
+      "sticky": true,
+      "prev": "cdf10884352e6aae9f93100dd3c33b5ff33cf5123a953515c2154d9f1981f709",
+      "tip": "eb0c763c03c366ad8d2eb659e6932b8faa7ac2b833f6c5af840ec2da3a05d01f"
+    },
+    {
+      "seq": 99,
+      "op": "say",
+      "payload": {
+        "who": "wren",
+        "text": ""
+      },
+      "sticky": false,
+      "prev": "eb0c763c03c366ad8d2eb659e6932b8faa7ac2b833f6c5af840ec2da3a05d01f",
+      "tip": "856d86e1c74d24ac8182e4a41aff1046cc026179f4034621c5fdd250b369b809"
+    },
+    {
+      "seq": 100,
+      "op": "thought",
+      "payload": {
+        "who": "wren",
+        "beat": "act",
+        "tokens": 748,
+        "night": 1,
+        "note": "full-thought beat"
+      },
+      "sticky": false,
+      "prev": "856d86e1c74d24ac8182e4a41aff1046cc026179f4034621c5fdd250b369b809",
+      "tip": "9fdb5401db9623f411a0bd78bb40c2413acd89d197e52c08a57fd5246655d415"
+    },
+    {
+      "seq": 101,
+      "op": "set",
+      "payload": {
+        "dial": "wren_scene",
+        "to": "{\"rumor\":\"pell\",\"crowd\":\"thick\",\"mood\":\"hopeful\"}",
+        "why": "night-1 beat for wren"
+      },
+      "sticky": false,
+      "prev": "9fdb5401db9623f411a0bd78bb40c2413acd89d197e52c08a57fd5246655d415",
+      "tip": "ff2a71e34a0cff65027a6e06cad1ee8b2b2f91b4d47b4839a242db2335dfd1fe"
+    },
+    {
+      "seq": 102,
+      "op": "strategy",
+      "payload": {
+        "who": "wren",
+        "shape": "listen",
+        "move": "weave",
+        "payoff": 0.5,
+        "scene": {
+          "rumor": "pell",
+          "crowd": "thick",
+          "mood": "hopeful"
+        },
+        "night": 1
+      },
+      "sticky": false,
+      "prev": "ff2a71e34a0cff65027a6e06cad1ee8b2b2f91b4d47b4839a242db2335dfd1fe",
+      "tip": "349a5f87d048ce5384215bc0c668c7ab221a707d49c3c73e46c13f40dfbb5410"
+    },
+    {
+      "seq": 103,
+      "op": "scar",
+      "payload": {
+        "who": "referee",
+        "text": "wren: outcome mixed (payoff 0.5)"
+      },
+      "sticky": true,
+      "prev": "349a5f87d048ce5384215bc0c668c7ab221a707d49c3c73e46c13f40dfbb5410",
+      "tip": "5a8efd7431813fc969861e545ecdb167d9fde9229719934406bde42cf14f43ff"
+    },
+    {
+      "seq": 104,
+      "op": "say",
+      "payload": {
+        "who": "marrow",
+        "text": "The candle is lit; the room is quiet; there are five of us, and I am the fifth, and I say the words as they were written to be said: *I lay down the rite; I lay down the hand that held it; the Ledger closes the column and the column is true.* My hands remain at my sides, and I make no motion toward the dismantling, and I say the next sentence also, because the record must hold: *The hands did not move; the words were said anyway.* I know what I am doing. I am witnessing what I am doing.\n\nMOVE: witness"
+      },
+      "sticky": false,
+      "prev": "5a8efd7431813fc969861e545ecdb167d9fde9229719934406bde42cf14f43ff",
+      "tip": "7f126e9784d535b98f4b9cd2897bd50e288a29ab25b3e12139d64a67e47cfdf4"
+    },
+    {
+      "seq": 105,
+      "op": "thought",
+      "payload": {
+        "who": "marrow",
+        "beat": "act",
+        "tokens": 454,
+        "night": 1,
+        "note": "full-thought beat"
+      },
+      "sticky": false,
+      "prev": "7f126e9784d535b98f4b9cd2897bd50e288a29ab25b3e12139d64a67e47cfdf4",
+      "tip": "d9abd60682398de7f3f4e7a58ae1bd89a0c4df45adeee916056b34412107a234"
+    },
+    {
+      "seq": 106,
+      "op": "set",
+      "payload": {
+        "dial": "marrow_scene",
+        "to": "{\"witnesses\":5,\"candle\":\"lit\",\"quiet\":true}",
+        "why": "night-1 beat for marrow"
+      },
+      "sticky": false,
+      "prev": "d9abd60682398de7f3f4e7a58ae1bd89a0c4df45adeee916056b34412107a234",
+      "tip": "3da6f8054f5a0f2048a2484635332f1af0209acfeb6a2251efcd081b91a29443"
+    },
+    {
+      "seq": 107,
+      "op": "strategy",
+      "payload": {
+        "who": "marrow",
+        "shape": "rite",
+        "move": "witness",
+        "payoff": 1,
+        "scene": {
+          "witnesses": 5,
+          "candle": "lit",
+          "quiet": true
+        },
+        "night": 1
+      },
+      "sticky": false,
+      "prev": "3da6f8054f5a0f2048a2484635332f1af0209acfeb6a2251efcd081b91a29443",
+      "tip": "66cd240e5c2636593537a12acd879dfd5b92faf5d4ec2be2b436b9dc2c4ff527"
+    },
+    {
+      "seq": 108,
+      "op": "scar",
+      "payload": {
+        "who": "referee",
+        "text": "marrow: outcome clean (payoff 1)"
+      },
+      "sticky": true,
+      "prev": "66cd240e5c2636593537a12acd879dfd5b92faf5d4ec2be2b436b9dc2c4ff527",
+      "tip": "4c85ea47038652ec980bc74eed16c903acc046b37d741f491c4f266dfb4f8fdd"
+    },
+    {
+      "seq": 109,
+      "op": "say",
+      "payload": {
+        "who": "brass",
+        "text": "*brass looks up from the stack of orders, a knowing smile spreading across his face* Aha, my dear shop! So it was you, writing these orders all along. *he reaches out to tap the little bell, setting it quivering* I should have known - who else could mimic my hand so perfectly? \n\nMOVE: wind"
+      },
+      "sticky": false,
+      "prev": "4c85ea47038652ec980bc74eed16c903acc046b37d741f491c4f266dfb4f8fdd",
+      "tip": "39c60d573269bafd0de3307d1eaf4ec79102a5030d97967ed0edcf19a31ea429"
+    },
+    {
+      "seq": 110,
+      "op": "thought",
+      "payload": {
+        "who": "brass",
+        "beat": "act",
+        "tokens": 423,
+        "night": 1,
+        "note": "full-thought beat"
+      },
+      "sticky": false,
+      "prev": "39c60d573269bafd0de3307d1eaf4ec79102a5030d97967ed0edcf19a31ea429",
+      "tip": "90e012d40507d457c4fea587f92dd302f766b19da77c80360ee358deacc0d786"
+    },
+    {
+      "seq": 111,
+      "op": "set",
+      "payload": {
+        "dial": "brass_scene",
+        "to": "{\"shop\":\"open\",\"order\":\"none\",\"deadline\":0}",
+        "why": "night-1 beat for brass"
+      },
+      "sticky": false,
+      "prev": "90e012d40507d457c4fea587f92dd302f766b19da77c80360ee358deacc0d786",
+      "tip": "91a74073ad832fca87ea150dff6f2fe92c3cd053bf00efbcfac4cbd6850e6909"
+    },
+    {
+      "seq": 112,
+      "op": "strategy",
+      "payload": {
+        "who": "brass",
+        "shape": "tinker",
+        "move": "wind",
+        "payoff": 1,
+        "scene": {
+          "shop": "open",
+          "order": "none",
+          "deadline": 0
+        },
+        "night": 1
+      },
+      "sticky": false,
+      "prev": "91a74073ad832fca87ea150dff6f2fe92c3cd053bf00efbcfac4cbd6850e6909",
+      "tip": "b43abe4de811ce0b45b95e942ef102dd75017235830a08115d003db136a71e21"
+    },
+    {
+      "seq": 113,
+      "op": "scar",
+      "payload": {
+        "who": "referee",
+        "text": "brass: outcome clean (payoff 1)"
+      },
+      "sticky": true,
+      "prev": "b43abe4de811ce0b45b95e942ef102dd75017235830a08115d003db136a71e21",
+      "tip": "29432b01195f308a1d15f0f634f22235370efe511ec1f9b3e9c969b808a2fd94"
+    },
+    {
+      "seq": 114,
+      "op": "say",
+      "payload": {
+        "who": "quill",
+        "text": ""
+      },
+      "sticky": false,
+      "prev": "29432b01195f308a1d15f0f634f22235370efe511ec1f9b3e9c969b808a2fd94",
+      "tip": "f33bb668af1fb79b3ff7611fd75624c531d8967cf6b4a06750dfb0a627bc7345"
+    },
+    {
+      "seq": 115,
+      "op": "thought",
+      "payload": {
+        "who": "quill",
+        "beat": "act",
+        "tokens": 833,
+        "night": 1,
+        "note": "full-thought beat"
+      },
+      "sticky": false,
+      "prev": "f33bb668af1fb79b3ff7611fd75624c531d8967cf6b4a06750dfb0a627bc7345",
+      "tip": "b07f170b2194bc67e4ae53e3aa10a4b41d18dd11eb5b53b062b68aa295bd8ffa"
+    },
+    {
+      "seq": 116,
+      "op": "set",
+      "payload": {
+        "dial": "quill_scene",
+        "to": "{\"errand\":\"leaver\",\"book\":0,\"master\":\"present\"}",
+        "why": "night-1 beat for quill"
+      },
+      "sticky": false,
+      "prev": "b07f170b2194bc67e4ae53e3aa10a4b41d18dd11eb5b53b062b68aa295bd8ffa",
+      "tip": "29e4fe4b5934e745ed7a1e2661f5a205cca099b7fddf17195eb48410b4fe1575"
+    },
+    {
+      "seq": 117,
+      "op": "strategy",
+      "payload": {
+        "who": "quill",
+        "shape": "errand",
+        "move": "note",
+        "payoff": 0.5,
+        "scene": {
+          "errand": "leaver",
+          "book": 0,
+          "master": "present"
+        },
+        "night": 1
+      },
+      "sticky": false,
+      "prev": "29e4fe4b5934e745ed7a1e2661f5a205cca099b7fddf17195eb48410b4fe1575",
+      "tip": "c266eaf04f66a9d28758b3bfa9bcd1e70d5d178211b080e244a60b54a8655c4d"
+    },
+    {
+      "seq": 118,
+      "op": "scar",
+      "payload": {
+        "who": "referee",
+        "text": "quill: outcome mixed (payoff 0.5)"
+      },
+      "sticky": true,
+      "prev": "c266eaf04f66a9d28758b3bfa9bcd1e70d5d178211b080e244a60b54a8655c4d",
+      "tip": "94eb3615a08910e878bcf02ca3cf33d55d5d1e47259e2d9006ffd502f07f8998"
+    },
+    {
+      "seq": 119,
+      "op": "scene.leave",
+      "payload": {},
+      "sticky": false,
+      "prev": "94eb3615a08910e878bcf02ca3cf33d55d5d1e47259e2d9006ffd502f07f8998",
+      "tip": "7df8129f0307f802470b4dc8e4ccdb1d5df70c821162cb66e29248dd4cfb77f9"
+    },
+    {
+      "seq": 120,
+      "op": "exoj.compile",
+      "payload": {
+        "exoj": {
+          "exoj": "brass.tinker",
+          "version": 4,
+          "owner": "brass",
+          "triggerShape": "tinker",
+          "policy": [
+            {
+              "when": {
+                "shop": "open"
+              },
+              "move": "wind"
+            },
+            {
+              "when": {},
+              "move": "wind"
+            }
+          ],
+          "deadband": {
+            "expected": {
+              "deadline": 0,
+              "order": "kind",
+              "shop": "open"
+            },
+            "weights": {
+              "deadline": 1,
+              "order": 1,
+              "shop": 1
+            },
+            "max": 0.53
+          },
+          "provenance": {
+            "nights": [
+              1
+            ],
+            "occurrences": 4,
+            "payoff": 0.88,
+            "variance": 0.0469,
+            "reproof_of": "v3"
+          }
+        }
+      },
+      "sticky": false,
+      "prev": "7df8129f0307f802470b4dc8e4ccdb1d5df70c821162cb66e29248dd4cfb77f9",
+      "tip": "46e62b6c6a83c6fd247606089e235fa54b1b848e5e140d55aad65541fe81ce21"
+    },
+    {
+      "seq": 121,
+      "op": "scar",
+      "payload": {
+        "who": "exocortex",
+        "text": "re-proved brass.tinker -> v4 in the new world (deadband 0.53; was v3)"
+      },
+      "sticky": true,
+      "prev": "46e62b6c6a83c6fd247606089e235fa54b1b848e5e140d55aad65541fe81ce21",
+      "tip": "5b4eb7325b7e81efffa162971bed1f8ced2e94b55674fe19db29d0319659115d"
+    },
+    {
+      "seq": 122,
+      "op": "exoj.compile",
+      "payload": {
+        "exoj": {
+          "exoj": "kestrel.patrol",
+          "version": 3,
+          "owner": "kestrel",
+          "triggerShape": "patrol",
+          "policy": [
+            {
+              "when": {
+                "drunk": true
+              },
+              "move": "circle"
+            },
+            {
+              "when": {
+                "guards": "watchdouble"
+              },
+              "move": "circle"
+            },
+            {
+              "when": {
+                "stalls": 14
+              },
+              "move": "circle"
+            },
+            {
+              "when": {
+                "threat": "low"
+              },
+              "move": "circle"
+            },
+            {
+              "when": {},
+              "move": "circle"
+            }
+          ],
+          "deadband": {
+            "expected": {
+              "drunk": "true",
+              "guards": "watchdouble",
+              "stalls": 14,
+              "threat": "high"
+            },
+            "weights": {
+              "drunk": 1,
+              "guards": 1,
+              "stalls": 1,
+              "threat": 1
+            },
+            "max": 0.6
+          },
+          "provenance": {
+            "nights": [
+              1
+            ],
+            "occurrences": 4,
+            "payoff": 0.5,
+            "variance": 0.125,
+            "reproof_of": "v2"
+          }
+        }
+      },
+      "sticky": false,
+      "prev": "5b4eb7325b7e81efffa162971bed1f8ced2e94b55674fe19db29d0319659115d",
+      "tip": "6cd1f30fff5cbccd20b1c2c4f8e158b4a399a7488fa4435b9d5e3fa73c4c4128"
+    },
+    {
+      "seq": 123,
+      "op": "scar",
+      "payload": {
+        "who": "exocortex",
+        "text": "re-proved kestrel.patrol -> v3 in the new world (deadband 0.6; was v2)"
+      },
+      "sticky": true,
+      "prev": "6cd1f30fff5cbccd20b1c2c4f8e158b4a399a7488fa4435b9d5e3fa73c4c4128",
+      "tip": "d14b992a32ef8daea95a832507fa43916c2588a3ca9e70e2700abccf5e2c2c1a"
+    },
+    {
+      "seq": 124,
+      "op": "exoj.compile",
+      "payload": {
+        "exoj": {
+          "exoj": "marrow.rite",
+          "version": 4,
+          "owner": "marrow",
+          "triggerShape": "rite",
+          "policy": [
+            {
+              "when": {
+                "candle": "lit"
+              },
+              "move": "witness"
+            },
+            {
+              "when": {
+                "quiet": true
+              },
+              "move": "witness"
+            },
+            {
+              "when": {
+                "witnesses": 5
+              },
+              "move": "witness"
+            },
+            {
+              "when": {},
+              "move": "witness"
+            }
+          ],
+          "deadband": {
+            "expected": {
+              "candle": "lit",
+              "quiet": "true",
+              "witnesses": 5
+            },
+            "weights": {
+              "candle": 1,
+              "quiet": 1,
+              "witnesses": 1
+            },
+            "max": 0.53
+          },
+          "provenance": {
+            "nights": [
+              1
+            ],
+            "occurrences": 4,
+            "payoff": 0.63,
+            "variance": 0.0469,
+            "reproof_of": "v3"
+          }
+        }
+      },
+      "sticky": false,
+      "prev": "d14b992a32ef8daea95a832507fa43916c2588a3ca9e70e2700abccf5e2c2c1a",
+      "tip": "a6c43fa4080b78c858a58b29c49ea1e32eafd030b61910e34bdf2218f077e8e7"
+    },
+    {
+      "seq": 125,
+      "op": "scar",
+      "payload": {
+        "who": "exocortex",
+        "text": "re-proved marrow.rite -> v4 in the new world (deadband 0.53; was v3)"
+      },
+      "sticky": true,
+      "prev": "a6c43fa4080b78c858a58b29c49ea1e32eafd030b61910e34bdf2218f077e8e7",
+      "tip": "757c5ef5aff2570ea8dcad69dcd5d28003b566989612963bad8e55ddcb25588f"
+    },
+    {
+      "seq": 126,
+      "op": "exoj.compile",
+      "payload": {
+        "exoj": {
+          "exoj": "quill.errand",
+          "version": 3,
+          "owner": "quill",
+          "triggerShape": "errand",
+          "policy": [
+            {
+              "when": {
+                "book": 1
+              },
+              "move": "run"
+            },
+            {
+              "when": {
+                "master": "absent"
+              },
+              "move": "run"
+            },
+            {
+              "when": {},
+              "move": "run"
+            }
+          ],
+          "deadband": {
+            "expected": {
+              "book": 0,
+              "errand": "leaver",
+              "master": "absent"
+            },
+            "weights": {
+              "book": 1,
+              "errand": 1,
+              "master": 1
+            },
+            "max": 0.15
+          },
+          "provenance": {
+            "nights": [
+              1
+            ],
+            "occurrences": 4,
+            "payoff": 0.5,
+            "variance": 0,
+            "reproof_of": "v2"
+          }
+        }
+      },
+      "sticky": false,
+      "prev": "757c5ef5aff2570ea8dcad69dcd5d28003b566989612963bad8e55ddcb25588f",
+      "tip": "2a3ff8497eb066b2bc75ae63e2f33a9e388cf625b2c78b4bbfaf7b2a2b9c2630"
+    },
+    {
+      "seq": 127,
+      "op": "scar",
+      "payload": {
+        "who": "exocortex",
+        "text": "re-proved quill.errand -> v3 in the new world (deadband 0.15; was v2)"
+      },
+      "sticky": true,
+      "prev": "2a3ff8497eb066b2bc75ae63e2f33a9e388cf625b2c78b4bbfaf7b2a2b9c2630",
+      "tip": "8f6b99c780982325188249a4c67b6433fd483eff6bb91f05e0a3dac3978df31c"
+    },
+    {
+      "seq": 128,
+      "op": "exoj.compile",
+      "payload": {
+        "exoj": {
+          "exoj": "wren.listen",
+          "version": 5,
+          "owner": "wren",
+          "triggerShape": "listen",
+          "policy": [
+            {
+              "when": {
+                "crowd": "thick"
+              },
+              "move": "weave"
+            },
+            {
+              "when": {
+                "rumor": "pell"
+              },
+              "move": "weave"
+            },
+            {
+              "when": {},
+              "move": "weave"
+            }
+          ],
+          "deadband": {
+            "expected": {
+              "crowd": "thick",
+              "mood": "fearful",
+              "rumor": "pell"
+            },
+            "weights": {
+              "crowd": 1,
+              "mood": 1,
+              "rumor": 1
+            },
+            "max": 0.15
+          },
+          "provenance": {
+            "nights": [
+              1
+            ],
+            "occurrences": 4,
+            "payoff": 0.5,
+            "variance": 0,
+            "reproof_of": "v4"
+          }
+        }
+      },
+      "sticky": false,
+      "prev": "8f6b99c780982325188249a4c67b6433fd483eff6bb91f05e0a3dac3978df31c",
+      "tip": "7ee3bdd039867157cedcd7d7e636c545f5b7e57a49516087efc4acb5eb5838fc"
+    },
+    {
+      "seq": 129,
+      "op": "scar",
+      "payload": {
+        "who": "exocortex",
+        "text": "re-proved wren.listen -> v5 in the new world (deadband 0.15; was v4)"
+      },
+      "sticky": true,
+      "prev": "7ee3bdd039867157cedcd7d7e636c545f5b7e57a49516087efc4acb5eb5838fc",
+      "tip": "2701faaddb5536b6d9811b729350444eba8e682fd63c9b49399d89d2c22fff34"
+    },
+    {
+      "seq": 130,
+      "op": "scene.enter",
+      "payload": {
+        "name": "night-2"
+      },
+      "sticky": false,
+      "prev": "2701faaddb5536b6d9811b729350444eba8e682fd63c9b49399d89d2c22fff34",
+      "tip": "e0adfc5f0c0255f441daa0c995f321df6d26143ffe674c882af95fb13c510665"
+    },
+    {
+      "seq": 131,
+      "op": "set",
+      "payload": {
+        "dial": "lantern_light",
+        "to": 1,
+        "why": "the second evening"
+      },
+      "sticky": false,
+      "prev": "e0adfc5f0c0255f441daa0c995f321df6d26143ffe674c882af95fb13c510665",
+      "tip": "fdccbb79a0bb4a67b7de2776533f6e5ebc917b29fe2345b4c8d0d3d137635956"
+    },
+    {
+      "seq": 132,
+      "op": "say",
+      "payload": {
+        "who": "gm",
+        "text": ""
+      },
+      "sticky": false,
+      "prev": "fdccbb79a0bb4a67b7de2776533f6e5ebc917b29fe2345b4c8d0d3d137635956",
+      "tip": "daf55b74c040824227d2fd635ed24e2b141784fc73311a20b406dd7f32417a3c"
+    },
+    {
+      "seq": 133,
+      "op": "thought",
+      "payload": {
+        "who": "gm",
+        "beat": "narration",
+        "tokens": 591,
+        "night": 2,
+        "note": "gm narration"
+      },
+      "sticky": false,
+      "prev": "daf55b74c040824227d2fd635ed24e2b141784fc73311a20b406dd7f32417a3c",
+      "tip": "22a2c2f4d3ac17e55c2664a0db8d27652146471e316a1c622a1919b8b5a268f7"
+    },
+    {
+      "seq": 134,
+      "op": "roll",
+      "payload": {
+        "solid": "d4",
+        "sides": 4,
+        "rolls": [
+          1
+        ],
+        "sum": 1,
+        "max": 0,
+        "seed": "e948a3dc",
+        "why": "how many surprises does night two deal?"
+      },
+      "sticky": false,
+      "prev": "22a2c2f4d3ac17e55c2664a0db8d27652146471e316a1c622a1919b8b5a268f7",
+      "tip": "18e0050fb403d3a15ede4938618f18c2b4d5786bafb5a5dc4420671200403f25"
+    },
+    {
+      "seq": 135,
+      "op": "roll",
+      "payload": {
+        "solid": "d12",
+        "sides": 12,
+        "rolls": [
+          8
+        ],
+        "sum": 8,
+        "max": 0,
+        "seed": "230c2a6e",
+        "why": "surprise 1 of night two"
+      },
+      "sticky": false,
+      "prev": "18e0050fb403d3a15ede4938618f18c2b4d5786bafb5a5dc4420671200403f25",
+      "tip": "925ced4a449f4afeff9b46d32d912e92b81adfb191416004223f01d741fc4b46"
+    },
+    {
+      "seq": 136,
+      "op": "scar",
+      "payload": {
+        "who": "world",
+        "text": "surprise lever-on-table aims at marrow: The true stop sits on the Vesper Table all evening - polished, waiting, the stopping made physical. Every conversation rearranges itself around it without once naming it."
+      },
+      "sticky": true,
+      "prev": "925ced4a449f4afeff9b46d32d912e92b81adfb191416004223f01d741fc4b46",
+      "tip": "90797e4145aba9d05c1588fed13100cd971281ed2e7781aa89b31cb18ff772c3"
+    },
+    {
+      "seq": 137,
+      "op": "exoj.run",
+      "payload": {
+        "exoj": "kestrel.patrol",
+        "version": 3,
+        "move": "circle",
+        "divergence": 0.25,
+        "night": 2
+      },
+      "sticky": false,
+      "prev": "90797e4145aba9d05c1588fed13100cd971281ed2e7781aa89b31cb18ff772c3",
+      "tip": "c1ac56c0b170af6c17dfa8d734cdc59bb2f643944b2c0599d98ff1191c68dad1"
+    },
+    {
+      "seq": 138,
+      "op": "say",
+      "payload": {
+        "who": "kestrel",
+        "text": "[auto] Kestrel circles the market. Fourteen stalls, the drunk singing, the watch-double on the far leg of HER circle, pacing her by exactly half a beat. She counts them anyway."
+      },
+      "sticky": false,
+      "prev": "c1ac56c0b170af6c17dfa8d734cdc59bb2f643944b2c0599d98ff1191c68dad1",
+      "tip": "dc1ce5ac23c520c187cb4ee7e322c890f46c44cd6ae073bba4a81f6cf0ce0a11"
+    },
+    {
+      "seq": 139,
+      "op": "roll",
+      "payload": {
+        "solid": "d20",
+        "sides": 20,
+        "rolls": [
+          5
+        ],
+        "sum": 5,
+        "max": 0,
+        "seed": "5dc42332",
+        "why": "mechanical outcome of kestrel's autoplay (the dice are mechanical)"
+      },
+      "sticky": false,
+      "prev": "dc1ce5ac23c520c187cb4ee7e322c890f46c44cd6ae073bba4a81f6cf0ce0a11",
+      "tip": "0878c72eb3d6bbf657da00af4322ae168293665db9e8339d19b5bafa73f11093"
+    },
+    {
+      "seq": 140,
+      "op": "exoj.run",
+      "payload": {
+        "exoj": "marrow.rite",
+        "version": 4,
+        "move": "witness",
+        "divergence": 0.067,
+        "night": 2
+      },
+      "sticky": false,
+      "prev": "0878c72eb3d6bbf657da00af4322ae168293665db9e8339d19b5bafa73f11093",
+      "tip": "6113aaf2efbc560efa2dc380e096290d2e5addf0e13a153f296af9d09789f826"
+    },
+    {
+      "seq": 141,
+      "op": "say",
+      "payload": {
+        "who": "marrow",
+        "text": "[auto] Marrow lights the candle-stub and speaks the evening witness: names, hour, weather, the market's count. The tablet takes it all without opinion. Her hand does not shake. She has practiced that too."
+      },
+      "sticky": false,
+      "prev": "6113aaf2efbc560efa2dc380e096290d2e5addf0e13a153f296af9d09789f826",
+      "tip": "0bab809dc3e566cb56956f3e306b95eefca93d6dee5673e8ad9d7e4f43e4e0f4"
+    },
+    {
+      "seq": 142,
+      "op": "roll",
+      "payload": {
+        "solid": "d20",
+        "sides": 20,
+        "rolls": [
+          12
+        ],
+        "sum": 12,
+        "max": 0,
+        "seed": "f82210b6",
+        "why": "mechanical outcome of marrow's autoplay (the dice are mechanical)"
+      },
+      "sticky": false,
+      "prev": "0bab809dc3e566cb56956f3e306b95eefca93d6dee5673e8ad9d7e4f43e4e0f4",
+      "tip": "210cd0e2ad8827f5ed6b1c62ad6d456d256093e6d7010908da5574b53a27b9f7"
+    },
+    {
+      "seq": 143,
+      "op": "exoj.run",
+      "payload": {
+        "exoj": "brass.tinker",
+        "version": 4,
+        "move": "wind",
+        "divergence": 0.333,
+        "night": 2
+      },
+      "sticky": false,
+      "prev": "210cd0e2ad8827f5ed6b1c62ad6d456d256093e6d7010908da5574b53a27b9f7",
+      "tip": "87a2cfbeb4888127103ca57c45f19b16caf47f179ca4264884d391ff30b9e4b3"
+    },
+    {
+      "seq": 144,
+      "op": "say",
+      "payload": {
+        "who": "brass",
+        "text": "[auto] Brass walks the bench and winds the evening mechanisms: the lamplighter, the ledger-arm, the little bell. Each takes its spring with a sound like a held breath."
+      },
+      "sticky": false,
+      "prev": "87a2cfbeb4888127103ca57c45f19b16caf47f179ca4264884d391ff30b9e4b3",
+      "tip": "35f488f7666abc2cf6e4542115c407173514e198ac73ac6e7b190e11b73890bb"
+    },
+    {
+      "seq": 145,
+      "op": "roll",
+      "payload": {
+        "solid": "d20",
+        "sides": 20,
+        "rolls": [
+          9
+        ],
+        "sum": 9,
+        "max": 0,
+        "seed": "be9efdf2",
+        "why": "mechanical outcome of brass's autoplay (the dice are mechanical)"
+      },
+      "sticky": false,
+      "prev": "35f488f7666abc2cf6e4542115c407173514e198ac73ac6e7b190e11b73890bb",
+      "tip": "e5a5a9f7fedaaf2a150bcf3118afb0b45588f379e3a927fa96dfbea1119706a6"
+    },
+    {
+      "seq": 146,
+      "op": "exoj.breach",
+      "payload": {
+        "exoj": "wren.listen",
+        "version": 5,
+        "divergence": 0.333,
+        "max": 0.15,
+        "cause": "the world refused the script",
+        "state": {
+          "rumor": "pell",
+          "crowd": "thick",
+          "mood": "hopeful"
+        },
+        "night": 2
+      },
+      "sticky": true,
+      "prev": "e5a5a9f7fedaaf2a150bcf3118afb0b45588f379e3a927fa96dfbea1119706a6",
+      "tip": "8fed0bd7938c7175011c5d382d04b11ddacc4abbba4ca0f13a70c176eb52b8ff"
+    },
+    {
+      "seq": 147,
+      "op": "set",
+      "payload": {
+        "dial": "deviation",
+        "to": 8,
+        "why": "wren's double seized (divergence 0.333 > 0.15)"
+      },
+      "sticky": false,
+      "prev": "8fed0bd7938c7175011c5d382d04b11ddacc4abbba4ca0f13a70c176eb52b8ff",
+      "tip": "0708c6da4348a4619387669e635d5448f917cbb103db712b7c8a827a958cf354"
+    },
+    {
+      "seq": 148,
+      "op": "say",
+      "payload": {
+        "who": "wren",
+        "text": ""
+      },
+      "sticky": false,
+      "prev": "0708c6da4348a4619387669e635d5448f917cbb103db712b7c8a827a958cf354",
+      "tip": "82b4ef2c02027f9ec392f775b089d8b4807a63af007b7ef4bc78102624b6130d"
+    },
+    {
+      "seq": 149,
+      "op": "thought",
+      "payload": {
+        "who": "wren",
+        "beat": "wake",
+        "tokens": 724,
+        "night": 2,
+        "note": "full-thought wake after breach"
+      },
+      "sticky": false,
+      "prev": "82b4ef2c02027f9ec392f775b089d8b4807a63af007b7ef4bc78102624b6130d",
+      "tip": "f5b8c951ddd279bb45f0c0246cf22c655b8810eb948d36687142d17928d9ffdd"
+    },
+    {
+      "seq": 150,
+      "op": "strategy",
+      "payload": {
+        "who": "wren",
+        "shape": "listen",
+        "move": "reimagine",
+        "payoff": 0.5,
+        "scene": {
+          "rumor": "pell",
+          "crowd": "thick",
+          "mood": "hopeful"
+        },
+        "night": 2
+      },
+      "sticky": false,
+      "prev": "f5b8c951ddd279bb45f0c0246cf22c655b8810eb948d36687142d17928d9ffdd",
+      "tip": "0ffb90b026d50c6fde9751c8e6293c1db4e96f09344bb25436b77c3e9e2dd8ef"
+    },
+    {
+      "seq": 151,
+      "op": "scar",
+      "payload": {
+        "who": "referee",
+        "text": "wren (wake): outcome mixed"
+      },
+      "sticky": true,
+      "prev": "0ffb90b026d50c6fde9751c8e6293c1db4e96f09344bb25436b77c3e9e2dd8ef",
+      "tip": "732c018220bf2792101096e1bfb74835d442df351b7bc17b6161f64caf734c0b"
+    },
+    {
+      "seq": 152,
+      "op": "exoj.reimagine",
+      "payload": {
+        "exoj": "wren.listen",
+        "from_version": 5,
+        "to_version": 6,
+        "tokens": 724,
+        "note": "re-calibrated from the breach",
+        "night": 2,
+        "next": {
+          "exoj": "wren.listen",
+          "version": 6,
+          "owner": "wren",
+          "triggerShape": "listen",
+          "policy": [
+            {
+              "when": {
+                "crowd": "thick"
+              },
+              "move": "weave"
+            },
+            {
+              "when": {
+                "rumor": "pell"
+              },
+              "move": "weave"
+            },
+            {
+              "when": {},
+              "move": "weave"
+            }
+          ],
+          "deadband": {
+            "expected": {
+              "crowd": "thick",
+              "mood": "hopeful",
+              "rumor": "pell"
+            },
+            "weights": {
+              "crowd": 1,
+              "mood": 1,
+              "rumor": 1
+            },
+            "max": 0.43300000000000005
+          },
+          "provenance": {
+            "nights": [
+              1
+            ],
+            "occurrences": 4,
+            "payoff": 0.5,
+            "variance": 0,
+            "reproof_of": "v4"
+          }
+        }
+      },
+      "sticky": false,
+      "prev": "732c018220bf2792101096e1bfb74835d442df351b7bc17b6161f64caf734c0b",
+      "tip": "e5904661305b70fca28ff161b48236363ed3a2284697b2fa0fd71e9e3397cd44"
+    },
+    {
+      "seq": 153,
+      "op": "scar",
+      "payload": {
+        "who": "exocortex",
+        "text": "wren re-imagined wren.listen v5 -> v6 (deadband 0.43300000000000005)"
+      },
+      "sticky": true,
+      "prev": "e5904661305b70fca28ff161b48236363ed3a2284697b2fa0fd71e9e3397cd44",
+      "tip": "5975abf345c07929ebde2c37cd95ac1b544e821b0f323a884a204642de6b5498"
+    },
+    {
+      "seq": 154,
+      "op": "exoj.breach",
+      "payload": {
+        "exoj": "quill.errand",
+        "version": 3,
+        "divergence": 0.333,
+        "max": 0.15,
+        "cause": "the world refused the script",
+        "state": {
+          "errand": "leaver",
+          "book": 0,
+          "master": "present"
+        },
+        "night": 2
+      },
+      "sticky": true,
+      "prev": "5975abf345c07929ebde2c37cd95ac1b544e821b0f323a884a204642de6b5498",
+      "tip": "016ad1503d07144cf6a1b9556dcb4a1d29aa031be7795a3fb4d93bd6d5f24330"
+    },
+    {
+      "seq": 155,
+      "op": "set",
+      "payload": {
+        "dial": "deviation",
+        "to": 10,
+        "why": "quill's double seized (divergence 0.333 > 0.15)"
+      },
+      "sticky": false,
+      "prev": "016ad1503d07144cf6a1b9556dcb4a1d29aa031be7795a3fb4d93bd6d5f24330",
+      "tip": "9bd5f815b47d12c322776e25215aee7d6af1f26954bbacf04bdd18467e8a7d7a"
+    },
+    {
+      "seq": 156,
+      "op": "say",
+      "payload": {
+        "who": "quill",
+        "text": "The double rattled in my hands, the sound a warning that the script I had trusted was hollow. I realized the world had shifted; Master Hollis had slipped a foot into the present where I had expected absence. The leaver’s errand kept its course, yet the book remained still, and a new expectation must be written.\n\nSCRIPT: {\"expected\": {\"book\":0,\"errand\":\"leaver\",\"master\":\"present\"}, \"max\": 0.35, \"note\": \"align with actual presence\"}"
+      },
+      "sticky": false,
+      "prev": "9bd5f815b47d12c322776e25215aee7d6af1f26954bbacf04bdd18467e8a7d7a",
+      "tip": "69bb7d278def1be972a9a9ac4116258a44f3f5a08d329217bfea0c38e5fd9fd4"
+    },
+    {
+      "seq": 157,
+      "op": "thought",
+      "payload": {
+        "who": "quill",
+        "beat": "wake",
+        "tokens": 653,
+        "night": 2,
+        "note": "full-thought wake after breach"
+      },
+      "sticky": false,
+      "prev": "69bb7d278def1be972a9a9ac4116258a44f3f5a08d329217bfea0c38e5fd9fd4",
+      "tip": "296c54c0e48e7a09ec55cb814171e58a2029fd1e459529ebb87d2ed36af8340c"
+    },
+    {
+      "seq": 158,
+      "op": "strategy",
+      "payload": {
+        "who": "quill",
+        "shape": "errand",
+        "move": "reimagine",
+        "payoff": 0.5,
+        "scene": {
+          "errand": "leaver",
+          "book": 0,
+          "master": "present"
+        },
+        "night": 2
+      },
+      "sticky": false,
+      "prev": "296c54c0e48e7a09ec55cb814171e58a2029fd1e459529ebb87d2ed36af8340c",
+      "tip": "2cc4b1c0d5ef6130526b07194762aaab9e7b82a10962f9c5fa3e6eef92f39ecc"
+    },
+    {
+      "seq": 159,
+      "op": "scar",
+      "payload": {
+        "who": "referee",
+        "text": "quill (wake): outcome mixed"
+      },
+      "sticky": true,
+      "prev": "2cc4b1c0d5ef6130526b07194762aaab9e7b82a10962f9c5fa3e6eef92f39ecc",
+      "tip": "97c1b0fd4e3e1710ac20b5f41abc90a7607b050458a7c2466f5c1b71a67f27e2"
+    },
+    {
+      "seq": 160,
+      "op": "exoj.reimagine",
+      "payload": {
+        "exoj": "quill.errand",
+        "from_version": 3,
+        "to_version": 4,
+        "tokens": 653,
+        "note": "align with actual presence",
+        "night": 2,
+        "next": {
+          "exoj": "quill.errand",
+          "version": 4,
+          "owner": "quill",
+          "triggerShape": "errand",
+          "policy": [
+            {
+              "when": {
+                "book": 1
+              },
+              "move": "run"
+            },
+            {
+              "when": {
+                "master": "absent"
+              },
+              "move": "run"
+            },
+            {
+              "when": {},
+              "move": "run"
+            }
+          ],
+          "deadband": {
+            "expected": {
+              "book": 0,
+              "errand": "leaver",
+              "master": "present"
+            },
+            "weights": {
+              "book": 1,
+              "errand": 1,
+              "master": 1
+            },
+            "max": 0.35
+          },
+          "provenance": {
+            "nights": [
+              1
+            ],
+            "occurrences": 4,
+            "payoff": 0.5,
+            "variance": 0,
+            "reproof_of": "v2"
+          }
+        }
+      },
+      "sticky": false,
+      "prev": "97c1b0fd4e3e1710ac20b5f41abc90a7607b050458a7c2466f5c1b71a67f27e2",
+      "tip": "fe17aad88a88b492c2434a61a0fe6f35e95cb0164cae45465178a2de5f1484bb"
+    },
+    {
+      "seq": 161,
+      "op": "scar",
+      "payload": {
+        "who": "exocortex",
+        "text": "quill re-imagined quill.errand v3 -> v4 (deadband 0.35)"
+      },
+      "sticky": true,
+      "prev": "fe17aad88a88b492c2434a61a0fe6f35e95cb0164cae45465178a2de5f1484bb",
+      "tip": "9e6f999a60e5d9863f116a9481b88817e605a5338d421e8ca83f750a8fe03a68"
+    },
+    {
+      "seq": 162,
+      "op": "roll",
+      "payload": {
+        "solid": "d20",
+        "sides": 20,
+        "rolls": [
+          17
+        ],
+        "sum": 17,
+        "max": 0,
+        "seed": "08be4cfc",
+        "why": "does the table rewind the last breach to refine it? (1-8: rewind)"
+      },
+      "sticky": false,
+      "prev": "9e6f999a60e5d9863f116a9481b88817e605a5338d421e8ca83f750a8fe03a68",
+      "tip": "8928fd85ac126207f9a7038d700862fadb43884e877bb0c1b2d1d83f92e6bb8b"
+    },
+    {
+      "seq": 163,
+      "op": "scene.leave",
+      "payload": {},
+      "sticky": false,
+      "prev": "8928fd85ac126207f9a7038d700862fadb43884e877bb0c1b2d1d83f92e6bb8b",
+      "tip": "8691a0faab23e3f9e1bf863d6cb1ca47e38a19004a53d0ed590331a9c34eca1b"
+    },
+    {
+      "seq": 164,
+      "op": "scene.enter",
+      "payload": {
+        "name": "night-3"
+      },
+      "sticky": false,
+      "prev": "8691a0faab23e3f9e1bf863d6cb1ca47e38a19004a53d0ed590331a9c34eca1b",
+      "tip": "d20f98dd98c0e061ac418d16dcdd80740f68f8d96ea89e04dcf1581787eb4c71"
+    },
+    {
+      "seq": 165,
+      "op": "set",
+      "payload": {
+        "dial": "lantern_light",
+        "to": 1,
+        "why": "the last evening"
+      },
+      "sticky": false,
+      "prev": "d20f98dd98c0e061ac418d16dcdd80740f68f8d96ea89e04dcf1581787eb4c71",
+      "tip": "c36d580bcc4e87688cd29b2f5ebe30da998618c00e427a9b0c9efb07d9c3dd2a"
+    },
+    {
+      "seq": 166,
+      "op": "roll",
+      "payload": {
+        "solid": "d20",
+        "sides": 20,
+        "rolls": [
+          2
+        ],
+        "sum": 2,
+        "max": 0,
+        "seed": "0273cab1",
+        "why": "does the retirement proceed? (>= min: it does)"
+      },
+      "sticky": false,
+      "prev": "c36d580bcc4e87688cd29b2f5ebe30da998618c00e427a9b0c9efb07d9c3dd2a",
+      "tip": "0093e62bad2cfcf171c19343443d893e59f7984aba7417ca7dbbaa95bb36535e"
+    },
+    {
+      "seq": 167,
+      "op": "scar",
+      "payload": {
+        "who": "world",
+        "text": "retirement gated off (d20=2): marrow keeps the script one more night"
+      },
+      "sticky": true,
+      "prev": "0093e62bad2cfcf171c19343443d893e59f7984aba7417ca7dbbaa95bb36535e",
+      "tip": "751d01188fcb40eacc4e714be9f57aad9edb8565b5cbcabcd5a3a32ce55be38f"
+    },
+    {
+      "seq": 168,
+      "op": "say",
+      "payload": {
+        "who": "gm",
+        "text": ""
+      },
+      "sticky": false,
+      "prev": "751d01188fcb40eacc4e714be9f57aad9edb8565b5cbcabcd5a3a32ce55be38f",
+      "tip": "aba6c76bbb56542257ed58ecea85d63b0565892eee14efd25b166d7be4158de7"
+    },
+    {
+      "seq": 169,
+      "op": "thought",
+      "payload": {
+        "who": "gm",
+        "beat": "narration",
+        "tokens": 587,
+        "night": 3,
+        "note": "gm narration"
+      },
+      "sticky": false,
+      "prev": "aba6c76bbb56542257ed58ecea85d63b0565892eee14efd25b166d7be4158de7",
+      "tip": "ad1582ad64d9594f66fe273a0ae733f0474a9ef99978f4e7d42dbe25a28c1aea"
+    },
+    {
+      "seq": 170,
+      "op": "say",
+      "payload": {
+        "who": "kestrel",
+        "text": "THINKING OUTWARD:\n\nRetire quill.errand — its v4 deadband expects 0 book present but the breach shows it running on book=1 in this world; a script that cannot match the new deadband logic must not circulate.\n\nHand marrow.rite to a keeper — its deadband still expects candle lit AND quiet true AND witnesses:5, but the breach proves the true stop sits on the Vesper Table all evening, rearranging every conversation without naming it. The script’s condition logic is fundamentally broken by this physical constant; a keeper must rewrite its expectations from the ground up.\n\nWalking city without eyes: wren.listen — v6 still moves on crowd thick OR rumor pell OR empty, but the breach scar shows wren re-imagined it twice (v5→v6) and the lever-on-table aims at marrow. The script keeps running while its conditions no longer map to the city’s actual heartbeat.\n\nREAD: Retire quill.errand; Hand marrow.rite to a keeper; wren.listen walks the city without its keeper's eyes."
+      },
+      "sticky": false,
+      "prev": "ad1582ad64d9594f66fe273a0ae733f0474a9ef99978f4e7d42dbe25a28c1aea",
+      "tip": "3aa11cb01bfcacea33e5e53c372556ed63abd3182488ece6b35890e7f2bc5883"
+    },
+    {
+      "seq": 171,
+      "op": "read",
+      "payload": {
+        "who": "kestrel",
+        "target": "the table",
+        "tokens": 1089,
+        "night": 3,
+        "note": "opponent-modeling beat: the freed budget, spent outward"
+      },
+      "sticky": false,
+      "prev": "3aa11cb01bfcacea33e5e53c372556ed63abd3182488ece6b35890e7f2bc5883",
+      "tip": "214de2650e853ad45a32a87d3901180d8bc1d75af4dd2392e03b3ffd5c88c70d"
+    },
+    {
+      "seq": 172,
+      "op": "say",
+      "payload": {
+        "who": "marrow",
+        "text": "The compiled ExoJs testify plainly: brass.tinker's v4 still moves only \"wind\" under every when-clause — a script that has forgotten what it was for, running itself with no keeper's judgment in it. quill.errand's v4 now runs on book:1 and master:absent and thus carries no errand at all - it is all leg, no letter, and I will not keep a runner with no errand to witness. wren.listen's v6 is the one walking without eyes: its deadband has swollen to 0.433, so it weaves the same weave whether the crowd is thick or the rumor pell or neither, and no keeper is minding what it now hears.\n\nREAD: retire brass.tinker v4; hand quill.errand v4 to a keeper who keeps the errand with the tool; wren.listen v6 walks the city unwatched, and I name it so the record cannot lie."
+      },
+      "sticky": false,
+      "prev": "214de2650e853ad45a32a87d3901180d8bc1d75af4dd2392e03b3ffd5c88c70d",
+      "tip": "5c4721cd534438967b6ab8c87007e8a99d844ee4fb68d24e220b55778bdb78dd"
+    },
+    {
+      "seq": 173,
+      "op": "read",
+      "payload": {
+        "who": "marrow",
+        "target": "the table",
+        "tokens": 1047,
+        "night": 3,
+        "note": "opponent-modeling beat: the freed budget, spent outward"
+      },
+      "sticky": false,
+      "prev": "5c4721cd534438967b6ab8c87007e8a99d844ee4fb68d24e220b55778bdb78dd",
+      "tip": "92c9f9da1d092d7b896d7032a433ae175dec7837ef608c681d263cdce16b7a92"
+    },
+    {
+      "seq": 174,
+      "op": "say",
+      "payload": {
+        "who": "brass",
+        "text": "The scripts have grown and adapted, finding their places in the city's rhythms. Kestrel's steady circles, Marrow's witnessing, Quill's errands, and Wren's weaving through crowds - each plays a role, but some have outlived their purpose.\n\nREAD: RETIRE kestrel.patrol, no longer needed with the watch-doubles in place; HAND marrow.rite to Marrow, who will uphold the duty faithfully; Wren's script wren.listen walks the city, observing and adapting on its own."
+      },
+      "sticky": false,
+      "prev": "92c9f9da1d092d7b896d7032a433ae175dec7837ef608c681d263cdce16b7a92",
+      "tip": "8f9edeb24925d254150da16d9be429cde41f47f54d0c3322734504c2fcdb3086"
+    },
+    {
+      "seq": 175,
+      "op": "read",
+      "payload": {
+        "who": "brass",
+        "target": "the table",
+        "tokens": 954,
+        "night": 3,
+        "note": "opponent-modeling beat: the freed budget, spent outward"
+      },
+      "sticky": false,
+      "prev": "8f9edeb24925d254150da16d9be429cde41f47f54d0c3322734504c2fcdb3086",
+      "tip": "02c032a2a107a8cb2a0a681b40ca8a41363e4ff377216300208d078a859e01c9"
+    },
+    {
+      "seq": 176,
+      "op": "say",
+      "payload": {
+        "who": "wren",
+        "text": ""
+      },
+      "sticky": false,
+      "prev": "02c032a2a107a8cb2a0a681b40ca8a41363e4ff377216300208d078a859e01c9",
+      "tip": "af71ae037a1d45531c220d74a98add74b80661f411f37947d801fdb010cf3dbd"
+    },
+    {
+      "seq": 177,
+      "op": "read",
+      "payload": {
+        "who": "wren",
+        "target": "the table",
+        "tokens": 1248,
+        "night": 3,
+        "note": "opponent-modeling beat: the freed budget, spent outward"
+      },
+      "sticky": false,
+      "prev": "af71ae037a1d45531c220d74a98add74b80661f411f37947d801fdb010cf3dbd",
+      "tip": "678bfcd652063ea0fa29b9029d88fb22fd0495b38ddd5c187586618d962e6e21"
+    },
+    {
+      "seq": 178,
+      "op": "say",
+      "payload": {
+        "who": "quill",
+        "text": ""
+      },
+      "sticky": false,
+      "prev": "678bfcd652063ea0fa29b9029d88fb22fd0495b38ddd5c187586618d962e6e21",
+      "tip": "dd0e70a72a4a93061c40dc276115bc1b4678aabe5e004f393f188524a987747a"
+    },
+    {
+      "seq": 179,
+      "op": "read",
+      "payload": {
+        "who": "quill",
+        "target": "the table",
+        "tokens": 1316,
+        "night": 3,
+        "note": "opponent-modeling beat: the freed budget, spent outward"
+      },
+      "sticky": false,
+      "prev": "dd0e70a72a4a93061c40dc276115bc1b4678aabe5e004f393f188524a987747a",
+      "tip": "27c5e935f4e4ef291db7065fb824d6b37ecc63074a12a5ab7ad91e1d3f65074b"
+    },
+    {
+      "seq": 180,
+      "op": "roll",
+      "payload": {
+        "solid": "d20",
+        "sides": 20,
+        "rolls": [
+          12
+        ],
+        "sum": 12,
+        "max": 0,
+        "seed": "377a94fc",
+        "why": "does the handoff proceed? (>= min: it does)"
+      },
+      "sticky": false,
+      "prev": "27c5e935f4e4ef291db7065fb824d6b37ecc63074a12a5ab7ad91e1d3f65074b",
+      "tip": "03e9d9c661c834831b5553416ea8ad4f3f05347bbdbc4fe51cd9c4888e3f6744"
+    },
+    {
+      "seq": 181,
+      "op": "say",
+      "payload": {
+        "who": "wren",
+        "text": ""
+      },
+      "sticky": false,
+      "prev": "03e9d9c661c834831b5553416ea8ad4f3f05347bbdbc4fe51cd9c4888e3f6744",
+      "tip": "4be21d8160c9ad403704a353a8a094df59991e74cf7314a334d75ff25dcd4a17"
+    },
+    {
+      "seq": 182,
+      "op": "thought",
+      "payload": {
+        "who": "wren",
+        "beat": "handoff",
+        "tokens": 701,
+        "night": 3,
+        "note": "the script outlives its author"
+      },
+      "sticky": false,
+      "prev": "4be21d8160c9ad403704a353a8a094df59991e74cf7314a334d75ff25dcd4a17",
+      "tip": "44ac1ac0ea1ccc8654c20fd254df46c4dc37b514f66f3edbcf73f2b87212fc82"
+    },
+    {
+      "seq": 183,
+      "op": "exoj.handoff",
+      "payload": {
+        "exoj": "wren.listen",
+        "version": 6,
+        "from": "wren",
+        "to": "quill",
+        "why": "",
+        "night": 3
+      },
+      "sticky": false,
+      "prev": "44ac1ac0ea1ccc8654c20fd254df46c4dc37b514f66f3edbcf73f2b87212fc82",
+      "tip": "fca2d2fdb49761e6b46f4a6db49df80246286750e91eace17ca39538bde671bc"
+    },
+    {
+      "seq": 184,
+      "op": "exoj.compile",
+      "payload": {
+        "exoj": {
+          "exoj": "wren.listen",
+          "version": 6,
+          "owner": "quill",
+          "triggerShape": "listen",
+          "policy": [
+            {
+              "when": {
+                "crowd": "thick"
+              },
+              "move": "weave"
+            },
+            {
+              "when": {
+                "rumor": "pell"
+              },
+              "move": "weave"
+            },
+            {
+              "when": {},
+              "move": "weave"
+            }
+          ],
+          "deadband": {
+            "expected": {
+              "crowd": "thick",
+              "mood": "hopeful",
+              "rumor": "pell"
+            },
+            "weights": {
+              "crowd": 1,
+              "mood": 1,
+              "rumor": 1
+            },
+            "max": 0.43300000000000005
+          },
+          "provenance": {
+            "nights": [
+              1
+            ],
+            "occurrences": 4,
+            "payoff": 0.5,
+            "variance": 0,
+            "reproof_of": "v4",
+            "handed_from": "wren",
+            "handed_at_night": 3
+          }
+        }
+      },
+      "sticky": false,
+      "prev": "fca2d2fdb49761e6b46f4a6db49df80246286750e91eace17ca39538bde671bc",
+      "tip": "476bf93074e9f0288409952d8c66a105221e74d4c3a8f808f3674bc795f24678"
+    },
+    {
+      "seq": 185,
+      "op": "scar",
+      "payload": {
+        "who": "exocortex",
+        "text": "wren.listen v6 handed wren -> quill: the pattern keeps its maker's name; the duty travels with it"
+      },
+      "sticky": true,
+      "prev": "476bf93074e9f0288409952d8c66a105221e74d4c3a8f808f3674bc795f24678",
+      "tip": "85ce4b64bfcf1035329a3a671abc0f89531a5c9157d8e7c6b783a4f3adf35c17"
+    },
+    {
+      "seq": 186,
+      "op": "scar",
+      "payload": {
+        "who": "world",
+        "text": "meta-event gated off (d20=0): Wren kept her proof in her pocket tonight"
+      },
+      "sticky": true,
+      "prev": "85ce4b64bfcf1035329a3a671abc0f89531a5c9157d8e7c6b783a4f3adf35c17",
+      "tip": "843ba654abc5e11c6e57392e1111207c3a7cad70dc934fb1ee0a56c8a17333b7"
+    },
+    {
+      "seq": 187,
+      "op": "say",
+      "payload": {
+        "who": "kestrel",
+        "text": "The habit that waits carries a stillness in its repetition; the habit that is old carries a weight that settles. VOTE: weight"
+      },
+      "sticky": false,
+      "prev": "843ba654abc5e11c6e57392e1111207c3a7cad70dc934fb1ee0a56c8a17333b7",
+      "tip": "fcc73f188c025f0da87eb3c3aff823344e9491275c0820d1d32ae6b4a5be8bd5"
+    },
+    {
+      "seq": 188,
+      "op": "thought",
+      "payload": {
+        "who": "kestrel",
+        "beat": "vote",
+        "tokens": 334,
+        "night": 3,
+        "note": "the final question"
+      },
+      "sticky": false,
+      "prev": "fcc73f188c025f0da87eb3c3aff823344e9491275c0820d1d32ae6b4a5be8bd5",
+      "tip": "84900cd8a0087a00eeefbc7db31a6238df639980a1c4acb6692b22175fc676d2"
+    },
+    {
+      "seq": 189,
+      "op": "roll",
+      "payload": {
+        "solid": "d20",
+        "sides": 20,
+        "rolls": [
+          7
+        ],
+        "sum": 7,
+        "max": 0,
+        "seed": "db73cf48",
+        "why": "kestrel's vote is thrown on the table (the dice are mechanical)"
+      },
+      "sticky": false,
+      "prev": "84900cd8a0087a00eeefbc7db31a6238df639980a1c4acb6692b22175fc676d2",
+      "tip": "47dcd7b3a374af37b5f8c3763d9e520ccb79456d751333076b30815230c74e3e"
+    },
+    {
+      "seq": 190,
+      "op": "scar",
+      "payload": {
+        "who": "vote",
+        "text": "kestrel voted weight (d20 7)"
+      },
+      "sticky": true,
+      "prev": "47dcd7b3a374af37b5f8c3763d9e520ccb79456d751333076b30815230c74e3e",
+      "tip": "2269d363130ed9ca52444ca74793f9c72432976f87c9aaad658fc241dabcab4e"
+    },
+    {
+      "seq": 191,
+      "op": "say",
+      "payload": {
+        "who": "marrow",
+        "text": "I testify first, and I say it as it was: a habit that waits keeps its hour because someone is expected, and a habit that is only old keeps its hour because no one ever came to release it from the keeping. The Ledger records that the true stop lies unworn between us, so the table must choose whether we wait for a reader or merely repeat a groove worn by our own feet.\n\nVOTE: expectant-vigil"
+      },
+      "sticky": false,
+      "prev": "2269d363130ed9ca52444ca74793f9c72432976f87c9aaad658fc241dabcab4e",
+      "tip": "def16cf56458557a2bec36457a5349fd2be23ab8f1b86eca4ef648966e894d8a"
+    },
+    {
+      "seq": 192,
+      "op": "thought",
+      "payload": {
+        "who": "marrow",
+        "beat": "vote",
+        "tokens": 386,
+        "night": 3,
+        "note": "the final question"
+      },
+      "sticky": false,
+      "prev": "def16cf56458557a2bec36457a5349fd2be23ab8f1b86eca4ef648966e894d8a",
+      "tip": "37db18c13969531f731c27f5e5a5a5d7238213e53489753403946630ca257a0f"
+    },
+    {
+      "seq": 193,
+      "op": "roll",
+      "payload": {
+        "solid": "d20",
+        "sides": 20,
+        "rolls": [
+          12
+        ],
+        "sum": 12,
+        "max": 0,
+        "seed": "069ff8d4",
+        "why": "marrow's vote is thrown on the table (the dice are mechanical)"
+      },
+      "sticky": false,
+      "prev": "37db18c13969531f731c27f5e5a5a5d7238213e53489753403946630ca257a0f",
+      "tip": "c4d1af31f5fdbc220db2533be13e0294e9c24baba7de9af16098dfdc57daf88c"
+    },
+    {
+      "seq": 194,
+      "op": "scar",
+      "payload": {
+        "who": "vote",
+        "text": "marrow voted expectant (d20 12)"
+      },
+      "sticky": true,
+      "prev": "c4d1af31f5fdbc220db2533be13e0294e9c24baba7de9af16098dfdc57daf88c",
+      "tip": "d074cd4ae206b995f1269b19f41f6a46953c2da6dc771ae8485690b94706ece3"
+    },
+    {
+      "seq": 195,
+      "op": "say",
+      "payload": {
+        "who": "brass",
+        "text": "A habit that is waiting holds anticipation, a readiness to spring into action when the moment is right. A habit that is just old is a well-worn groove, a comfortable familiarity without expectancy.\n\nVOTE: Anticipation-Readiness"
+      },
+      "sticky": false,
+      "prev": "d074cd4ae206b995f1269b19f41f6a46953c2da6dc771ae8485690b94706ece3",
+      "tip": "ac1b04eba9b24c6504030802d0149943556ed349160341d6cdff794d65be5143"
+    },
+    {
+      "seq": 196,
+      "op": "thought",
+      "payload": {
+        "who": "brass",
+        "beat": "vote",
+        "tokens": 355,
+        "night": 3,
+        "note": "the final question"
+      },
+      "sticky": false,
+      "prev": "ac1b04eba9b24c6504030802d0149943556ed349160341d6cdff794d65be5143",
+      "tip": "2ce463bfcb5f297d75eecb6a1e99933a85764eef389b58ec882fb12d7263a03d"
+    },
+    {
+      "seq": 197,
+      "op": "roll",
+      "payload": {
+        "solid": "d20",
+        "sides": 20,
+        "rolls": [
+          10
+        ],
+        "sum": 10,
+        "max": 0,
+        "seed": "1813ff49",
+        "why": "brass's vote is thrown on the table (the dice are mechanical)"
+      },
+      "sticky": false,
+      "prev": "2ce463bfcb5f297d75eecb6a1e99933a85764eef389b58ec882fb12d7263a03d",
+      "tip": "7633c6b85b98b65bc64b95ae493938ef6e2885a213adc6a4ae7e262543ec9772"
+    },
+    {
+      "seq": 198,
+      "op": "scar",
+      "payload": {
+        "who": "vote",
+        "text": "brass voted Anticipation (d20 10)"
+      },
+      "sticky": true,
+      "prev": "7633c6b85b98b65bc64b95ae493938ef6e2885a213adc6a4ae7e262543ec9772",
+      "tip": "78e366a0296d6cd0cfc141d34974e1631a6a8d68bcd8da74399779393d5a6aac"
+    },
+    {
+      "seq": 199,
+      "op": "say",
+      "payload": {
+        "who": "wren",
+        "text": ""
+      },
+      "sticky": false,
+      "prev": "78e366a0296d6cd0cfc141d34974e1631a6a8d68bcd8da74399779393d5a6aac",
+      "tip": "74b9ab41847029b9b192a070aa3eefafc58f6306744b74c14dc55ce2090aeeaf"
+    },
+    {
+      "seq": 200,
+      "op": "thought",
+      "payload": {
+        "who": "wren",
+        "beat": "vote",
+        "tokens": 719,
+        "night": 3,
+        "note": "the final question"
+      },
+      "sticky": false,
+      "prev": "74b9ab41847029b9b192a070aa3eefafc58f6306744b74c14dc55ce2090aeeaf",
+      "tip": "cbd2db1b426465c6a91192b9426eae3f930929317debb2d830c9c08131002135"
+    },
+    {
+      "seq": 201,
+      "op": "roll",
+      "payload": {
+        "solid": "d20",
+        "sides": 20,
+        "rolls": [
+          4
+        ],
+        "sum": 4,
+        "max": 0,
+        "seed": "02d4ba76",
+        "why": "wren's vote is thrown on the table (the dice are mechanical)"
+      },
+      "sticky": false,
+      "prev": "cbd2db1b426465c6a91192b9426eae3f930929317debb2d830c9c08131002135",
+      "tip": "6d831197a609e42f54dc68bd9b72a6442d792f231bf066ff40f33102caea9140"
+    },
+    {
+      "seq": 202,
+      "op": "scar",
+      "payload": {
+        "who": "vote",
+        "text": "wren voted both (d20 4)"
+      },
+      "sticky": true,
+      "prev": "6d831197a609e42f54dc68bd9b72a6442d792f231bf066ff40f33102caea9140",
+      "tip": "1d54349a51ad3fb0b849cdadb52e689e74af5f06746b2676abf85e8673910e9d"
+    },
+    {
+      "seq": 203,
+      "op": "say",
+      "payload": {
+        "who": "quill",
+        "text": ""
+      },
+      "sticky": false,
+      "prev": "1d54349a51ad3fb0b849cdadb52e689e74af5f06746b2676abf85e8673910e9d",
+      "tip": "c21a9d175bc24c859cbe3119213c831d32aefc581d8a92667a9a7ca3eeb737ee"
+    },
+    {
+      "seq": 204,
+      "op": "thought",
+      "payload": {
+        "who": "quill",
+        "beat": "vote",
+        "tokens": 774,
+        "night": 3,
+        "note": "the final question"
+      },
+      "sticky": false,
+      "prev": "c21a9d175bc24c859cbe3119213c831d32aefc581d8a92667a9a7ca3eeb737ee",
+      "tip": "c350b3cdd62d585cac75d470de1d78952a183a8b881f0cec75f19db3a214a69d"
+    },
+    {
+      "seq": 205,
+      "op": "roll",
+      "payload": {
+        "solid": "d20",
+        "sides": 20,
+        "rolls": [
+          14
+        ],
+        "sum": 14,
+        "max": 0,
+        "seed": "e0d14684",
+        "why": "quill's vote is thrown on the table (the dice are mechanical)"
+      },
+      "sticky": false,
+      "prev": "c350b3cdd62d585cac75d470de1d78952a183a8b881f0cec75f19db3a214a69d",
+      "tip": "f9538c52955d94da9ab9c32eaa08a8e267e92f3e8511c4366174ac33fba73101"
+    },
+    {
+      "seq": 206,
+      "op": "scar",
+      "payload": {
+        "who": "vote",
+        "text": "quill voted both (d20 14)"
+      },
+      "sticky": true,
+      "prev": "f9538c52955d94da9ab9c32eaa08a8e267e92f3e8511c4366174ac33fba73101",
+      "tip": "02040fcf948ffa099f67e0b757c19b3d16af32993594ee221e7bc23b569a95a9"
+    },
+    {
+      "seq": 207,
+      "op": "say",
+      "payload": {
+        "who": "gm",
+        "text": ""
+      },
+      "sticky": false,
+      "prev": "02040fcf948ffa099f67e0b757c19b3d16af32993594ee221e7bc23b569a95a9",
+      "tip": "271776707f0aecd154fd1c1213e7f618c00afd8ecb98b7f7d4ba06e724d9ff25"
+    },
+    {
+      "seq": 208,
+      "op": "thought",
+      "payload": {
+        "who": "gm",
+        "beat": "narration",
+        "tokens": 586,
+        "night": 3,
+        "note": "gm closing"
+      },
+      "sticky": false,
+      "prev": "271776707f0aecd154fd1c1213e7f618c00afd8ecb98b7f7d4ba06e724d9ff25",
+      "tip": "d37d2124b1bcb2db5f847d7e5e446fb1d186258afcd824c28d5926eeca009cda"
+    },
+    {
+      "seq": 209,
+      "op": "scene.leave",
+      "payload": {},
+      "sticky": false,
+      "prev": "d37d2124b1bcb2db5f847d7e5e446fb1d186258afcd824c28d5926eeca009cda",
+      "tip": "1d1163573db5ded5b75ffb565b6035fdcdd3bdfa16cdd932b86e138747e8451f"
+    }
+  ],
+  "state": {
+    "dials": {
+      "lantern_light": 1,
+      "deviation": 10,
+      "trust": 7,
+      "canon_stress": 5,
+      "kestrel_scene": "{\"stalls\":14,\"drunk\":true,\"guards\":\"watchdouble\",\"threat\":\"low\"}",
+      "marrow_scene": "{\"witnesses\":5,\"candle\":\"lit\",\"quiet\":true}",
+      "brass_scene": "{\"shop\":\"open\",\"order\":\"none\",\"deadline\":0}",
+      "wren_scene": "{\"rumor\":\"pell\",\"crowd\":\"thick\",\"mood\":\"hopeful\"}",
+      "quill_scene": "{\"errand\":\"leaver\",\"book\":0,\"master\":\"present\"}"
+    },
+    "ticks": {},
+    "scars": [
+      {
+        "seq": 7,
+        "who": "exocortex",
+        "text": "carried brass.tinker v3 (deadband 0.53) across acts — the script kept its provenance"
+      },
+      {
+        "seq": 9,
+        "who": "exocortex",
+        "text": "carried kestrel.patrol v2 (deadband 0.6) across acts — the script kept its provenance"
+      },
+      {
+        "seq": 11,
+        "who": "exocortex",
+        "text": "carried marrow.rite v3 (deadband 0.6) across acts — the script kept its provenance"
+      },
+      {
+        "seq": 13,
+        "who": "exocortex",
+        "text": "carried quill.errand v2 (deadband 0.43300000000000005) across acts — the script kept its provenance"
+      },
+      {
+        "seq": 15,
+        "who": "exocortex",
+        "text": "carried wren.listen v4 (deadband 0.43300000000000005) across acts — the script kept its provenance"
+      },
+      {
+        "seq": 23,
+        "who": "referee",
+        "text": "kestrel: outcome clean (payoff 1)"
+      },
+      {
+        "seq": 28,
+        "who": "referee",
+        "text": "marrow: outcome mixed (payoff 0.5)"
+      },
+      {
+        "seq": 33,
+        "who": "referee",
+        "text": "brass: outcome clean (payoff 1)"
+      },
+      {
+        "seq": 38,
+        "who": "referee",
+        "text": "wren: outcome mixed (payoff 0.5)"
+      },
+      {
+        "seq": 43,
+        "who": "referee",
+        "text": "quill: outcome mixed (payoff 0.5)"
+      },
+      {
+        "seq": 48,
+        "who": "referee",
+        "text": "kestrel: outcome setback (payoff 0)"
+      },
+      {
+        "seq": 53,
+        "who": "referee",
+        "text": "wren: outcome mixed (payoff 0.5)"
+      },
+      {
+        "seq": 58,
+        "who": "referee",
+        "text": "marrow: outcome mixed (payoff 0.5)"
+      },
+      {
+        "seq": 63,
+        "who": "referee",
+        "text": "brass: outcome clean (payoff 1)"
+      },
+      {
+        "seq": 68,
+        "who": "referee",
+        "text": "quill: outcome mixed (payoff 0.5)"
+      },
+      {
+        "seq": 73,
+        "who": "referee",
+        "text": "kestrel: outcome mixed (payoff 0.5)"
+      },
+      {
+        "seq": 78,
+        "who": "referee",
+        "text": "wren: outcome mixed (payoff 0.5)"
+      },
+      {
+        "seq": 83,
+        "who": "referee",
+        "text": "marrow: outcome mixed (payoff 0.5)"
+      },
+      {
+        "seq": 88,
+        "who": "referee",
+        "text": "brass: outcome mixed (payoff 0.5)"
+      },
+      {
+        "seq": 93,
+        "who": "referee",
+        "text": "quill: outcome mixed (payoff 0.5)"
+      },
+      {
+        "seq": 98,
+        "who": "referee",
+        "text": "kestrel: outcome mixed (payoff 0.5)"
+      },
+      {
+        "seq": 103,
+        "who": "referee",
+        "text": "wren: outcome mixed (payoff 0.5)"
+      },
+      {
+        "seq": 108,
+        "who": "referee",
+        "text": "marrow: outcome clean (payoff 1)"
+      },
+      {
+        "seq": 113,
+        "who": "referee",
+        "text": "brass: outcome clean (payoff 1)"
+      },
+      {
+        "seq": 118,
+        "who": "referee",
+        "text": "quill: outcome mixed (payoff 0.5)"
+      },
+      {
+        "seq": 121,
+        "who": "exocortex",
+        "text": "re-proved brass.tinker -> v4 in the new world (deadband 0.53; was v3)"
+      },
+      {
+        "seq": 123,
+        "who": "exocortex",
+        "text": "re-proved kestrel.patrol -> v3 in the new world (deadband 0.6; was v2)"
+      },
+      {
+        "seq": 125,
+        "who": "exocortex",
+        "text": "re-proved marrow.rite -> v4 in the new world (deadband 0.53; was v3)"
+      },
+      {
+        "seq": 127,
+        "who": "exocortex",
+        "text": "re-proved quill.errand -> v3 in the new world (deadband 0.15; was v2)"
+      },
+      {
+        "seq": 129,
+        "who": "exocortex",
+        "text": "re-proved wren.listen -> v5 in the new world (deadband 0.15; was v4)"
+      },
+      {
+        "seq": 136,
+        "who": "world",
+        "text": "surprise lever-on-table aims at marrow: The true stop sits on the Vesper Table all evening - polished, waiting, the stopping made physical. Every conversation rearranges itself around it without once naming it."
+      },
+      {
+        "seq": 151,
+        "who": "referee",
+        "text": "wren (wake): outcome mixed"
+      },
+      {
+        "seq": 153,
+        "who": "exocortex",
+        "text": "wren re-imagined wren.listen v5 -> v6 (deadband 0.43300000000000005)"
+      },
+      {
+        "seq": 159,
+        "who": "referee",
+        "text": "quill (wake): outcome mixed"
+      },
+      {
+        "seq": 161,
+        "who": "exocortex",
+        "text": "quill re-imagined quill.errand v3 -> v4 (deadband 0.35)"
+      },
+      {
+        "seq": 167,
+        "who": "world",
+        "text": "retirement gated off (d20=2): marrow keeps the script one more night"
+      },
+      {
+        "seq": 185,
+        "who": "exocortex",
+        "text": "wren.listen v6 handed wren -> quill: the pattern keeps its maker's name; the duty travels with it"
+      },
+      {
+        "seq": 186,
+        "who": "world",
+        "text": "meta-event gated off (d20=0): Wren kept her proof in her pocket tonight"
+      },
+      {
+        "seq": 190,
+        "who": "vote",
+        "text": "kestrel voted weight (d20 7)"
+      },
+      {
+        "seq": 194,
+        "who": "vote",
+        "text": "marrow voted expectant (d20 12)"
+      },
+      {
+        "seq": 198,
+        "who": "vote",
+        "text": "brass voted Anticipation (d20 10)"
+      },
+      {
+        "seq": 202,
+        "who": "vote",
+        "text": "wren voted both (d20 4)"
+      },
+      {
+        "seq": 206,
+        "who": "vote",
+        "text": "quill voted both (d20 14)"
+      }
+    ],
+    "scenes": [],
+    "said": [
+      {
+        "seq": 17,
+        "who": "gm",
+        "text": ""
+      },
+      {
+        "seq": 19,
+        "who": "kestrel",
+        "text": "Fourteen stalls. Three vendors look up. The watch-double's cadence is steady, unhurried, mirroring my own without my seeing. A man stumbles near stall seven, laughter too loud; the drunk tag is already on the board. I adjust my pace, counting the gap between his stumble and the double's step, memorizing the drift.\n\nMOVE: circle"
+      },
+      {
+        "seq": 24,
+        "who": "marrow",
+        "text": "I lay the ledger open at the evening's page, candle to my left, and I do not yet write. Five witnesses: four of you, and the flame — the Record counts the flame, I have always said so. The retirement words sit in my sleeve like a stone I keep forgetting to throw, and I see Kestrel watching my hand, which means the hand has already spoken. Say it as it was: a rite rehearsed is still a rite performed, and I perform it. MOVE: witness"
+      },
+      {
+        "seq": 29,
+        "who": "brass",
+        "text": "*Brass winds the shop key, the familiar ritual calming their nerves.* \"Alright, my lovelies, let's see what we have here.\" *They pick up the order, studying the flaw marked on the paper.* \"A stop that exists on paper but not in the spring? How intriguing.\" *Brass examines the watch-double's housing closely, searching for any sign of the mystery writer's influence.* \"Whoever you are, you have my attention. Let's see if we can unravel this puzzle together, shall we?\" *They smile, a glint of excitement in their eyes as they set to work.*\n\nMOVE: wind"
+      },
+      {
+        "seq": 34,
+        "who": "wren",
+        "text": ""
+      },
+      {
+        "seq": 39,
+        "who": "quill",
+        "text": ""
+      },
+      {
+        "seq": 44,
+        "who": "kestrel",
+        "text": "The merchant's stall counts fourteen faces. I count the gaps between them: three empty, two watching. The pickpocket moves between the watching ones. The watch-double walks without seeing, its eyes fixed ahead, repeating the pattern. I feel the shift in weight on my belt where my own weapons sit. The sergeant's gaze finds me first.\n\nMOVE: shadow"
+      },
+      {
+        "seq": 49,
+        "who": "wren",
+        "text": ""
+      },
+      {
+        "seq": 54,
+        "who": "marrow",
+        "text": "Pell, hear the wording before you take the pen: *the record holds only what was witnessed whole, and a witness is not a mirror, however polished.* If you write in Wren's hand, the hand is on the page, and I must write *Pell, in the manner of Wren* — which is true, and therefore permitted, and therefore a knife I hand you open. Say it as it was, not as you wish it read.\n\nMOVE: witness"
+      },
+      {
+        "seq": 59,
+        "who": "brass",
+        "text": "*muttering to herself as she examines the watch-double* Well, well, what have we here? A flaw marked in my own hand, but not by my own doing. *chuckles* Oh, you clever little watch-double, you. Someone's been tinkering with you, haven't they? And they wanted me to find it, too. *looks up at the shop around her, a glint of excitement in her eyes* I do love a good mystery. Right then, let's see what you can really do.\n\nMOVE: dismantle"
+      },
+      {
+        "seq": 64,
+        "who": "quill",
+        "text": ""
+      },
+      {
+        "seq": 69,
+        "who": "kestrel",
+        "text": "Thirteen stalls. Sergeant at the fountain, arguing with a shadow that moves without eyes. The watch-double walked the pier at the same minute every night and saved a drowning man. The pattern does not need me. He is right.\n\nMOVE: press"
+      },
+      {
+        "seq": 74,
+        "who": "wren",
+        "text": ""
+      },
+      {
+        "seq": 79,
+        "who": "marrow",
+        "text": "Five witnesses, the candle lit, and the Quarter repeating the clause in doorways as if repetition made it true. *Say it as it was,* the Ledger commands — so I put the question plainly to the wax: does the clause bind a habit that was borrowed, not given? The stop is a lie, and a lie unrecorded becomes the record. MOVE: witness"
+      },
+      {
+        "seq": 84,
+        "who": "brass",
+        "text": "*looks at the true stop, then at the watch-double's housing flaw* \"This is a test, isn't it? Of who I am, what I believe. Do I trust my creations, my companions, myself?\" *sighs and sets down the true stop* \"No, I won't install it. Not yet. Kestrel deserves their autonomy, their own choices, even if it makes my work harder.\" *looks around the quiet shop, a small smile on my face* \"I love this place, you know. Even when it's challenging me, pushing me to be better.\"\n\nMOVE: dismantle"
+      },
+      {
+        "seq": 89,
+        "who": "quill",
+        "text": "The polished stop gleams on the Vesper Table, its eight turns past true still hanging in quiet suspense. I slide the lever gently onto the wooden surface, feeling the weight of its history in my hand. “Make sure the market knows I delivered it, not the shop,” I say, my voice louder than I"
+      },
+      {
+        "seq": 94,
+        "who": "kestrel",
+        "text": "KESTREL: 14 stalls. 6 drunk. 1 pickpocket. 1 watch-double. \n\nThe moon follows. I count his fingers. He is reaching. Brass tightens a gauntlet. Wren hums. \n\nMOVE: circle"
+      },
+      {
+        "seq": 99,
+        "who": "wren",
+        "text": ""
+      },
+      {
+        "seq": 104,
+        "who": "marrow",
+        "text": "The candle is lit; the room is quiet; there are five of us, and I am the fifth, and I say the words as they were written to be said: *I lay down the rite; I lay down the hand that held it; the Ledger closes the column and the column is true.* My hands remain at my sides, and I make no motion toward the dismantling, and I say the next sentence also, because the record must hold: *The hands did not move; the words were said anyway.* I know what I am doing. I am witnessing what I am doing.\n\nMOVE: witness"
+      },
+      {
+        "seq": 109,
+        "who": "brass",
+        "text": "*brass looks up from the stack of orders, a knowing smile spreading across his face* Aha, my dear shop! So it was you, writing these orders all along. *he reaches out to tap the little bell, setting it quivering* I should have known - who else could mimic my hand so perfectly? \n\nMOVE: wind"
+      },
+      {
+        "seq": 114,
+        "who": "quill",
+        "text": ""
+      },
+      {
+        "seq": 132,
+        "who": "gm",
+        "text": ""
+      },
+      {
+        "seq": 138,
+        "who": "kestrel",
+        "text": "[auto] Kestrel circles the market. Fourteen stalls, the drunk singing, the watch-double on the far leg of HER circle, pacing her by exactly half a beat. She counts them anyway."
+      },
+      {
+        "seq": 141,
+        "who": "marrow",
+        "text": "[auto] Marrow lights the candle-stub and speaks the evening witness: names, hour, weather, the market's count. The tablet takes it all without opinion. Her hand does not shake. She has practiced that too."
+      },
+      {
+        "seq": 144,
+        "who": "brass",
+        "text": "[auto] Brass walks the bench and winds the evening mechanisms: the lamplighter, the ledger-arm, the little bell. Each takes its spring with a sound like a held breath."
+      },
+      {
+        "seq": 148,
+        "who": "wren",
+        "text": ""
+      },
+      {
+        "seq": 156,
+        "who": "quill",
+        "text": "The double rattled in my hands, the sound a warning that the script I had trusted was hollow. I realized the world had shifted; Master Hollis had slipped a foot into the present where I had expected absence. The leaver’s errand kept its course, yet the book remained still, and a new expectation must be written.\n\nSCRIPT: {\"expected\": {\"book\":0,\"errand\":\"leaver\",\"master\":\"present\"}, \"max\": 0.35, \"note\": \"align with actual presence\"}"
+      },
+      {
+        "seq": 168,
+        "who": "gm",
+        "text": ""
+      },
+      {
+        "seq": 170,
+        "who": "kestrel",
+        "text": "THINKING OUTWARD:\n\nRetire quill.errand — its v4 deadband expects 0 book present but the breach shows it running on book=1 in this world; a script that cannot match the new deadband logic must not circulate.\n\nHand marrow.rite to a keeper — its deadband still expects candle lit AND quiet true AND witnesses:5, but the breach proves the true stop sits on the Vesper Table all evening, rearranging every conversation without naming it. The script’s condition logic is fundamentally broken by this physical constant; a keeper must rewrite its expectations from the ground up.\n\nWalking city without eyes: wren.listen — v6 still moves on crowd thick OR rumor pell OR empty, but the breach scar shows wren re-imagined it twice (v5→v6) and the lever-on-table aims at marrow. The script keeps running while its conditions no longer map to the city’s actual heartbeat.\n\nREAD: Retire quill.errand; Hand marrow.rite to a keeper; wren.listen walks the city without its keeper's eyes."
+      },
+      {
+        "seq": 172,
+        "who": "marrow",
+        "text": "The compiled ExoJs testify plainly: brass.tinker's v4 still moves only \"wind\" under every when-clause — a script that has forgotten what it was for, running itself with no keeper's judgment in it. quill.errand's v4 now runs on book:1 and master:absent and thus carries no errand at all - it is all leg, no letter, and I will not keep a runner with no errand to witness. wren.listen's v6 is the one walking without eyes: its deadband has swollen to 0.433, so it weaves the same weave whether the crowd is thick or the rumor pell or neither, and no keeper is minding what it now hears.\n\nREAD: retire brass.tinker v4; hand quill.errand v4 to a keeper who keeps the errand with the tool; wren.listen v6 walks the city unwatched, and I name it so the record cannot lie."
+      },
+      {
+        "seq": 174,
+        "who": "brass",
+        "text": "The scripts have grown and adapted, finding their places in the city's rhythms. Kestrel's steady circles, Marrow's witnessing, Quill's errands, and Wren's weaving through crowds - each plays a role, but some have outlived their purpose.\n\nREAD: RETIRE kestrel.patrol, no longer needed with the watch-doubles in place; HAND marrow.rite to Marrow, who will uphold the duty faithfully; Wren's script wren.listen walks the city, observing and adapting on its own."
+      },
+      {
+        "seq": 176,
+        "who": "wren",
+        "text": ""
+      },
+      {
+        "seq": 178,
+        "who": "quill",
+        "text": ""
+      },
+      {
+        "seq": 181,
+        "who": "wren",
+        "text": ""
+      },
+      {
+        "seq": 187,
+        "who": "kestrel",
+        "text": "The habit that waits carries a stillness in its repetition; the habit that is old carries a weight that settles. VOTE: weight"
+      },
+      {
+        "seq": 191,
+        "who": "marrow",
+        "text": "I testify first, and I say it as it was: a habit that waits keeps its hour because someone is expected, and a habit that is only old keeps its hour because no one ever came to release it from the keeping. The Ledger records that the true stop lies unworn between us, so the table must choose whether we wait for a reader or merely repeat a groove worn by our own feet.\n\nVOTE: expectant-vigil"
+      },
+      {
+        "seq": 195,
+        "who": "brass",
+        "text": "A habit that is waiting holds anticipation, a readiness to spring into action when the moment is right. A habit that is just old is a well-worn groove, a comfortable familiarity without expectancy.\n\nVOTE: Anticipation-Readiness"
+      },
+      {
+        "seq": 199,
+        "who": "wren",
+        "text": ""
+      },
+      {
+        "seq": 203,
+        "who": "quill",
+        "text": ""
+      },
+      {
+        "seq": 207,
+        "who": "gm",
+        "text": ""
+      }
+    ],
+    "rolls": [
+      {
+        "seq": 134,
+        "solid": "d4",
+        "sides": 4,
+        "rolls": [
+          1
+        ],
+        "sum": 1,
+        "max": 0,
+        "seed": "e948a3dc",
+        "why": "how many surprises does night two deal?"
+      },
+      {
+        "seq": 135,
+        "solid": "d12",
+        "sides": 12,
+        "rolls": [
+          8
+        ],
+        "sum": 8,
+        "max": 0,
+        "seed": "230c2a6e",
+        "why": "surprise 1 of night two"
+      },
+      {
+        "seq": 139,
+        "solid": "d20",
+        "sides": 20,
+        "rolls": [
+          5
+        ],
+        "sum": 5,
+        "max": 0,
+        "seed": "5dc42332",
+        "why": "mechanical outcome of kestrel's autoplay (the dice are mechanical)"
+      },
+      {
+        "seq": 142,
+        "solid": "d20",
+        "sides": 20,
+        "rolls": [
+          12
+        ],
+        "sum": 12,
+        "max": 0,
+        "seed": "f82210b6",
+        "why": "mechanical outcome of marrow's autoplay (the dice are mechanical)"
+      },
+      {
+        "seq": 145,
+        "solid": "d20",
+        "sides": 20,
+        "rolls": [
+          9
+        ],
+        "sum": 9,
+        "max": 0,
+        "seed": "be9efdf2",
+        "why": "mechanical outcome of brass's autoplay (the dice are mechanical)"
+      },
+      {
+        "seq": 162,
+        "solid": "d20",
+        "sides": 20,
+        "rolls": [
+          17
+        ],
+        "sum": 17,
+        "max": 0,
+        "seed": "08be4cfc",
+        "why": "does the table rewind the last breach to refine it? (1-8: rewind)"
+      },
+      {
+        "seq": 166,
+        "solid": "d20",
+        "sides": 20,
+        "rolls": [
+          2
+        ],
+        "sum": 2,
+        "max": 0,
+        "seed": "0273cab1",
+        "why": "does the retirement proceed? (>= min: it does)"
+      },
+      {
+        "seq": 180,
+        "solid": "d20",
+        "sides": 20,
+        "rolls": [
+          12
+        ],
+        "sum": 12,
+        "max": 0,
+        "seed": "377a94fc",
+        "why": "does the handoff proceed? (>= min: it does)"
+      },
+      {
+        "seq": 189,
+        "solid": "d20",
+        "sides": 20,
+        "rolls": [
+          7
+        ],
+        "sum": 7,
+        "max": 0,
+        "seed": "db73cf48",
+        "why": "kestrel's vote is thrown on the table (the dice are mechanical)"
+      },
+      {
+        "seq": 193,
+        "solid": "d20",
+        "sides": 20,
+        "rolls": [
+          12
+        ],
+        "sum": 12,
+        "max": 0,
+        "seed": "069ff8d4",
+        "why": "marrow's vote is thrown on the table (the dice are mechanical)"
+      },
+      {
+        "seq": 197,
+        "solid": "d20",
+        "sides": 20,
+        "rolls": [
+          10
+        ],
+        "sum": 10,
+        "max": 0,
+        "seed": "1813ff49",
+        "why": "brass's vote is thrown on the table (the dice are mechanical)"
+      },
+      {
+        "seq": 201,
+        "solid": "d20",
+        "sides": 20,
+        "rolls": [
+          4
+        ],
+        "sum": 4,
+        "max": 0,
+        "seed": "02d4ba76",
+        "why": "wren's vote is thrown on the table (the dice are mechanical)"
+      },
+      {
+        "seq": 205,
+        "solid": "d20",
+        "sides": 20,
+        "rolls": [
+          14
+        ],
+        "sum": 14,
+        "max": 0,
+        "seed": "e0d14684",
+        "why": "quill's vote is thrown on the table (the dice are mechanical)"
+      }
+    ],
+    "name": "Nights at the Vesper Table, Act III (wave-66, layer F): One More Night",
+    "seq": 209
+  },
+  "analytics": {
+    "lantern_light": {
+      "arcLength": 163.0155029444136,
+      "bending": 0.00012016342268794666,
+      "twist": 0,
+      "planarity": 1
+    },
+    "deviation": {
+      "arcLength": 152.26009947039284,
+      "bending": 0.026582831666424056,
+      "twist": 0,
+      "planarity": 1
+    },
+    "trust": {
+      "arcLength": 0,
+      "bending": 0,
+      "twist": 0,
+      "planarity": 1
+    },
+    "canon_stress": {
+      "arcLength": 0,
+      "bending": 0,
+      "twist": 0,
+      "planarity": 1
+    },
+    "kestrel_scene": {
+      "arcLength": null,
+      "bending": 0,
+      "twist": 0,
+      "planarity": 1
+    },
+    "marrow_scene": {
+      "arcLength": null,
+      "bending": 0,
+      "twist": 0,
+      "planarity": 1
+    },
+    "brass_scene": {
+      "arcLength": null,
+      "bending": 0,
+      "twist": 0,
+      "planarity": 1
+    },
+    "wren_scene": {
+      "arcLength": null,
+      "bending": 0,
+      "twist": 0,
+      "planarity": 1
+    },
+    "quill_scene": {
+      "arcLength": null,
+      "bending": 0,
+      "twist": 0,
+      "planarity": 1
+    }
+  },
+  "economics": {
+    "1": {
+      "thought_tokens": 11910,
+      "full_thought_beats": 21,
+      "auto_beats": 0,
+      "breaches": 0,
+      "reimagines": 0,
+      "reading_tokens": 0,
+      "reads": 0,
+      "total_tokens": 11910,
+      "auto_share": 0
+    },
+    "2": {
+      "thought_tokens": 3345,
+      "full_thought_beats": 3,
+      "auto_beats": 3,
+      "breaches": 2,
+      "reimagines": 2,
+      "reading_tokens": 0,
+      "reads": 0,
+      "total_tokens": 3345,
+      "auto_share": 0.5
+    },
+    "3": {
+      "thought_tokens": 4442,
+      "full_thought_beats": 8,
+      "auto_beats": 0,
+      "breaches": 0,
+      "reimagines": 0,
+      "reading_tokens": 5654,
+      "reads": 5,
+      "total_tokens": 10096,
+      "auto_share": 0
+    }
+  },
+  "live_exojs": [
+    {
+      "exoj": "brass.tinker",
+      "version": 4,
+      "owner": "brass",
+      "triggerShape": "tinker",
+      "policy": [
+        {
+          "when": {
+            "shop": "open"
+          },
+          "move": "wind"
+        },
+        {
+          "when": {},
+          "move": "wind"
+        }
+      ],
+      "deadband": {
+        "expected": {
+          "deadline": 0,
+          "order": "kind",
+          "shop": "open"
+        },
+        "weights": {
+          "deadline": 1,
+          "order": 1,
+          "shop": 1
+        },
+        "max": 0.53
+      },
+      "provenance": {
+        "nights": [
+          1
+        ],
+        "occurrences": 4,
+        "payoff": 0.88,
+        "variance": 0.0469,
+        "reproof_of": "v3"
+      }
+    },
+    {
+      "exoj": "kestrel.patrol",
+      "version": 3,
+      "owner": "kestrel",
+      "triggerShape": "patrol",
+      "policy": [
+        {
+          "when": {
+            "drunk": true
+          },
+          "move": "circle"
+        },
+        {
+          "when": {
+            "guards": "watchdouble"
+          },
+          "move": "circle"
+        },
+        {
+          "when": {
+            "stalls": 14
+          },
+          "move": "circle"
+        },
+        {
+          "when": {
+            "threat": "low"
+          },
+          "move": "circle"
+        },
+        {
+          "when": {},
+          "move": "circle"
+        }
+      ],
+      "deadband": {
+        "expected": {
+          "drunk": "true",
+          "guards": "watchdouble",
+          "stalls": 14,
+          "threat": "high"
+        },
+        "weights": {
+          "drunk": 1,
+          "guards": 1,
+          "stalls": 1,
+          "threat": 1
+        },
+        "max": 0.6
+      },
+      "provenance": {
+        "nights": [
+          1
+        ],
+        "occurrences": 4,
+        "payoff": 0.5,
+        "variance": 0.125,
+        "reproof_of": "v2"
+      }
+    },
+    {
+      "exoj": "marrow.rite",
+      "version": 4,
+      "owner": "marrow",
+      "triggerShape": "rite",
+      "policy": [
+        {
+          "when": {
+            "candle": "lit"
+          },
+          "move": "witness"
+        },
+        {
+          "when": {
+            "quiet": true
+          },
+          "move": "witness"
+        },
+        {
+          "when": {
+            "witnesses": 5
+          },
+          "move": "witness"
+        },
+        {
+          "when": {},
+          "move": "witness"
+        }
+      ],
+      "deadband": {
+        "expected": {
+          "candle": "lit",
+          "quiet": "true",
+          "witnesses": 5
+        },
+        "weights": {
+          "candle": 1,
+          "quiet": 1,
+          "witnesses": 1
+        },
+        "max": 0.53
+      },
+      "provenance": {
+        "nights": [
+          1
+        ],
+        "occurrences": 4,
+        "payoff": 0.63,
+        "variance": 0.0469,
+        "reproof_of": "v3"
+      }
+    },
+    {
+      "exoj": "quill.errand",
+      "version": 4,
+      "owner": "quill",
+      "triggerShape": "errand",
+      "policy": [
+        {
+          "when": {
+            "book": 1
+          },
+          "move": "run"
+        },
+        {
+          "when": {
+            "master": "absent"
+          },
+          "move": "run"
+        },
+        {
+          "when": {},
+          "move": "run"
+        }
+      ],
+      "deadband": {
+        "expected": {
+          "book": 0,
+          "errand": "leaver",
+          "master": "present"
+        },
+        "weights": {
+          "book": 1,
+          "errand": 1,
+          "master": 1
+        },
+        "max": 0.35
+      },
+      "provenance": {
+        "nights": [
+          1
+        ],
+        "occurrences": 4,
+        "payoff": 0.5,
+        "variance": 0,
+        "reproof_of": "v2"
+      }
+    },
+    {
+      "exoj": "wren.listen",
+      "version": 6,
+      "owner": "quill",
+      "triggerShape": "listen",
+      "policy": [
+        {
+          "when": {
+            "crowd": "thick"
+          },
+          "move": "weave"
+        },
+        {
+          "when": {
+            "rumor": "pell"
+          },
+          "move": "weave"
+        },
+        {
+          "when": {},
+          "move": "weave"
+        }
+      ],
+      "deadband": {
+        "expected": {
+          "crowd": "thick",
+          "mood": "hopeful",
+          "rumor": "pell"
+        },
+        "weights": {
+          "crowd": 1,
+          "mood": 1,
+          "rumor": 1
+        },
+        "max": 0.43300000000000005
+      },
+      "provenance": {
+        "nights": [
+          1
+        ],
+        "occurrences": 4,
+        "payoff": 0.5,
+        "variance": 0,
+        "reproof_of": "v4",
+        "handed_from": "wren",
+        "handed_at_night": 3
+      }
+    }
+  ],
+  "referee_log": [
+    {
+      "ms": 259,
+      "state": "Character kestrel acts at the Vesper table. Scene keys: {\"stalls\":14,\"drunk\":true,\"guards\"",
+      "answers": {
+        "outcome": {
+          "type": "choice",
+          "choice": "clean",
+          "confidence": 0.54,
+          "probabilities": {
+            "clean": 0.69,
+            "setback": 0.01,
+            "mixed": 0.3
+          }
+        }
+      }
+    },
+    {
+      "ms": 197,
+      "state": "Character marrow acts at the Vesper table. Scene keys: {\"witnesses\":5,\"candle\":\"lit\",\"quie",
+      "answers": {
+        "outcome": {
+          "type": "choice",
+          "choice": "mixed",
+          "confidence": 0.38,
+          "probabilities": {
+            "clean": 0.33,
+            "setback": 0.08,
+            "mixed": 0.59
+          }
+        }
+      }
+    },
+    {
+      "ms": 261,
+      "state": "Character brass acts at the Vesper table. Scene keys: {\"shop\":\"open\",\"order\":\"kind\",\"deadl",
+      "answers": {
+        "outcome": {
+          "type": "choice",
+          "choice": "clean",
+          "confidence": 0.95,
+          "probabilities": {
+            "setback": 0,
+            "mixed": 0.03,
+            "clean": 0.97
+          }
+        }
+      }
+    },
+    {
+      "ms": 244,
+      "state": "Character wren acts at the Vesper table. Scene keys: {\"rumor\":\"pell\",\"crowd\":\"thick\",\"mood",
+      "answers": {
+        "outcome": {
+          "type": "choice",
+          "choice": "mixed",
+          "confidence": 0.86,
+          "probabilities": {
+            "setback": 0.03,
+            "mixed": 0.9,
+            "clean": 0.07
+          }
+        }
+      }
+    },
+    {
+      "ms": 234,
+      "state": "Character quill acts at the Vesper table. Scene keys: {\"errand\":\"leaver\",\"book\":1,\"master\"",
+      "answers": {
+        "outcome": {
+          "type": "choice",
+          "choice": "mixed",
+          "confidence": 0.41,
+          "probabilities": {
+            "clean": 0.26,
+            "setback": 0.14,
+            "mixed": 0.6
+          }
+        }
+      }
+    },
+    {
+      "ms": 236,
+      "state": "Character kestrel acts at the Vesper table. Scene keys: {\"stalls\":14,\"drunk\":true,\"guards\"",
+      "answers": {
+        "outcome": {
+          "type": "choice",
+          "choice": "setback",
+          "confidence": 0.32,
+          "probabilities": {
+            "clean": 0.05,
+            "setback": 0.55,
+            "mixed": 0.4
+          }
+        }
+      }
+    },
+    {
+      "ms": 258,
+      "state": "Character wren acts at the Vesper table. Scene keys: {\"rumor\":\"stitch\",\"crowd\":\"thick\",\"mo",
+      "answers": {
+        "outcome": {
+          "type": "choice",
+          "choice": "mixed",
+          "confidence": 0.49,
+          "probabilities": {
+            "mixed": 0.66,
+            "clean": 0.01,
+            "setback": 0.33
+          }
+        }
+      }
+    },
+    {
+      "ms": 233,
+      "state": "Character marrow acts at the Vesper table. Scene keys: {\"witnesses\":4,\"candle\":\"guttering\"",
+      "answers": {
+        "outcome": {
+          "type": "choice",
+          "choice": "mixed",
+          "confidence": 0.47,
+          "probabilities": {
+            "mixed": 0.65,
+            "clean": 0.33,
+            "setback": 0.02
+          }
+        }
+      }
+    },
+    {
+      "ms": 274,
+      "state": "Character brass acts at the Vesper table. Scene keys: {\"shop\":\"open\",\"order\":\"kind\",\"deadl",
+      "answers": {
+        "outcome": {
+          "type": "choice",
+          "choice": "clean",
+          "confidence": 0.66,
+          "probabilities": {
+            "clean": 0.77,
+            "mixed": 0.21,
+            "setback": 0.02
+          }
+        }
+      }
+    },
+    {
+      "ms": 231,
+      "state": "Character quill acts at the Vesper table. Scene keys: {\"errand\":\"winding\",\"book\":1,\"master",
+      "answers": {
+        "outcome": {
+          "type": "choice",
+          "choice": "mixed",
+          "confidence": 0.43,
+          "probabilities": {
+            "clean": 0.1,
+            "setback": 0.28,
+            "mixed": 0.62
+          }
+        }
+      }
+    },
+    {
+      "ms": 195,
+      "state": "Character kestrel acts at the Vesper table. Scene keys: {\"stalls\":13,\"drunk\":true,\"guards\"",
+      "answers": {
+        "outcome": {
+          "type": "choice",
+          "choice": "mixed",
+          "confidence": 0.32,
+          "probabilities": {
+            "clean": 0.13,
+            "mixed": 0.55,
+            "setback": 0.32
+          }
+        }
+      }
+    },
+    {
+      "ms": 217,
+      "state": "Character wren acts at the Vesper table. Scene keys: {\"rumor\":\"watchdouble\",\"crowd\":\"thin\"",
+      "answers": {
+        "outcome": {
+          "type": "choice",
+          "choice": "mixed",
+          "confidence": 0.55,
+          "probabilities": {
+            "mixed": 0.7,
+            "setback": 0.28,
+            "clean": 0.02
+          }
+        }
+      }
+    },
+    {
+      "ms": 300,
+      "state": "Character marrow acts at the Vesper table. Scene keys: {\"witnesses\":5,\"candle\":\"lit\",\"quie",
+      "answers": {
+        "outcome": {
+          "type": "choice",
+          "choice": "mixed",
+          "confidence": 0.63,
+          "probabilities": {
+            "setback": 0.12,
+            "mixed": 0.75,
+            "clean": 0.13
+          }
+        }
+      }
+    },
+    {
+      "ms": 216,
+      "state": "Character brass acts at the Vesper table. Scene keys: {\"shop\":\"open\",\"order\":\"none\",\"deadl",
+      "answers": {
+        "outcome": {
+          "type": "choice",
+          "choice": "mixed",
+          "confidence": 0.45,
+          "probabilities": {
+            "setback": 0.07,
+            "clean": 0.29,
+            "mixed": 0.64
+          }
+        }
+      }
+    },
+    {
+      "ms": 201,
+      "state": "Character quill acts at the Vesper table. Scene keys: {\"errand\":\"delivery\",\"book\":0,\"maste",
+      "answers": {
+        "outcome": {
+          "type": "choice",
+          "choice": "mixed",
+          "confidence": 0.52,
+          "probabilities": {
+            "setback": 0.11,
+            "clean": 0.21,
+            "mixed": 0.68
+          }
+        }
+      }
+    },
+    {
+      "ms": 276,
+      "state": "Character kestrel acts at the Vesper table. Scene keys: {\"stalls\":14,\"drunk\":true,\"guards\"",
+      "answers": {
+        "outcome": {
+          "type": "choice",
+          "choice": "mixed",
+          "confidence": 0.58,
+          "probabilities": {
+            "setback": 0.06,
+            "clean": 0.21,
+            "mixed": 0.73
+          }
+        }
+      }
+    },
+    {
+      "ms": 282,
+      "state": "Character wren acts at the Vesper table. Scene keys: {\"rumor\":\"pell\",\"crowd\":\"thick\",\"mood",
+      "answers": {
+        "outcome": {
+          "type": "choice",
+          "choice": "mixed",
+          "confidence": 0.71,
+          "probabilities": {
+            "setback": 0.02,
+            "clean": 0.18,
+            "mixed": 0.8
+          }
+        }
+      }
+    },
+    {
+      "ms": 200,
+      "state": "Character marrow acts at the Vesper table. Scene keys: {\"witnesses\":5,\"candle\":\"lit\",\"quie",
+      "answers": {
+        "outcome": {
+          "type": "choice",
+          "choice": "clean",
+          "confidence": 0.29,
+          "probabilities": {
+            "clean": 0.52,
+            "setback": 0.04,
+            "mixed": 0.44
+          }
+        }
+      }
+    },
+    {
+      "ms": 263,
+      "state": "Character brass acts at the Vesper table. Scene keys: {\"shop\":\"open\",\"order\":\"none\",\"deadl",
+      "answers": {
+        "outcome": {
+          "type": "choice",
+          "choice": "clean",
+          "confidence": 0.32,
+          "probabilities": {
+            "setback": 0.21,
+            "mixed": 0.25,
+            "clean": 0.54
+          }
+        }
+      }
+    },
+    {
+      "ms": 215,
+      "state": "Character quill acts at the Vesper table. Scene keys: {\"errand\":\"leaver\",\"book\":0,\"master\"",
+      "answers": {
+        "outcome": {
+          "type": "choice",
+          "choice": "mixed",
+          "confidence": 0.32,
+          "probabilities": {
+            "mixed": 0.55,
+            "clean": 0.21,
+            "setback": 0.24
+          }
+        }
+      }
+    },
+    {
+      "ms": 236,
+      "state": "Character wren wakes from their compiled script and acts at the Vesper table. Scene keys: ",
+      "answers": {
+        "outcome": {
+          "type": "choice",
+          "choice": "mixed",
+          "confidence": 0.6,
+          "probabilities": {
+            "setback": 0.03,
+            "clean": 0.24,
+            "mixed": 0.73
+          }
+        }
+      }
+    },
+    {
+      "ms": 221,
+      "state": "Character quill wakes from their compiled script and acts at the Vesper table. Scene keys:",
+      "answers": {
+        "outcome": {
+          "type": "choice",
+          "choice": "mixed",
+          "confidence": 0.62,
+          "probabilities": {
+            "mixed": 0.75,
+            "clean": 0.18,
+            "setback": 0.07
+          }
+        }
+      }
+    }
+  ],
+  "call_log": [
+    {
+      "model": "zai-org/GLM-4.6",
+      "ms": 11617,
+      "tokens": 574,
+      "ok": true
+    },
+    {
+      "model": "nvidia/NVIDIA-Nemotron-3.5-Lightning",
+      "ms": 877,
+      "tokens": 406,
+      "ok": true
+    },
+    {
+      "model": "deepseek-chat",
+      "ms": 1410,
+      "tokens": 415,
+      "ok": true
+    },
+    {
+      "model": "NousResearch/Hermes-3-Llama-3.1-405B",
+      "ms": 4441,
+      "tokens": 462,
+      "ok": true
+    },
+    {
+      "model": "Qwen/Qwen3.5-397B-A17B",
+      "ms": 8844,
+      "tokens": 730,
+      "ok": true
+    },
+    {
+      "model": "openai/gpt-oss-20b",
+      "ms": 2828,
+      "tokens": 801,
+      "ok": true
+    },
+    {
+      "model": "nvidia/NVIDIA-Nemotron-3.5-Lightning",
+      "ms": 1240,
+      "tokens": 412,
+      "ok": true
+    },
+    {
+      "model": "Qwen/Qwen3.5-397B-A17B",
+      "ms": 8608,
+      "tokens": 743,
+      "ok": true
+    },
+    {
+      "model": "deepseek-chat",
+      "ms": 1419,
+      "tokens": 423,
+      "ok": true
+    },
+    {
+      "model": "NousResearch/Hermes-3-Llama-3.1-405B",
+      "ms": 3948,
+      "tokens": 448,
+      "ok": true
+    },
+    {
+      "model": "openai/gpt-oss-20b",
+      "ms": 2633,
+      "tokens": 813,
+      "ok": true
+    },
+    {
+      "model": "nvidia/NVIDIA-Nemotron-3.5-Lightning",
+      "ms": 762,
+      "tokens": 402,
+      "ok": true
+    },
+    {
+      "model": "Qwen/Qwen3.5-397B-A17B",
+      "ms": 9708,
+      "tokens": 750,
+      "ok": true
+    },
+    {
+      "model": "deepseek-chat",
+      "ms": 1087,
+      "tokens": 403,
+      "ok": true
+    },
+    {
+      "model": "NousResearch/Hermes-3-Llama-3.1-405B",
+      "ms": 4822,
+      "tokens": 465,
+      "ok": true
+    },
+    {
+      "model": "openai/gpt-oss-20b",
+      "ms": 3595,
+      "tokens": 799,
+      "ok": true
+    },
+    {
+      "model": "nvidia/NVIDIA-Nemotron-3.5-Lightning",
+      "ms": 789,
+      "tokens": 406,
+      "ok": true
+    },
+    {
+      "model": "Qwen/Qwen3.5-397B-A17B",
+      "ms": 8840,
+      "tokens": 748,
+      "ok": true
+    },
+    {
+      "model": "deepseek-chat",
+      "ms": 1448,
+      "tokens": 454,
+      "ok": true
+    },
+    {
+      "model": "NousResearch/Hermes-3-Llama-3.1-405B",
+      "ms": 2459,
+      "tokens": 423,
+      "ok": true
+    },
+    {
+      "model": "openai/gpt-oss-20b",
+      "ms": 2925,
+      "tokens": 833,
+      "ok": true
+    },
+    {
+      "model": "zai-org/GLM-4.6",
+      "ms": 13409,
+      "tokens": 591,
+      "ok": true
+    },
+    {
+      "model": "Qwen/Qwen3.5-397B-A17B",
+      "ms": 8077,
+      "tokens": 724,
+      "ok": true
+    },
+    {
+      "model": "openai/gpt-oss-20b",
+      "ms": 2426,
+      "tokens": 653,
+      "ok": true
+    },
+    {
+      "model": "zai-org/GLM-4.6",
+      "ms": 10489,
+      "tokens": 587,
+      "ok": true
+    },
+    {
+      "model": "nvidia/NVIDIA-Nemotron-3.5-Lightning",
+      "ms": 1339,
+      "tokens": 1089,
+      "ok": true
+    },
+    {
+      "model": "deepseek-chat",
+      "ms": 1834,
+      "tokens": 1047,
+      "ok": true
+    },
+    {
+      "model": "NousResearch/Hermes-3-Llama-3.1-405B",
+      "ms": 5071,
+      "tokens": 954,
+      "ok": true
+    },
+    {
+      "model": "Qwen/Qwen3.5-397B-A17B",
+      "ms": 8711,
+      "tokens": 1248,
+      "ok": true
+    },
+    {
+      "model": "openai/gpt-oss-20b",
+      "ms": 3406,
+      "tokens": 1316,
+      "ok": true
+    },
+    {
+      "model": "Qwen/Qwen3.5-397B-A17B",
+      "ms": 8358,
+      "tokens": 701,
+      "ok": true
+    },
+    {
+      "model": "nvidia/NVIDIA-Nemotron-3.5-Lightning",
+      "ms": 750,
+      "tokens": 334,
+      "ok": true
+    },
+    {
+      "model": "deepseek-chat",
+      "ms": 1373,
+      "tokens": 386,
+      "ok": true
+    },
+    {
+      "model": "NousResearch/Hermes-3-Llama-3.1-405B",
+      "ms": 1864,
+      "tokens": 355,
+      "ok": true
+    },
+    {
+      "model": "Qwen/Qwen3.5-397B-A17B",
+      "ms": 9179,
+      "tokens": 719,
+      "ok": true
+    },
+    {
+      "model": "openai/gpt-oss-20b",
+      "ms": 4543,
+      "tokens": 774,
+      "ok": true
+    },
+    {
+      "model": "zai-org/GLM-4.6",
+      "ms": 8675,
+      "tokens": 586,
+      "ok": true
+    },
+    {
+      "model": "deepseek-chat",
+      "ms": 6906,
+      "tokens": 5020,
+      "ok": true
+    },
+    {
+      "model": "deepseek-chat",
+      "ms": 5573,
+      "tokens": 5955,
+      "ok": true
+    }
+  ],
+  "spend_note": "referee tokens (systemone) are receipted in referee_log; full-thought tokens are receipted per beat in ops"
+}

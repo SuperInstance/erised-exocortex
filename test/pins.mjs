@@ -190,4 +190,22 @@ pin("tokenEconomics: auto=0, reads counted, auto_share rises", () => {
   assert.ok(econ[2].auto_share > econ[1].auto_share);
 });
 
+
+// T13 — the handoff law: the pattern changes keepers, the name and duty travel
+pin("handoff: same ExoJ, new owner, provenance receipted", () => {
+  const t = new ExocortexTable("pin13");
+  t.compile(PATROL);
+  const nx = t.handoff(PATROL, "quill", "the duty travels with it", 3);
+  assert.equal(nx.owner, "quill");
+  assert.equal(nx.exoj, "kestrel.patrol");                 // keeps its maker's name
+  assert.equal(nx.provenance.handed_from, "kestrel");
+  const hand = t.seq.ops.filter((o) => o.op === "exoj.handoff");
+  const compiles = t.seq.ops.filter((o) => o.op === "exoj.compile");
+  assert.equal(hand.length, 1);                             // the receipt of transfer
+  assert.equal(compiles.length, 2);                         // original + handoff re-mint
+  const live = t.liveExoJs();
+  assert.equal(live.length, 1);
+  assert.equal(live[0].owner, "quill");
+});
+
 console.log(`\n${n}/${n} pins PASS`);

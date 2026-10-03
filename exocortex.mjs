@@ -207,6 +207,16 @@ export class ExocortexTable {
   retire(exoj, why, night) {
     return this._p("exoj.retire", { exoj: exoj.exoj, version: exoj.version, why, night });
   }
+  // a script outliving its author: same ExoJ, new keeper, provenance receipted
+  handoff(exoj, newOwner, why, night) {
+    const next = JSON.parse(JSON.stringify(exoj));
+    next.owner = newOwner;
+    next.provenance = { ...next.provenance, handed_from: exoj.owner, handed_at_night: night };
+    this._p("exoj.handoff", { exoj: exoj.exoj, version: exoj.version,
+      from: exoj.owner, to: newOwner, why, night });
+    this._p("exoj.compile", { exoj: next });
+    return next;
+  }
   thought(who, beat, tokens, night, note) {
     return this._p("thought", { who, beat, tokens, night, note });
   }

@@ -283,7 +283,25 @@ async function night3(t) {
   t.sceneEnter("night-3");
   t.set("lantern_light", Math.max(1, dialStart.lantern_light - 4), "the last evening");
   // the voluntary retirement (act-2 meta-event): the keeper dismantles their own script
-  if (P.night3.meta_event?.kind === "retire") {
+  if (P.night3.meta_event?.kind === "handoff") {
+    const me2 = P.night3.meta_event;
+    const gate2 = t.roll(me2.gate.solid, 1, "does the handoff proceed? (>= min: it does)").sum;
+    if (gate2 >= me2.gate.min) {
+      const exoj = t.liveExoJs().find((e) => e.owner === me2.target);
+      const { text, tokens } = await chat(PARTY[me2.target].model, [
+        { role: "system", content: PARTY[me2.target].persona },
+        { role: "user", content: `${me2.fiction}\n\nSpeak the handoff: 2-3 sentences - what the script is, why it should outlive your keeping of it, and what you hand its new keeper with it (the duty, not just the tool). End with exactly 'HANDOFF: yes'.` }]);
+      t.say(me2.target, text); t.thought(me2.target, "handoff", tokens, 3, "the script outlives its author");
+      if (exoj) {
+        const nx = t.handoff(exoj, me2.to, text.slice(-160), 3);
+        t.scar("exocortex", `${exoj.exoj} v${exoj.version} handed ${exoj.owner} -> ${me2.to}: the pattern keeps its maker's name; the duty travels with it`);
+        console.error(`[night3] HANDED OFF ${exoj.exoj} -> ${me2.to}`);
+      } else t.scar("exocortex", `handoff declared; no live script found (honest)`);
+    } else {
+      t.scar("world", `handoff gated off (d20=${gate2}): the script stays with its maker`);
+      console.error(`[night3] handoff gated off (d20=${gate2})`);
+    }
+  } else if (P.night3.meta_event?.kind === "retire") {
     const me2 = P.night3.meta_event;
     const gate2 = t.roll(me2.gate.solid, 1, "does the retirement proceed? (>= min: it does)").sum;
     if (gate2 >= me2.gate.min) {
@@ -318,6 +336,25 @@ async function night3(t) {
     console.error(`[night3] ${who}: read (${tokens} tokens)`);
   }
 
+  if (P.night3.handoff_event?.kind === "handoff") {
+    const he = P.night3.handoff_event;
+    const hg = t.roll(he.gate.solid, 1, "does the handoff proceed? (>= min: it does)").sum;
+    if (hg >= he.gate.min) {
+      const exoj = t.liveExoJs().find((e) => e.owner === he.target);
+      const { text, tokens } = await chat(PARTY[he.target].model, [
+        { role: "system", content: PARTY[he.target].persona },
+        { role: "user", content: `${he.fiction}\n\nSpeak the handoff: 2-3 sentences - what the script is, why it should outlive your keeping of it, and what you hand its new keeper with it (the duty, not just the tool). End with exactly 'HANDOFF: yes'.` }]);
+      t.say(he.target, text); t.thought(he.target, "handoff", tokens, 3, "the script outlives its author");
+      if (exoj) {
+        t.handoff(exoj, he.to, text.slice(-160), 3);
+        t.scar("exocortex", `${exoj.exoj} v${exoj.version} handed ${exoj.owner} -> ${he.to}: the pattern keeps its maker's name; the duty travels with it`);
+        console.error(`[night3] HANDED OFF ${exoj.exoj} -> ${he.to}`);
+      } else t.scar("exocortex", `handoff declared; no live script found (honest)`);
+    } else {
+      t.scar("world", `handoff gated off (d20=${hg}): the script stays with its maker`);
+      console.error(`[night3] handoff gated off (d20=${hg})`);
+    }
+  }
   const me = P.night3.meta_event?.kind === "retire" ? null : P.night3.meta_event;
   const meGate = me ? t.roll(me.gate.solid, 1, "does Wren's exploitation land? (>=12: it lands)").sum : 0;
   if (me && meGate >= me.gate.min) {
