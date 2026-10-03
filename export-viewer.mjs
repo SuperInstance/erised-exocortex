@@ -10,6 +10,7 @@ const HERE = path.dirname(fileURLToPath(import.meta.url));
 const files = [
   ["vesper-table", "nights/vesper-session.json"],
   ["vesper-act2", "nights/vesper-act2-session.json"],
+  ["vesper-act3", "nights/vesper-act3-session.json"],
 ];
 const out = { acts: [] };
 for (const [name, file] of files) {
