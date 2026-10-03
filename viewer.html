@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>erised-exocortex — the Vesper Table viewer</title>
+<style>
+  :root{
+    --bg:#0d1117; --panel:#161b22; --edge:#30363d; --ink:#e6edf3; --dim:#8b949e;
+    --gold:#d4a72c; --red:#f85149; --green:#3fb950; --blue:#58a6ff; --purple:#bc8cff;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.55 ui-monospace,SFMono-Regular,Menlo,monospace}
+  header{padding:18px 22px 8px;border-bottom:1px solid var(--edge)}
+  header h1{margin:0;font-size:17px;font-weight:600;letter-spacing:.4px}
+  header .sub{color:var(--dim);font-size:12px;margin-top:4px}
+  .wrap{display:grid;grid-template-columns:290px 1fr;min-height:calc(100vh - 70px)}
+  .side{border-right:1px solid var(--edge);padding:14px;overflow-y:auto}
+  .main{padding:14px 20px;overflow-y:auto}
+  .tabs{display:flex;gap:8px;margin-bottom:12px}
+  .tab{padding:5px 12px;border:1px solid var(--edge);border-radius:6px;cursor:pointer;color:var(--dim);font-size:12px}
+  .tab.on{color:var(--ink);border-color:var(--gold);background:#1c1a10}
+  h2{font-size:12px;text-transform:uppercase;letter-spacing:1.4px;color:var(--dim);margin:16px 0 8px}
+  .dial{display:flex;align-items:center;gap:8px;margin:5px 0}
+  .dial .name{width:110px;color:var(--dim);font-size:12px}
+  .dial .bar{flex:1;height:8px;background:#21262d;border-radius:4px;overflow:hidden}
+  .dial .fill{height:100%;background:var(--gold);transition:width .18s}
+  .dial .val{width:26px;text-align:right;font-size:12px}
+  .exoj{border:1px solid var(--edge);border-radius:8px;padding:9px 11px;margin:8px 0;background:var(--panel)}
+  .exoj .h{display:flex;justify-content:space-between;align-items:baseline}
+  .exoj .nm{color:var(--blue);font-weight:600}
+  .exoj .v{color:var(--dim);font-size:11px}
+  .exoj .db{margin-top:5px;font-size:11.5px;color:var(--dim)}
+  .exoj .db b{color:var(--gold)}
+  .pill{display:inline-block;padding:1px 8px;border-radius:10px;font-size:10.5px;border:1px solid var(--edge);margin-right:5px}
+  .pill.auto{color:var(--green);border-color:var(--green)}
+  .pill.breach{color:var(--red);border-color:var(--red)}
+  .pill.thought{color:var(--blue);border-color:var(--blue)}
+  .pill.read{color:var(--purple);border-color:var(--purple)}
+  #scrub{width:100%;accent-color:var(--gold)}
+  .opline{display:flex;gap:8px;align-items:baseline;padding:4px 6px;border-radius:6px;margin:2px 0;border:1px solid transparent}
+  .opline.cur{border-color:var(--gold);background:#1c1a10}
+  .opline .sq{font-size:11px;color:var(--dim);width:36px;flex:none}
+  .opline .op{width:92px;flex:none;font-size:11.5px}
+  .opline .tx{flex:1;font-size:12.5px;color:var(--ink)}
+  .opline .op.say{color:var(--ink)} .opline .op.thought{color:var(--blue)}
+  .opline .op.exoj.run{color:var(--green)} .opline .op.exoj.breach{color:var(--red)}
+  .opline .op.exoj.compile{color:var(--gold)} .opline .op.exoj.reimagine{color:var(--purple)}
+  .opline .op.roll{color:var(--dim)} .opline .op.scar{color:var(--red)}
+  .opline .op.read{color:var(--purple)} .opline .op.strategy{color:var(--dim)}
+  .opline .op.set{color:var(--gold)} .opline .op.rewind{color:var(--red)}
+  .opline .op.init,.opline .op.scene,.opline .op.tick,.opline .op.earn{color:var(--dim)}
+  .feed{max-height:46vh;overflow-y:auto;border:1px solid var(--edge);border-radius:8px;padding:8px;background:var(--panel)}
+  .said{border-left:2px solid var(--edge);padding:3px 0 3px 10px;margin:7px 0}
+  .said .who{color:var(--blue);font-weight:600}
+  .said.auto{border-left-color:var(--green)}
+  .said .auto-tag{color:var(--green);font-size:10.5px;border:1px solid var(--green);border-radius:8px;padding:0 6px;margin-left:6px}
+  .stat{display:flex;justify-content:space-between;font-size:12.5px;margin:3px 0}
+  .stat .k{color:var(--dim)} .stat .v{font-weight:600}
+  .econ{display:flex;gap:6px;align-items:flex-end;height:110px;margin-top:8px}
+  .econ .grp{flex:1;display:flex;gap:3px;align-items:flex-end;height:100%}
+  .econ .bar{flex:1;border-radius:3px 3px 0 0;position:relative;min-height:2px}
+  .econ .bar span{position:absolute;bottom:-16px;left:50%;transform:translateX(-50%);font-size:10px;color:var(--dim)}
+  .econ .lbl{position:absolute;top:-15px;left:50%;transform:translateX(-50%);font-size:10px;white-space:nowrap;color:var(--ink)}
+  .legend{font-size:10.5px;color:var(--dim);margin-top:22px}
+  .legend i{display:inline-block;width:9px;height:9px;border-radius:2px;margin:0 4px 0 10px}
+  .breach{border:1px solid var(--red);border-radius:8px;padding:8px 11px;margin:8px 0;background:#1a1012}
+  .breach .x{color:var(--red);font-weight:600;font-size:12.5px}
+  .breach .c{color:var(--dim);font-size:11.5px;margin-top:3px}
+  .empty{color:var(--dim);font-size:12px;font-style:italic}
+  footer{padding:10px 22px;border-top:1px solid var(--edge);color:var(--dim);font-size:11px}
+</style>
+</head>
+<body>
+<header>
+  <h1>erised-exocortex · the Vesper Table</h1>
+  <div class="sub" id="tip">loading the session of record…</div>
+</header>
+<div class="wrap">
+  <div class="side">
+    <div class="tabs" id="tabs"></div>
+    <h2>Dials</h2><div id="dials"></div>
+    <h2>Live ExoJs <span style="color:var(--dim);text-transform:none" id="exoj-at"></span></h2><div id="exojs"></div>
+    <h2>Token migration</h2><div id="econ" class="econ"></div>
+    <div class="legend">
+      <i style="background:var(--blue)"></i>thought <i style="background:var(--green)"></i>auto beats
+      <i style="background:var(--red)"></i>breaches <i style="background:var(--purple)"></i>reading (outward)
+      <div style="margin-top:4px">self-maintenance falls · the freed budget looks outward</div>
+    </div>
+  </div>
+  <div class="main">
+    <h2>Scrub the ledger <span style="color:var(--dim);text-transform:none" id="seqlbl"></span></h2>
+    <input id="scrub" type="range" min="1" max="10" value="1">
+    <div style="display:flex;gap:8px;margin:8px 0 14px">
+      <span class="pill auto" id="c-auto">auto 0</span>
+      <span class="pill thought" id="c-thought">thought 0</span>
+      <span class="pill breach" id="c-breach">breaches 0</span>
+      <span class="pill read" id="c-read">reads 0</span>
+      <span class="pill" id="c-scar">scars 0</span>
+    </div>
+    <h2>Breaches so far</h2><div id="breaches"><div class="empty">none yet — the scripts hold</div></div>
+    <h2>The table (said, in order)</h2><div class="feed" id="said"></div>
+  </div>
+</div>
+<footer>the deadband is the player's expense account — and the attack surface · dice re-derived from genesis · every breach is a sticky scar</footer>
+<script>
+let DATA=null, act=0, seq=1;
+const $=(id)=>document.getElementById(id);
+fetch('./viewer-data.json').then(r=>r.json()).then(d=>{
+  DATA=d;
+  $('tip').textContent = d.acts.map(a=>`${a.title.split(':')[0]} — ${a.rows} ops, tip ${a.tip.slice(0,10)}, verified`).join('  ·  ');
+  const tabs=$('tabs');
+  d.acts.forEach((a,i)=>{
+    const t=document.createElement('div'); t.className='tab'+(i===0?' on':''); t.textContent=a.name;
+    t.onclick=()=>{act=i; seq=1; [...tabs.children].forEach((c,j)=>c.classList.toggle('on',j===i));
+      $('scrub').max=a.rows; $('scrub').value=1; render();};
+    tabs.appendChild(t);
+  });
+  $('scrub').max=d.acts[0].rows;
+  render();
+});
+$('scrub').oninput=e=>{seq=+e.target.value; render();};
+function render(){
+  const A=DATA.acts[act]; if(!A) return;
+  const snap=A.seqs[seq-1];
+  $('seqlbl').textContent=`— seq ${seq} / ${A.rows} (${snap.op})`;
+  // dials
+  const dials=Object.entries(snap.dials).filter(([k])=>!k.endsWith('_scene'));
+  $('dials').innerHTML=dials.map(([k,v])=>{
+    const num=parseFloat(v); const max=isNaN(num)?10:Math.max(10,num);
+    const w=Math.max(3,Math.min(100,(num/max)*100));
+    return `<div class="dial"><div class="name">${k}</div><div class="bar"><div class="fill" style="width:${w}%"></div></div><div class="val">${isNaN(num)?v:num}</div></div>`;
+  }).join('')||'<div class="empty">no dials moved yet</div>';
+  // exojs
+  $('exoj-at').textContent=`@seq ${seq}`;
+  $('exojs').innerHTML=snap.exojs.map(e=>
+    `<div class="exoj"><div class="h"><span class="nm">${e.exoj}</span><span class="v">v${e.version}</span></div>
+     <div class="db">deadband max <b>${e.max}</b> · owner ${e.owner}</div></div>`
+  ).join('')||'<div class="empty">no scripts compiled yet</div>';
+  // economics (cumulative through this seq, per night bucket)
+  const nights=Object.keys(snap.econSoFar).sort((a,b)=>a-b);
+  const mx=Math.max(1,...nights.flatMap(n=>[snap.econSoFar[n].thought, snap.econSoFar[n].reading,
+    snap.econSoFar[n].auto*400, snap.econSoFar[n].breaches*400]));
+  $('econ').innerHTML=nights.map(n=>{const e=snap.econSoFar[n]; return `<div class="grp">
+    <div class="bar" style="height:${e.thought/mx*100}%;background:var(--blue)"><span>${e.thought||''}</span></div>
+    <div class="bar" style="height:${e.reading/mx*100}%;background:var(--purple)"><span>${e.reading||''}</span></div>
+    <div class="bar" style="height:${e.auto/mx*100}%;background:var(--green)"><span>${e.auto||''}</span></div>
+    <div class="bar" style="height:${e.breaches/mx*100}%;background:var(--red)"><span>${e.breaches||''}</span></div>
+    <span style="position:absolute">N${n}</span></div>`;}).join('');
+  // counters
+  let th=0,au=0,br=0,rd=0;
+  for(let k=1;k<=seq;k++){const s=A.seqs[k-1];
+    if(['thought','exoj.reimagine'].includes(s.op)) th++;
+    if(s.op==='exoj.run') au++;
+    if(s.op==='exoj.breach') br++;
+    if(s.op==='read') rd++;}
+  $('c-thought').textContent=`thought ${th}`; $('c-auto').textContent=`auto ${au}`;
+  $('c-breach').textContent=`breaches ${br}`; $('c-read').textContent=`reads ${rd}`;
+  $('c-scar').textContent=`scars ${snap.scars}`;
+  // breaches
+  const bs=A.breaches.filter(b=>b.seq<=seq);
+  $('breaches').innerHTML=bs.length?bs.map(b=>
+    `<div class="breach"><div class="x">seq ${b.seq} — ${b.exoj} v${b.v}: d=${b.d} &gt; max ${b.max}</div>
+     <div class="c">cause: ${b.cause}</div></div>`).join('')
+    :'<div class="empty">none yet — the scripts hold</div>';
+  // said feed (up to seq, latest 40)
+  const said=A.said.filter(s=>s.seq<=seq).slice(-40);
+  $('said').innerHTML=said.map(s=>{
+    const isAuto=s.text.startsWith('[auto]');
+    return `<div class="said ${isAuto?'auto':''}"><span class="who">${s.who}</span>${isAuto?'<span class="auto-tag">auto</span>':''}<br>${s.text.replace('[auto] ','')}</div>`;
+  }).join('')||'<div class="empty">the table has not spoken yet</div>';
+  const feed=$('said'); feed.scrollTop=feed.scrollHeight;
+}
+</script>
+</body>
+</html>

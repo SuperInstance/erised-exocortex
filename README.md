@@ -125,6 +125,43 @@ Keys live in `/home/z/my-project/.env.keys` (chmod 600, gitignored, never
 committed). `run` is the only networked command; everything else re-derives
 from `nights/vesper-session.json` locally and forever.
 
+## The viewer
+
+```sh
+node export-viewer.mjs          # precompute per-seq snapshots (no fold in the browser)
+python3 -m http.server 8901     # then open http://localhost:8901/viewer.html
+```
+
+Two tabs — Act I and Act II. Scrub the ledger: dials move, ExoJs compile and
+re-imagine, breaches flash red with their causes, `[auto]` lines carry the
+green tag, and the token-migration bars show the thesis live: blue
+(self-maintenance) falls, purple (reading outward) rises, green (auto beats)
+appears where the scripts hold, red (breaches) is where the springs sang.
+Frontend-only feel, backend-is-data — the browser never re-folds, so it cannot
+diverge from the engine.
+
+## Act II — "The Widow's Clause" (five voices)
+
+```sh
+node play.mjs --preset presets/vesper-act2.json --seed-exojs nights/vesper-session.json run night1
+node play.mjs --preset presets/vesper-act2.json run night2
+node play.mjs --preset presets/vesper-act2.json run night3
+node play.mjs --preset presets/vesper-act2.json run stitch
+```
+
+A fifth voice joins (Quill, the clockmaker's apprentice — gpt-oss-20b). The
+Act-I scripts carry forward with their provenance and a re-proven strategy
+BUMPS its version in the changed world. What the act receipted: the wide
+deadbands absorbed the act's own thesis surprises (kestrel d=0.50 twice;
+marrow d=0.40 on a double asking to be witnessed — the script stopped waking
+for exactly the thing the act is about); wren and quill breached and
+re-imagined (v4 / v2, the same 0.433 deadband, an underlined coincidence); and
+the voluntary-retirement meta-event was **gated off by a d20=1** — the dice
+deferring the one thing the table planned, which became the story's spine:
+*a rite that dies on schedule was never a rite; it was a policy.* The final
+question (prisoner or promise) went 11/13/20/4/14 — promise, promise,
+unresolved-potential, both, both — and the story: `story/vesper-act2-one-night.md`.
+
 ## Honest scope
 
 - Payoffs are referee-scored (System One `choice` with fixed criteria) —
